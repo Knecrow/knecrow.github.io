@@ -794,7 +794,7 @@
         </div>
         <h1>
             <span class="line" style="font-size: 0.5em; color: var(--text-muted); display:block; margin-bottom: 0.3em; letter-spacing: -0.5px; font-weight: 500;">Hi, I'm Syed Nahian Siam.</span>
-            <span class="line">Developer. Dreamer.</span>
+            <span class="line">Developer &amp; Dreamer</span>
             <span class="line"><span style="color:#e11d48;"><span class="typed-wrapper" id="typed-text"></span></span></span>
         </h1>
         <p class="hero-desc">
@@ -1344,21 +1344,27 @@
     // ===== TYPED TEXT =====
     const typedEl = document.getElementById('typed-text');
     const words = ['Vibecoder', 'Creator', 'Builder', 'Innovator'];
-    let wordIdx = 0, charIdx = 0, deleting = false;
-    function type() {
+    let wordIdx = 0, charIdx = 0, deleting = false, lastTime = 0;
+    const TYPE_SPEED = 110, DELETE_SPEED = 60, PAUSE = 1800;
+    let pauseUntil = 0;
+    function type(ts) {
+        requestAnimationFrame(type);
+        if (ts < pauseUntil) return;
+        const delay = deleting ? DELETE_SPEED : TYPE_SPEED;
+        if (ts - lastTime < delay) return;
+        lastTime = ts;
         const word = words[wordIdx];
         if (!deleting) {
-            typedEl.textContent = word.slice(0, charIdx + 1);
             charIdx++;
-            if (charIdx === word.length) { deleting = true; setTimeout(type, 1800); return; }
+            typedEl.textContent = word.slice(0, charIdx);
+            if (charIdx === word.length) { deleting = true; pauseUntil = ts + PAUSE; }
         } else {
-            typedEl.textContent = word.slice(0, charIdx - 1);
             charIdx--;
+            typedEl.textContent = word.slice(0, charIdx);
             if (charIdx === 0) { deleting = false; wordIdx = (wordIdx + 1) % words.length; }
         }
-        setTimeout(type, deleting ? 55 : 95);
     }
-    setTimeout(type, 600);
+    requestAnimationFrame(type);
 
     // ===== PARTICLE SWARM =====
     const canvas = document.getElementById('particleCanvas');
