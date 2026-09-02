@@ -301,10 +301,35 @@
             letter-spacing: -2px; color: var(--text);
             margin-bottom: 1.5rem;
         }
-        #hero h1 .line { display: block; overflow: hidden; }
+        #hero h1 .line { display: block; }
         #hero h1 .accent { color: var(--red); }
-        #hero h1 .typed-wrapper {
-            display: inline-block; min-width: 300px;
+        #hero h1 .typed-line {
+            display: flex;
+            align-items: center;
+            height: 1.4em;
+            line-height: 1.4em;
+            overflow: hidden;
+            font-size: 0.46em;
+            color: var(--text-muted);
+            margin-top: 0.3em;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        #typed-text {
+            color: #FFFFFF;
+            display: inline-block;
+            margin-left: 0.35rem;
+        }
+        #typed-text::after {
+            content: '|';
+            margin-left: 3px;
+            color: #FFFFFF;
+            animation: blink-caret 0.8s infinite;
+            text-shadow: 0 0 8px #FFFFFF;
+        }
+        @keyframes blink-caret {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .hero-desc {
@@ -1458,7 +1483,8 @@
     <div class="hero-left reveal from-left">
         <h1>
             <span class="line" style="font-size: 0.42em; color: #FFFFFF; display:block; margin-bottom: 0.4em; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase;">I'M SYED NAHIAN SIAM,</span>
-            <span class="line" id="glitch-title" style="text-transform: uppercase; line-height: 1.1;">SOFTWARE ENGINEER &amp; <span style="color:var(--text-muted);"><span class="typed-wrapper" id="typed-text"></span></span></span>
+            <span class="line" id="glitch-title" style="text-transform: uppercase; line-height: 1.05; display: block;">SOFTWARE ENGINEER</span>
+            <span class="line typed-line">&amp; <span id="typed-text"></span></span>
         </h1>
         <p class="hero-desc">
             Combining <strong>Computer Science fundamentals</strong> with modern AI-accelerated workflows to architect, build, and ship high-performance <strong>mobile and web products</strong>.
@@ -2269,7 +2295,7 @@
 
     // ===== TYPED TEXT =====
     const typedEl = document.getElementById('typed-text');
-    const words = ['Software Engineer', 'AI-Native Builder', 'Flutter Architect', 'Vibecoder'];
+    const words = ['AI-Native Builder', 'Flutter Architect', 'Full-Stack Developer', 'Vibecoder'];
     let wordIdx = 0, charIdx = 0, deleting = false, lastTime = 0;
     const TYPE_SPEED = 110, DELETE_SPEED = 60, PAUSE = 1800;
     let pauseUntil = 0;
