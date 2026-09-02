@@ -1184,38 +1184,6 @@
         }
         html:not(.dark) .aurora-blob { opacity: 0.12; }
 
-        /* ===== CURRENTLY BUILDING STRIP ===== */
-        .currently-building {
-            display: inline-flex; align-items: center; gap: 0.8rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 0.85rem 1.4rem;
-            margin-top: 2rem;
-            backdrop-filter: var(--glass-blur);
-            box-shadow: 4px 4px 16px rgba(165,185,205,0.2), -4px -4px 16px rgba(255,255,255,0.8);
-            font-size: 0.88rem; font-weight: 600;
-            color: var(--text-muted);
-            transition: all 0.3s var(--transition);
-            flex-wrap: wrap; gap: 0.6rem;
-        }
-        .currently-building:hover { border-color: rgba(37,99,235,0.3); transform: translateY(-2px); }
-        .build-icon { font-size: 1rem; }
-        .build-label { font-weight: 800; color: var(--red-bright); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; }
-        .build-progress {
-            display: flex; align-items: center; gap: 0.5rem;
-            font-size: 0.8rem; color: var(--text-muted);
-        }
-        .build-bar {
-            width: 60px; height: 4px; border-radius: 10px;
-            background: rgba(37,99,235,0.15); overflow: hidden;
-        }
-        .build-bar-fill {
-            height: 100%; width: 65%; border-radius: 10px;
-            background: linear-gradient(90deg, var(--red-bright), #8B5CF6);
-            animation: build-pulse 2s ease-in-out infinite;
-        }
-        @keyframes build-pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
 
         /* ===== PROJECT STATUS BADGE ===== */
         .project-status {
@@ -1299,7 +1267,6 @@
         @media (max-width: 768px) {
             .gh-stats-grid { grid-template-columns: 1fr; }
             .gh-stats-heatmap { grid-column: auto; }
-            .currently-building { font-size: 0.82rem; }
             #darkToggle { width: 36px; height: 36px; font-size: 1rem; }
         /* ===== GLOBAL REMOTE READINESS CARD ===== */
         .remote-card {
@@ -1551,16 +1518,6 @@
             <a href="#contact" class="btn btn-outline">
                 <span>Let's Talk</span>
             </a>
-        </div>
-        <!-- Currently Building Strip -->
-        <div class="currently-building">
-            <span class="build-icon">🔨</span>
-            <span class="build-label">Live Build</span>
-            <span>Aegis v2 — AI campus security system</span>
-            <div class="build-progress">
-                <div class="build-bar"><div class="build-bar-fill"></div></div>
-                <span>65%</span>
-            </div>
         </div>
         <div class="hero-stats">
             <div class="stat-item">
