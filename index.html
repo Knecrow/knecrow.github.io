@@ -339,10 +339,10 @@
         /* Refined coronal eclipse backlight */
         .profile-ring-outer::before {
             content: ''; position: absolute;
-            inset: -25px;
+            inset: -20px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.22) 45%, transparent 75%);
-            filter: blur(30px);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 45%, transparent 75%);
+            filter: blur(25px);
             z-index: 0;
             pointer-events: none;
             animation: pulse-coronal 5s ease-in-out infinite alternate;
@@ -363,12 +363,12 @@
             width: 100%; height: 100%;
             border-radius: 50%;
             overflow: hidden;
-            background: #08080C;
-            border: 2.5px solid #FFFFFF;
+            background: #000000;
+            border: 2px solid #FFFFFF;
             box-shadow:
-                0 0 20px 4px rgba(255, 255, 255, 0.8),
-                0 0 50px 12px rgba(255, 255, 255, 0.35),
-                inset 0 0 25px rgba(255, 255, 255, 0.15);
+                0 0 16px rgba(255, 255, 255, 0.35),
+                0 0 35px rgba(255, 255, 255, 0.12),
+                inset 0 0 15px rgba(255, 255, 255, 0.10);
             position: relative;
             z-index: 1;
         }
@@ -1215,20 +1215,20 @@
         .aurora-blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
+            filter: blur(90px);
             pointer-events: none;
         }
         .aurora-1 {
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.25) 45%, transparent 75%);
-            top: -120px; left: 30%;
-            animation: aurora-drift 14s ease-in-out infinite alternate;
+            width: 450px; height: 450px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.04) 50%, transparent 75%);
+            top: 5%; right: 10%;
+            animation: aurora-drift 18s ease-in-out infinite alternate;
         }
         .aurora-2 {
-            width: 650px; height: 650px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.15) 45%, transparent 70%);
-            top: 15%; right: 5%;
-            animation: aurora-drift 18s ease-in-out infinite alternate-reverse;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 75%);
+            top: 25%; left: 10%;
+            animation: aurora-drift 22s ease-in-out infinite alternate-reverse;
         }
         .aurora-3 {
             display: none;
