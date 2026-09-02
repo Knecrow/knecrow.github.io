@@ -46,9 +46,11 @@
             overflow-x: hidden;
             cursor: none;
             background-image:
-                radial-gradient(ellipse 70% 50% at 50% -5%, rgba(255, 255, 255, 0.10) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 90% 70%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
-                radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+                radial-gradient(circle 900px at 50% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 45%, transparent 75%),
+                radial-gradient(circle 750px at 85% 25%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 75%),
+                radial-gradient(circle 800px at 15% 55%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 75%),
+                radial-gradient(circle 750px at 80% 80%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.04) 50%, transparent 75%);
+            background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -215,12 +217,14 @@
         .section-label {
             display: inline-flex; align-items: center; gap: 0.6rem;
             font-size: 0.78rem; font-weight: 700; letter-spacing: 2px;
-            text-transform: uppercase; color: #94A3B8;
+            text-transform: uppercase; color: #E2E8F0;
             margin-bottom: 1rem;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
         }
         .section-label::before {
             content: ''; display: block;
-            width: 20px; height: 1.5px; background: rgba(255, 255, 255, 0.5);
+            width: 20px; height: 2px; background: #FFFFFF;
+            box-shadow: 0 0 8px #FFFFFF;
         }
         h2.section-title {
             font-family: 'Space Grotesk', sans-serif;
@@ -228,6 +232,7 @@
             font-weight: 700; line-height: 1.15;
             color: #FFFFFF; margin-bottom: 1rem;
             letter-spacing: -1px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
         }
         .section-desc { color: #94A3B8; font-size: 1.05rem; max-width: 600px; }
 
@@ -238,7 +243,7 @@
             -webkit-backdrop-filter: var(--glass-blur);
             border: 1px solid var(--border);
             border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.04);
         }
 
         /* ===================================
@@ -394,9 +399,11 @@
            SECTION 2 — ABOUT
         ==================================== */
         #about {
-            background: var(--bg2);
+            background: transparent;
+            background-image: radial-gradient(circle 650px at 50% 35%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 75%);
             display: flex;
             justify-content: center;
+            position: relative;
         }
         .about-left {
             max-width: 780px;
@@ -410,7 +417,7 @@
             padding: 1.6rem 2.2rem;
             margin-top: 2rem;
             border-left: 3px solid #FFFFFF;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.04);
         }
         .about-highlight p { font-size: 1.05rem; color: #94A3B8; font-style: italic; line-height: 1.8; }
         .about-info { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
@@ -448,7 +455,11 @@
         /* ===================================
            SECTION 3 — SKILLS
         ==================================== */
-        #skills { background: var(--bg); }
+        #skills {
+            background: transparent;
+            background-image: radial-gradient(circle 700px at 80% 50%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 75%);
+            position: relative;
+        }
         .skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; align-items: start; }
         .skill-bars { display: flex; flex-direction: column; gap: 2rem; }
         .skill-bar-item label {
@@ -484,12 +495,13 @@
             padding: 1.5rem 1rem;
             text-align: center; cursor: none;
             transition: all 0.35s var(--transition);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 255, 255, 0.03);
         }
         .tech-item:hover {
             transform: translateY(-6px);
             background: rgba(255, 255, 255, 0.07);
             border-color: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 255, 255, 0.08);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 255, 255, 0.12);
         }
         .tech-item .tech-icon { font-size: 2rem; margin-bottom: 0.5rem; }
         .tech-item span { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); }
@@ -498,7 +510,13 @@
         /* ===================================
            SECTION 4 — PROJECTS
         ==================================== */
-        #projects { background: var(--bg2); }
+        #projects {
+            background: transparent;
+            background-image:
+                radial-gradient(circle 750px at 85% 30%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 55%, transparent 80%),
+                radial-gradient(circle 650px at 15% 75%, rgba(255, 255, 255, 0.18) 0%, transparent 75%);
+            position: relative;
+        }
         .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1.5rem; }
         
         /* Filter Tabs */
@@ -971,7 +989,11 @@
         /* ===================================
            SECTION 5 — SERVICES
         ==================================== */
-        #services { background: var(--bg); }
+        #services {
+            background: transparent;
+            background-image: radial-gradient(circle 700px at 50% 35%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 75%);
+            position: relative;
+        }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
         .service-card {
             background: var(--card-bg);
@@ -980,26 +1002,27 @@
             border-radius: 24px; padding: 2.5rem 2rem;
             transition: all 0.4s var(--transition); cursor: none;
             position: relative; overflow: hidden;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.04);
         }
         .service-card::before {
             content: ''; position: absolute; bottom: -60px; right: -60px;
             width: 160px; height: 160px; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04); transition: all 0.5s var(--transition);
+            background: rgba(255, 255, 255, 0.08); transition: all 0.5s var(--transition);
         }
         .service-card:hover::before { transform: scale(2); }
         .service-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.16);
+            border-color: rgba(255, 255, 255, 0.45);
         }
         .service-num {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 4rem; font-weight: 900; color: rgba(255, 255, 255, 0.06);
+            font-size: 4rem; font-weight: 900; color: rgba(255, 255, 255, 0.08);
             line-height: 1; margin-bottom: 1rem;
             transition: color 0.4s;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
         }
-        .service-card:hover .service-num { color: rgba(255, 255, 255, 0.22); }
+        .service-card:hover .service-num { color: rgba(255, 255, 255, 0.3); text-shadow: 0 0 30px rgba(255, 255, 255, 0.4); }
         .service-icon {
             width: 52px; height: 52px; border-radius: 14px;
             background: rgba(255, 255, 255, 0.07);
@@ -1015,8 +1038,10 @@
            SECTION 6 — TESTIMONIALS
         ==================================== */
         #testimonials {
-            background: var(--bg2);
+            background: transparent;
+            background-image: radial-gradient(circle 650px at 50% 60%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 50%, transparent 70%);
             overflow: hidden;
+            position: relative;
         }
         .testimonials-slider { display: flex; gap: 2rem; margin-top: 3rem; overflow: hidden; }
         .testimonials-track { display: flex; gap: 2rem; animation: slide-testimonials 30s linear infinite; }
@@ -1240,8 +1265,10 @@
 
         /* ===== ENGINEERING PHILOSOPHY SECTION ===== */
         #philosophy {
-            background: var(--bg2);
+            background: transparent;
+            background-image: radial-gradient(circle 700px at 25% 50%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 75%);
             padding: 5rem 6%;
+            position: relative;
         }
         .philosophy-grid {
             display: grid;
@@ -1256,14 +1283,14 @@
             border-radius: 24px;
             padding: 2.2rem 1.8rem;
             backdrop-filter: var(--glass-blur);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.04);
             transition: all 0.35s var(--transition);
             display: flex; flex-direction: column;
         }
         .philosophy-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.45);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 255, 255, 0.16);
         }
         .philosophy-num {
             font-family: 'Space Grotesk', sans-serif;
