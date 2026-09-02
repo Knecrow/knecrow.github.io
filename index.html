@@ -398,10 +398,13 @@
         ==================================== */
         #about {
             background: var(--bg2);
-            display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+            display: flex;
+            justify-content: center;
         }
-        .about-left { }
-        .about-right { }
+        .about-left {
+            max-width: 780px;
+            width: 100%;
+        }
         .about-highlight {
             background: var(--card-bg);
             backdrop-filter: var(--glass-blur);
@@ -412,7 +415,7 @@
             border-left: 4px solid var(--red);
         }
         .about-highlight p { font-size: 1.05rem; color: var(--text-muted); font-style: italic; line-height: 1.8; }
-        .about-info { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+        .about-info { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
         .about-info-row { display: flex; align-items: center; gap: 1rem; }
         .about-info-icon {
             width: 44px; height: 44px; border-radius: 12px;
@@ -1268,52 +1271,6 @@
             .gh-stats-grid { grid-template-columns: 1fr; }
             .gh-stats-heatmap { grid-column: auto; }
             #darkToggle { width: 36px; height: 36px; font-size: 1rem; }
-        /* ===== GLOBAL REMOTE READINESS CARD ===== */
-        .remote-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 2.2rem;
-            backdrop-filter: var(--glass-blur);
-            box-shadow: 10px 10px 28px rgba(165, 185, 205, 0.3), -10px -10px 28px rgba(255, 255, 255, 0.9);
-            position: relative;
-            overflow: hidden;
-        }
-        html.dark .remote-card {
-            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
-        }
-        .remote-header {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;
-        }
-        .remote-badge-live {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: rgba(34, 197, 94, 0.12); color: #16a34a;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 50px; font-size: 0.78rem; font-weight: 700;
-            padding: 0.35rem 0.85rem; letter-spacing: 0.5px;
-        }
-        html.dark .remote-badge-live { color: #4ade80; }
-        .remote-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-        }
-        .remote-item {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 14px; padding: 1rem 1.1rem;
-            box-shadow: inset 1px 1px 3px rgba(165, 185, 205, 0.15);
-        }
-        html.dark .remote-item {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: none;
-        }
-        .remote-item-title {
-            font-size: 0.82rem; font-weight: 700; color: var(--text);
-            margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.45rem;
-        }
-        .remote-item-desc {
-            font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; font-weight: 500;
         }
 
         /* ===== ENGINEERING PHILOSOPHY SECTION ===== */
@@ -1430,7 +1387,7 @@
             .hero-stats { gap: 2rem; }
             .tech-grid { grid-template-columns: repeat(3, 1fr); }
             .philosophy-grid { grid-template-columns: 1fr; }
-            .remote-grid { grid-template-columns: 1fr; }
+            .about-info { grid-template-columns: 1fr; }
             .modal-benchmarks-grid { grid-template-columns: 1fr; }
             .badge { display: none; }
             /* Mobile perf: kill heavy effects */
@@ -1588,58 +1545,6 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             </a>
         </div>
-    </div>
-    <div class="about-right reveal from-right">
-        <div class="remote-card">
-            <div class="remote-header">
-                <div>
-                    <div class="section-label" style="margin-bottom:0.3rem;">Collaboration</div>
-                    <h3 style="font-family:'Space Grotesk', sans-serif; font-size:1.5rem; font-weight:800; color:var(--text);">Global Remote Readiness</h3>
-                </div>
-                <div class="remote-badge-live">
-                    <span class="hero-tag-dot" style="width:8px; height:8px;"></span>
-                    <span>100% Remote Available</span>
-                </div>
-            </div>
-            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6; margin-bottom:1.5rem;">
-                Engineered to operate seamlessly across distributed, international engineering teams with zero timezone friction and high autonomy.
-            </p>
-            <div class="remote-grid">
-                <div class="remote-item">
-                    <div class="remote-item-title">
-                        <span>🌍</span> Worldwide Remote
-                    </div>
-                    <div class="remote-item-desc">
-                        Open to full-time remote engineering roles and contract engagements worldwide.
-                    </div>
-                </div>
-                <div class="remote-item">
-                    <div class="remote-item-title">
-                        <span>🕒</span> Timezone Overlap
-                    </div>
-                    <div class="remote-item-desc">
-                        Based in UTC+6 with flexible 4–6 hour daily overlap for US (EST/PST), Europe (GMT/CET), and APAC teams.
-                    </div>
-                </div>
-                <div class="remote-item">
-                    <div class="remote-item-title">
-                        <span>💬</span> Async-First Communication
-                    </div>
-                    <div class="remote-item-desc">
-                        Document-driven culture, high-context Git Pull Requests, and proactive daily Loom / Slack updates.
-                    </div>
-                </div>
-                <div class="remote-item">
-                    <div class="remote-item-title">
-                        <span>⚡</span> Fast Response SLA
-                    </div>
-                    <div class="remote-item-desc">
-                        Under 12-hour turnaround for all inquiries, reviews, and pull-request feedback.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 
 <!-- ===================================
