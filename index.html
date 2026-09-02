@@ -1279,8 +1279,11 @@
             padding: 5rem 6%;
         }
         .philosophy-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1.8rem; margin-top: 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            max-width: 1080px;
+            margin: 2.5rem auto 0;
         }
         .philosophy-card {
             background: var(--card-bg);
@@ -1370,6 +1373,7 @@
             .hero-right { margin-top: 3rem; }
             #about { grid-template-columns: 1fr; gap: 3rem; }
             .skills-container { grid-template-columns: 1fr; gap: 3rem; }
+            .philosophy-grid { grid-template-columns: 1fr; max-width: 620px; margin: 2.5rem auto 0; }
             .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
             .project-card.featured { grid-column: auto; display: block; }
             .project-card.featured .project-thumb { height: 220px; }
