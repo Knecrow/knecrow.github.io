@@ -1137,18 +1137,7 @@
         #back-to-top.visible { opacity: 1; pointer-events: all; }
         #back-to-top:hover { transform: translateY(-4px); }
 
-        /* ===== DARK MODE TOGGLE BUTTON ===== */
-        #darkToggle {
-            width: 42px; height: 42px; border-radius: 12px;
-            background: var(--card-bg); border: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.3s var(--transition);
-            color: var(--text-muted); font-size: 1.1rem;
-            box-shadow: 3px 3px 10px rgba(165,185,205,0.25), -3px -3px 10px rgba(255,255,255,0.8);
-            flex-shrink: 0;
-        }
-        #darkToggle:hover { transform: rotate(20deg) scale(1.1); color: var(--red-bright); }
-        html.dark #darkToggle { box-shadow: 3px 3px 10px rgba(0,0,0,0.4); }
+
 
         /* ===== AURORA HERO BACKGROUND ===== */
         .aurora-bg {
@@ -1262,7 +1251,6 @@
         @media (max-width: 768px) {
             .gh-stats-grid { grid-template-columns: 1fr; }
             .gh-stats-heatmap { grid-column: auto; }
-            #darkToggle { width: 36px; height: 36px; font-size: 1rem; }
         }
 
         /* ===== ENGINEERING PHILOSOPHY SECTION ===== */
@@ -1422,7 +1410,6 @@
         <li><a href="#contact" class="nav-cta">Hire Me</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:0.8rem;">
-        <button id="darkToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
             <span></span><span></span><span></span>
         </button>
@@ -2786,48 +2773,11 @@
         });
     });
 
-    // ===== DARK MODE TOGGLE =====
-    const darkToggle = document.getElementById('darkToggle');
-    const html = document.documentElement;
-    // Load preference
-    if (localStorage.getItem('theme') === 'dark') {
-        html.classList.add('dark');
-        darkToggle.textContent = '☀️';
-    }
-    darkToggle.addEventListener('click', () => {
-        html.classList.toggle('dark');
-        const isDark = html.classList.contains('dark');
-        darkToggle.textContent = isDark ? '☀️' : '🌙';
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        // Update GitHub stats images for dark/light theme
-        updateGHStatsTheme(isDark);
-    });
-    function updateGHStatsTheme(isDark) {
-        const ghImgs = document.querySelectorAll('#github-stats img');
-        ghImgs.forEach(img => {
-            if (isDark) {
-                img.src = img.src
-                    .replace('bg_color=ECF3F9', 'bg_color=13131E')
-                    .replace('title_color=182030', 'title_color=E2E8F0')
-                    .replace('text_color=5C6E85', 'text_color=8899AA')
-                    .replace('background=ECF3F9', 'background=13131E')
-                    .replace('stroke=DFE7EF', 'stroke=1A1A28')
-                    .replace('currStreakLabel=182030', 'currStreakLabel=E2E8F0')
-                    .replace('sideLabels=5C6E85', 'sideLabels=8899AA');
-            } else {
-                img.src = img.src
-                    .replace('bg_color=13131E', 'bg_color=ECF3F9')
-                    .replace('title_color=E2E8F0', 'title_color=182030')
-                    .replace('text_color=8899AA', 'text_color=5C6E85')
-                    .replace('background=13131E', 'background=ECF3F9')
-                    .replace('stroke=1A1A28', 'stroke=DFE7EF')
-                    .replace('currStreakLabel=E2E8F0', 'currStreakLabel=182030')
-                    .replace('sideLabels=8899AA', 'sideLabels=5C6E85');
-            }
-        });
-    }
-    // Apply on init if dark
-    if (html.classList.contains('dark')) updateGHStatsTheme(true);
+    // Ensure light mode
+    try {
+        localStorage.removeItem('theme');
+        document.documentElement.classList.remove('dark');
+    } catch(e) {}
 
     // ===== 3D CARD TILT =====
     document.querySelectorAll('.project-card').forEach(card => {
