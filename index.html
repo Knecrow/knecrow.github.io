@@ -12,23 +12,52 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== CSS VARIABLES — SOFT ICY BLUE & SLATE ===== */
+        /* ===== CSS VARIABLES — LIGHT MODE (DEFAULT) ===== */
         :root {
-            --bg: #DFE7EF;                          /* soft icy periwinkle-grey */
-            --bg2: #E8F0F7;                         /* light ice section background */
-            --surface: #ECF3F9;                     /* soft white-ice container */
+            --bg: #DFE7EF;
+            --bg2: #E8F0F7;
+            --surface: #ECF3F9;
             --surface-hover: #F4F9FD;
-            --text: #182232;                        /* dark slate navy */
-            --text-muted: #5C6E85;                  /* soft slate grey */
-            --red: #182030;                         /* dark slate active accent */
-            --red-bright: #2563EB;                  /* slate blue highlight */
+            --text: #182232;
+            --text-muted: #5C6E85;
+            --red: #182030;
+            --red-bright: #2563EB;
             --red-glow: rgba(24, 32, 48, 0.15);
             --red-dim: rgba(37, 99, 235, 0.10);
             --border: rgba(255, 255, 255, 0.7);
-            --card-bg: #ECF3F9;                     /* soft ice card */
+            --card-bg: #ECF3F9;
             --glass-blur: blur(12px) saturate(120%);
             --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --nav-bg: rgba(223, 231, 239, 0.88);
+            --footer-bg: #111111;
         }
+
+        /* ===== DARK MODE VARIABLES ===== */
+        html.dark {
+            --bg: #0A0A0F;
+            --bg2: #0F0F1A;
+            --surface: #13131E;
+            --surface-hover: #1A1A28;
+            --text: #E2E8F0;
+            --text-muted: #8899AA;
+            --red: #A78BFA;
+            --red-bright: #38BDF8;
+            --red-glow: rgba(167, 139, 250, 0.2);
+            --red-dim: rgba(56, 189, 248, 0.12);
+            --border: rgba(255, 255, 255, 0.08);
+            --card-bg: #13131E;
+            --nav-bg: rgba(10, 10, 15, 0.92);
+            --footer-bg: #000000;
+        }
+        html.dark body {
+            background-image:
+                radial-gradient(ellipse 80% 60% at 50% -10%, rgba(56,189,248,0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 90% 80%, rgba(167,139,250,0.08) 0%, transparent 60%);
+        }
+        html.dark #contact { background: #0F0F1A; }
+        html.dark nav.scrolled { background: var(--nav-bg); }
+        html.dark .mobile-nav { background: rgba(10,10,15,0.97); }
+        html.dark .mobile-nav a { color: var(--text); }
 
         /* ===== RESET & BASE ===== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -105,7 +134,7 @@
             transition: all 0.5s var(--transition);
         }
         nav.scrolled {
-            background: rgba(223, 231, 239, 0.88);
+            background: var(--nav-bg);
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
             padding: 1rem 6%;
@@ -1105,8 +1134,191 @@
         #back-to-top.visible { opacity: 1; pointer-events: all; }
         #back-to-top:hover { transform: translateY(-4px); }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
+        /* ===== DARK MODE TOGGLE BUTTON ===== */
+        #darkToggle {
+            width: 42px; height: 42px; border-radius: 12px;
+            background: var(--card-bg); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s var(--transition);
+            color: var(--text-muted); font-size: 1.1rem;
+            box-shadow: 3px 3px 10px rgba(165,185,205,0.25), -3px -3px 10px rgba(255,255,255,0.8);
+            flex-shrink: 0;
+        }
+        #darkToggle:hover { transform: rotate(20deg) scale(1.1); color: var(--red-bright); }
+        html.dark #darkToggle { box-shadow: 3px 3px 10px rgba(0,0,0,0.4); }
+
+        /* ===== AURORA HERO BACKGROUND ===== */
+        .aurora-bg {
+            position: absolute; inset: 0; z-index: 0;
+            pointer-events: none; overflow: hidden;
+        }
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: aurora-drift 12s ease-in-out infinite;
+        }
+        .aurora-1 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, #2563EB, #7C3AED);
+            top: -200px; left: -100px;
+            animation-delay: 0s;
+        }
+        .aurora-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, #0EA5E9, #6366F1);
+            top: 50%; right: -150px;
+            animation-delay: -4s; animation-direction: reverse;
+        }
+        .aurora-3 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #8B5CF6, #EC4899);
+            bottom: -100px; left: 30%;
+            animation-delay: -8s;
+        }
+        @keyframes aurora-drift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -30px) scale(1.1); }
+            66% { transform: translate(-30px, 20px) scale(0.95); }
+        }
+        html:not(.dark) .aurora-blob { opacity: 0.12; }
+
+        /* ===== CURRENTLY BUILDING STRIP ===== */
+        .currently-building {
+            display: inline-flex; align-items: center; gap: 0.8rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 0.85rem 1.4rem;
+            margin-top: 2rem;
+            backdrop-filter: var(--glass-blur);
+            box-shadow: 4px 4px 16px rgba(165,185,205,0.2), -4px -4px 16px rgba(255,255,255,0.8);
+            font-size: 0.88rem; font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.3s var(--transition);
+            flex-wrap: wrap; gap: 0.6rem;
+        }
+        .currently-building:hover { border-color: rgba(37,99,235,0.3); transform: translateY(-2px); }
+        .build-icon { font-size: 1rem; }
+        .build-label { font-weight: 800; color: var(--red-bright); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; }
+        .build-progress {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.8rem; color: var(--text-muted);
+        }
+        .build-bar {
+            width: 60px; height: 4px; border-radius: 10px;
+            background: rgba(37,99,235,0.15); overflow: hidden;
+        }
+        .build-bar-fill {
+            height: 100%; width: 65%; border-radius: 10px;
+            background: linear-gradient(90deg, var(--red-bright), #8B5CF6);
+            animation: build-pulse 2s ease-in-out infinite;
+        }
+        @keyframes build-pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
+
+        /* ===== RESUME BADGE IN NAV ===== */
+        .nav-resume {
+            background: linear-gradient(135deg, #2563EB, #7C3AED) !important;
+            color: #FFFFFF !important;
+            padding: 0.55rem 1.3rem;
+            border-radius: 50px;
+            font-weight: 700; font-size: 0.88rem;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+            display: inline-flex; align-items: center; gap: 0.4rem;
+        }
+        .nav-resume:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.4) !important; }
+        .nav-resume::after { display: none !important; }
+
+        /* ===== PROJECT STATUS BADGE ===== */
+        .project-status {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.72rem; font-weight: 700;
+            padding: 0.25rem 0.7rem; border-radius: 50px;
+            margin-bottom: 0.75rem;
+        }
+        .status-live { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
+        .status-building { background: rgba(234,179,8,0.15); color: #b45309; border: 1px solid rgba(234,179,8,0.3); }
+        .status-ready { background: rgba(37,99,235,0.12); color: #1d4ed8; border: 1px solid rgba(37,99,235,0.25); }
+        html.dark .status-live { color: #4ade80; }
+        html.dark .status-building { color: #fbbf24; }
+        html.dark .status-ready { color: #38bdf8; }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: pulse-green 2s infinite; }
+
+        /* ===== GITHUB STATS SECTION ===== */
+        #github-stats {
+            background: var(--bg);
+            padding: 5rem 6%;
+        }
+        .gh-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            max-width: 900px;
+            margin-left: auto; margin-right: auto;
+        }
+        .gh-stats-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            backdrop-filter: var(--glass-blur);
+            box-shadow: 6px 6px 20px rgba(165,185,205,0.2), -6px -6px 20px rgba(255,255,255,0.85);
+            transition: all 0.35s var(--transition);
+            overflow: hidden;
+        }
+        .gh-stats-card:hover { transform: translateY(-6px); border-color: rgba(37,99,235,0.3); }
+        html.dark .gh-stats-card { box-shadow: 6px 6px 20px rgba(0,0,0,0.4); }
+        .gh-stats-card img {
+            width: 100%; border-radius: 10px; display: block;
+        }
+        .gh-stats-heatmap {
+            grid-column: 1 / -1;
+        }
+        .gh-stats-label {
+            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.2px;
+            font-weight: 700; color: var(--text-muted);
+            margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+        }
+        .gh-stats-label svg { color: var(--red-bright); }
+
+        /* ===== 3D TILT — JS-driven inline transforms ===== */
+        .project-card { transform-style: preserve-3d; will-change: transform; }
+        .projects-grid { perspective: 1200px; }
+
+        /* ===== PROFILE SN FALLBACK ===== */
+        .sn-avatar {
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 50%, #EC4899 100%);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem; font-weight: 900;
+            color: rgba(255,255,255,0.95);
+            letter-spacing: -4px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        /* ===== OPEN TO WORK BADGE ===== */
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            background: var(--card-bg); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.2rem; border-radius: 50px;
+            font-size: 0.9rem; font-weight: 600; color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .gh-stats-grid { grid-template-columns: 1fr; }
+            .gh-stats-heatmap { grid-column: auto; }
+            .currently-building { font-size: 0.82rem; }
+            #darkToggle { width: 36px; height: 36px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
             #hero { flex-direction: column; text-align: center; padding-top: 10rem; }
             .hero-left { max-width: 100%; }
             .hero-desc { margin: 0 auto 3rem; }
@@ -1166,10 +1378,14 @@
         <li><a href="#projects">Work</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+        <li><a href="cv.pdf" download class="nav-resume">⬇ Resume</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-    </button>
+    <div style="display:flex;align-items:center;gap:0.8rem;">
+        <button id="darkToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
 </nav>
 
 <!-- Mobile Nav -->
@@ -1186,26 +1402,48 @@
 ==================================== -->
 <section id="hero">
     <canvas id="particleCanvas"></canvas>
+    <!-- Aurora Background -->
+    <div class="aurora-bg">
+        <div class="aurora-blob aurora-1"></div>
+        <div class="aurora-blob aurora-2"></div>
+        <div class="aurora-blob aurora-3"></div>
+    </div>
 
     <div class="hero-left reveal from-left">
+        <!-- Open to Work Badge -->
         <div class="hero-tag">
-            I fake it till I make it
+            <span class="hero-tag-dot"></span>
+            <span>Open to Work &nbsp;·&nbsp; Available for hire</span>
         </div>
         <h1>
             <span class="line" style="font-size: 0.5em; color: var(--text-muted); display:block; margin-bottom: 0.3em; letter-spacing: -0.5px; font-weight: 500;">Hi, I'm Syed Nahian Siam.</span>
-            <span class="line">Developer, Dreamer &amp; <span style="color:#e11d48;"><span class="typed-wrapper" id="typed-text"></span></span></span>
+            <span class="line" id="glitch-title">Builder, Dreamer &amp; <span style="color:var(--red-bright);"><span class="typed-wrapper" id="typed-text"></span></span></span>
         </h1>
         <p class="hero-desc">
-            I craft <strong>stunning digital experiences</strong> that blend beautiful design with clean, performant code. From concept to launch, I build things that matter.
+            I build <strong>apps that ship</strong> — Flutter · Web · AI-Powered. From pixel-perfect UI to intelligent features, I turn bold ideas into working products.
         </p>
         <div class="hero-btns">
             <a href="#projects" class="btn">
                 <span>View My Work</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
+            <a href="cv.pdf" download class="btn btn-outline">
+                <span>Download Resume</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </a>
             <a href="#contact" class="btn btn-outline">
                 <span>Let's Talk</span>
             </a>
+        </div>
+        <!-- Currently Building Strip -->
+        <div class="currently-building">
+            <span class="build-icon">🔨</span>
+            <span class="build-label">Live Build</span>
+            <span>Aegis v2 — AI campus security system</span>
+            <div class="build-progress">
+                <div class="build-bar"><div class="build-bar-fill"></div></div>
+                <span>65%</span>
+            </div>
         </div>
         <div class="hero-stats">
             <div class="stat-item">
@@ -1228,12 +1466,7 @@
             <div class="profile-blob">
                 <img src="profile.jpg" alt="Syed Nahian Siam — Student & Vibecoder"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="img-fallback" style="display:none;">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="38" r="22" fill="#C0C0C0"/>
-                        <path d="M10 90 Q 50 62 90 90" fill="#C0C0C0"/>
-                    </svg>
-                </div>
+                <div class="img-fallback sn-avatar" style="display:none;">SN</div>
             </div>
             <div class="badge badge-1">📱 &nbsp;Flutter Dev</div>
             <div class="badge badge-2">🌐 &nbsp;Web Creator</div>
@@ -1417,6 +1650,43 @@
 </section>
 
 <!-- ===================================
+     GITHUB STATS SECTION
+==================================== -->
+<section id="github-stats">
+    <div style="text-align:center; max-width:600px; margin:0 auto 0.5rem;">
+        <div class="section-label reveal" style="justify-content:center;">Activity</div>
+        <h2 class="section-title reveal">By The Numbers</h2>
+        <p class="section-desc reveal" style="margin:0.8rem auto 0;">A live snapshot of my GitHub activity, top languages, and contribution stats.</p>
+    </div>
+    <div class="gh-stats-grid reveal">
+        <!-- GitHub Stats Card -->
+        <div class="gh-stats-card">
+            <div class="gh-stats-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                GitHub Stats
+            </div>
+            <img src="https://github-readme-stats.vercel.app/api?username=Knecrow&show_icons=true&theme=default&hide_border=true&bg_color=ECF3F9&title_color=182030&text_color=5C6E85&icon_color=2563EB&ring_color=2563EB&count_private=true&include_all_commits=true" alt="GitHub Stats" loading="lazy">
+        </div>
+        <!-- Top Languages Card -->
+        <div class="gh-stats-card">
+            <div class="gh-stats-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Top Languages
+            </div>
+            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Knecrow&layout=compact&theme=default&hide_border=true&bg_color=ECF3F9&title_color=182030&text_color=5C6E85&langs_count=6" alt="Top Languages" loading="lazy">
+        </div>
+        <!-- Streak Stats (full-width) -->
+        <div class="gh-stats-card gh-stats-heatmap">
+            <div class="gh-stats-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                GitHub Streak
+            </div>
+            <img src="https://streak-stats.demolab.com/?user=Knecrow&theme=default&hide_border=true&background=ECF3F9&stroke=DFE7EF&ring=2563EB&fire=E11D48&currStreakLabel=182030&sideLabels=5C6E85" alt="GitHub Streak" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- ===================================
      PROJECTS SECTION
 ==================================== -->
 <section id="projects">
@@ -1472,6 +1742,7 @@
                 </div>
             </div>
             <div class="project-body">
+                <div class="project-status status-ready"><span class="status-dot"></span> Production Ready · Flutter Mobile</div>
                 <div class="project-meta">
                     <span class="project-category">Luxury Vision &amp; Dream Portfolio · Flutter</span>
                     <span class="project-year">2026 · Latest</span>
@@ -1525,6 +1796,7 @@
                 </div>
             </div>
             <div class="project-body">
+                <div class="project-status status-ready"><span class="status-dot"></span> Production Ready · Finance App</div>
                 <div class="project-meta">
                     <span class="project-category">Finance &amp; Budgeting · Flutter</span>
                     <span class="project-year">2026</span>
@@ -1574,6 +1846,7 @@
                 </div>
             </div>
             <div class="project-body">
+                <div class="project-status status-live"><span class="status-dot"></span> Live Demo Available · Gemini AI</div>
                 <div class="project-meta">
                     <span class="project-category">AI System / Marvel HUD · Web</span>
                     <span class="project-year">2026</span>
@@ -1623,6 +1896,7 @@
                 </div>
             </div>
             <div class="project-body">
+                <div class="project-status status-building"><span class="status-dot"></span> Active Build · Gamification Engine</div>
                 <div class="project-meta">
                     <span class="project-category">Gamified Productivity · Flutter</span>
                     <span class="project-year">2026</span>
@@ -1675,6 +1949,7 @@
                 </div>
             </div>
             <div class="project-body">
+                <div class="project-status status-live"><span class="status-dot"></span> Live · Zero-Framework Web App</div>
                 <div class="project-meta">
                     <span class="project-category">Productivity &amp; Focus · Web App</span>
                     <span class="project-year">2026</span>
@@ -1724,6 +1999,7 @@
                 </div>
             </div>
             <div class="project-body">
+                <div class="project-status status-ready"><span class="status-dot"></span> Production System · Web &amp; Mobile</div>
                 <div class="project-meta">
                     <span class="project-category">Tuition &amp; Student Management · Web &amp; Mobile</span>
                     <span class="project-year">2026</span>
@@ -2424,6 +2700,113 @@
             if (proj) openProjectModal(proj, e);
         });
     });
+
+    // ===== DARK MODE TOGGLE =====
+    const darkToggle = document.getElementById('darkToggle');
+    const html = document.documentElement;
+    // Load preference
+    if (localStorage.getItem('theme') === 'dark') {
+        html.classList.add('dark');
+        darkToggle.textContent = '☀️';
+    }
+    darkToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        const isDark = html.classList.contains('dark');
+        darkToggle.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        // Update GitHub stats images for dark/light theme
+        updateGHStatsTheme(isDark);
+    });
+    function updateGHStatsTheme(isDark) {
+        const ghImgs = document.querySelectorAll('#github-stats img');
+        ghImgs.forEach(img => {
+            if (isDark) {
+                img.src = img.src
+                    .replace('bg_color=ECF3F9', 'bg_color=13131E')
+                    .replace('title_color=182030', 'title_color=E2E8F0')
+                    .replace('text_color=5C6E85', 'text_color=8899AA')
+                    .replace('background=ECF3F9', 'background=13131E')
+                    .replace('stroke=DFE7EF', 'stroke=1A1A28')
+                    .replace('currStreakLabel=182030', 'currStreakLabel=E2E8F0')
+                    .replace('sideLabels=5C6E85', 'sideLabels=8899AA');
+            } else {
+                img.src = img.src
+                    .replace('bg_color=13131E', 'bg_color=ECF3F9')
+                    .replace('title_color=E2E8F0', 'title_color=182030')
+                    .replace('text_color=8899AA', 'text_color=5C6E85')
+                    .replace('background=13131E', 'background=ECF3F9')
+                    .replace('stroke=1A1A28', 'stroke=DFE7EF')
+                    .replace('currStreakLabel=E2E8F0', 'currStreakLabel=182030')
+                    .replace('sideLabels=8899AA', 'sideLabels=5C6E85');
+            }
+        });
+    }
+    // Apply on init if dark
+    if (html.classList.contains('dark')) updateGHStatsTheme(true);
+
+    // ===== 3D CARD TILT =====
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 768) return;
+            const rect = card.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            const dx = (e.clientX - cx) / (rect.width / 2);
+            const dy = (e.clientY - cy) / (rect.height / 2);
+            const rotX = (-dy * 7).toFixed(2);
+            const rotY = (dx * 7).toFixed(2);
+            card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            card.style.transition = 'transform 0.5s var(--transition)';
+            setTimeout(() => { card.style.transition = ''; }, 500);
+        });
+    });
+
+    // ===== TEXT SCRAMBLE / GLITCH EFFECT =====
+    (function() {
+        const el = document.getElementById('glitch-title');
+        if (!el) return;
+        const originalHTML = el.innerHTML;
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%&*';
+        const plainText = 'Builder, Dreamer & ';
+        let frame = 0, totalFrames = 28;
+        function scramble() {
+            let out = '';
+            for (let i = 0; i < plainText.length; i++) {
+                if (frame / totalFrames > i / plainText.length) {
+                    out += plainText[i];
+                } else {
+                    out += chars[Math.floor(Math.random() * chars.length)];
+                }
+            }
+            el.childNodes[0].textContent = out;
+            frame++;
+            if (frame <= totalFrames) requestAnimationFrame(scramble);
+            else el.childNodes[0].textContent = plainText;
+        }
+        setTimeout(() => requestAnimationFrame(scramble), 600);
+    })();
+
+    // ===== OPEN TO WORK PULSE DOT =====
+    const style = document.createElement('style');
+    style.textContent = `
+        .hero-tag-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: #22c55e;
+            display: inline-block; flex-shrink: 0;
+            box-shadow: 0 0 0 0 rgba(34,197,94,0.6);
+            animation: otw-pulse 2s ease-out infinite;
+        }
+        @keyframes otw-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
+            70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+        }
+    `;
+    document.head.appendChild(style);
+
 </script>
 
 <!-- ===== PROJECT QUICK VIEW MODAL ===== -->
