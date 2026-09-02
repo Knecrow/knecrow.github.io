@@ -1257,15 +1257,7 @@
             text-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        /* ===== OPEN TO WORK BADGE ===== */
-        .hero-tag {
-            display: inline-flex; align-items: center; gap: 0.6rem;
-            background: var(--card-bg); backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--border);
-            padding: 0.5rem 1.2rem; border-radius: 50px;
-            font-size: 0.9rem; font-weight: 600; color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
+
 
         @media (max-width: 768px) {
             .gh-stats-grid { grid-template-columns: 1fr; }
@@ -1459,11 +1451,6 @@
     </div>
 
     <div class="hero-left reveal from-left">
-        <!-- Open to Work Badge -->
-        <div class="hero-tag">
-            <span class="hero-tag-dot"></span>
-            <span>Open to Work &nbsp;·&nbsp; Available for hire</span>
-        </div>
         <h1>
             <span class="line" style="font-size: 0.48em; color: var(--text-muted); display:block; margin-bottom: 0.3em; letter-spacing: -0.5px; font-weight: 500;">Hi, I'm Syed Nahian Siam.</span>
             <span class="line" id="glitch-title">Software Engineer &amp; <span style="color:var(--red-bright);"><span class="typed-wrapper" id="typed-text"></span></span></span>
@@ -2887,23 +2874,7 @@
         setTimeout(() => requestAnimationFrame(scramble), 600);
     })();
 
-    // ===== OPEN TO WORK PULSE DOT =====
-    const style = document.createElement('style');
-    style.textContent = `
-        .hero-tag-dot {
-            width: 10px; height: 10px; border-radius: 50%;
-            background: #22c55e;
-            display: inline-block; flex-shrink: 0;
-            box-shadow: 0 0 0 0 rgba(34,197,94,0.6);
-            animation: otw-pulse 2s ease-out infinite;
-        }
-        @keyframes otw-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
-            70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
-            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
-        }
-    `;
-    document.head.appendChild(style);
+
 
 </script>
 
