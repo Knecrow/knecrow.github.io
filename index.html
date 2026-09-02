@@ -316,16 +316,16 @@
             font-weight: 600;
         }
         #typed-text {
-            color: #FFFFFF;
+            color: var(--text-muted);
             display: inline-block;
             margin-left: 0.35rem;
         }
         #typed-text::after {
             content: '|';
             margin-left: 3px;
-            color: #FFFFFF;
+            color: var(--text-muted);
             animation: blink-caret 0.8s infinite;
-            text-shadow: 0 0 8px #FFFFFF;
+            text-shadow: 0 0 8px rgba(148, 163, 184, 0.6);
         }
         @keyframes blink-caret {
             0%, 100% { opacity: 1; }
@@ -414,13 +414,19 @@
 
         /* Floating badges */
         .badge {
-            position: absolute; padding: 0.65rem 1.2rem;
-            background: rgba(14, 16, 24, 0.85); backdrop-filter: var(--glass-blur);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            position: absolute; padding: 0.65rem 1.25rem;
+            background: #000000 !important;
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 50px; font-weight: 600; font-size: 0.82rem;
             color: #FFFFFF;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.2), 0 15px 35px #000000;
             white-space: nowrap; z-index: 10;
+            letter-spacing: 0.5px;
+            transition: all 0.3s var(--transition);
+        }
+        .badge:hover {
+            border-color: #FFFFFF;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 20px 45px #000000;
         }
         .badge-1 { top: 10%; left: -30px; animation: float-badge 5s ease-in-out infinite; }
         .badge-2 { bottom: 20%; right: -20px; animation: float-badge 6s ease-in-out infinite reverse; }
@@ -1521,9 +1527,9 @@
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="img-fallback sn-avatar" style="display:none;">SN</div>
             </div>
-            <div class="badge badge-1">📱 &nbsp;Flutter Dev</div>
-            <div class="badge badge-2">🌐 &nbsp;Web Creator</div>
-            <div class="badge badge-3">🤖 &nbsp;AI Enthusiast</div>
+            <div class="badge badge-1">Flutter Dev</div>
+            <div class="badge badge-2">Web Creator</div>
+            <div class="badge badge-3">AI Enthusiast</div>
         </div>
     </div>
 </section>
