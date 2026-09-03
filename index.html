@@ -174,14 +174,24 @@
         .mobile-nav {
             display: none; position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
-            background: rgba(9, 10, 15, 0.98);
+            background: rgba(4, 5, 8, 0.96);
             backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             z-index: 999; flex-direction: column;
-            align-items: center; justify-content: center; gap: 2.5rem;
+            align-items: center; justify-content: center; gap: 2rem;
+            transition: all 0.3s ease;
         }
         .mobile-nav.open { display: flex; }
-        .mobile-nav a { font-size: 2rem; font-weight: 700; color: #FFFFFF; text-decoration: none; transition: color 0.3s; }
+        .mobile-nav a { font-size: 1.8rem; font-weight: 700; color: #FFFFFF; text-decoration: none; transition: all 0.3s; }
         .mobile-nav a:hover { color: #94A3B8; }
+        .mobile-nav .nav-cta {
+            font-size: 1.1rem !important;
+            padding: 0.85rem 2.4rem !important;
+            margin-top: 0.5rem;
+            background: #FFFFFF !important;
+            color: #090A0F !important;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        }
 
         /* ===== BUTTONS ===== */
         .btn {
@@ -1394,12 +1404,15 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            #hero { flex-direction: column; text-align: center; padding-top: 10rem; }
-            .hero-left { max-width: 100%; }
-            .hero-desc { margin: 0 auto 3rem; }
+            #hero { flex-direction: column; text-align: center; padding-top: 7.5rem; }
+            .hero-left { max-width: 100%; display: flex; flex-direction: column; align-items: center; }
+            #hero h1 { text-align: center; }
+            #hero h1 .typed-line { justify-content: center; }
+            .hero-tag { margin: 0 auto 1.5rem; }
+            .hero-desc { margin: 0 auto 2.5rem; text-align: center; }
             .hero-btns { justify-content: center; }
             .hero-stats { justify-content: center; }
-            .hero-right { margin-top: 3rem; }
+            .hero-right { margin-top: 2.5rem; }
             #about { grid-template-columns: 1fr; gap: 3rem; }
             .skills-container { grid-template-columns: 1fr; gap: 3rem; }
             .philosophy-grid { grid-template-columns: 1fr; max-width: 620px; margin: 2.5rem auto 0; }
@@ -1408,29 +1421,86 @@
             .project-card.featured .project-thumb { height: 220px; }
         }
         @media (max-width: 768px) {
-            section { padding: 5rem 5%; }
+            section { padding: 4.5rem 5%; }
+            #philosophy { padding: 4.5rem 5%; }
             .nav-links { display: none; }
             .hamburger { display: flex; }
-            #hero h1 { font-size: 2.8rem; }
-            .profile-ring-outer { width: 300px; height: 300px; }
+            #hero { padding-top: 6.5rem; padding-bottom: 3.5rem; }
+            #hero h1 { font-size: clamp(2.3rem, 7.5vw, 3.2rem); letter-spacing: -1px; }
+            #hero h1 .typed-line { justify-content: center; font-size: 0.48em; }
+
+            /* Profile Ring & Badges — Fluid, Centered & Glowing */
+            .profile-ring-outer {
+                width: min(280px, 72vw);
+                height: min(280px, 72vw);
+                margin: 0 auto;
+            }
+            .badge {
+                display: inline-flex !important;
+                padding: 0.42rem 0.85rem;
+                font-size: 0.72rem;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 8px 20px #000000;
+            }
+            .badge-1 { top: 3%; left: -6px; }
+            .badge-2 { bottom: 18%; right: -6px; }
+            .badge-3 { bottom: -6px; left: 15px; }
+
             .projects-grid { grid-template-columns: 1fr; }
             .form-row { grid-template-columns: 1fr; }
             .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
             .footer-links { flex-wrap: wrap; justify-content: center; }
-            .hero-stats { gap: 2rem; }
-            .tech-grid { grid-template-columns: repeat(3, 1fr); }
+            .hero-stats { gap: 1.5rem; flex-wrap: wrap; margin-top: 2.5rem; }
+            .tech-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
             .philosophy-grid { grid-template-columns: 1fr; }
             .about-info { grid-template-columns: 1fr; }
             .modal-benchmarks-grid { grid-template-columns: 1fr; }
-            .badge { display: none; }
-            /* Mobile perf: kill heavy effects */
-            body { cursor: auto !important; }
+
+            /* Fluid Testimonials on Mobile */
+            .testimonial-card {
+                min-width: min(320px, 86vw);
+                padding: 1.6rem 1.4rem;
+            }
+
+            /* Fluid Contact Form */
+            .contact-form {
+                padding: 2rem 1.4rem;
+                border-radius: 20px;
+            }
+
+            /* Fluid Footer Watermark */
+            .footer-watermark {
+                font-size: clamp(3.2rem, 14vw, 6rem);
+                letter-spacing: -1px;
+                margin-top: 2rem;
+            }
+
+            /* Mobile touch pointer handling */
+            body, button, a, input, textarea, select { cursor: auto !important; }
             #cursor-dot, #cursor-ring { display: none !important; }
-            .profile-ring-outer::before, .profile-ring-outer::after { animation: none; }
-            .profile-ring-outer { animation: none; }
-            .profile-blob { animation: none; border-radius: 50% !important; }
-            .profile-blob img { animation: none; border-radius: 50% !important; }
-            .glass, .tech-item, nav.scrolled, .contact-item, .contact-form, .hero-tag, .badge, .project-card, .service-card, .social-btn { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+
+            /* Smooth Glassmorphism on Mobile */
+            .glass, .tech-item, nav.scrolled, .contact-item, .contact-form, .hero-tag, .badge, .project-card, .service-card, .social-btn {
+                backdrop-filter: blur(12px) saturate(130%) !important;
+                -webkit-backdrop-filter: blur(12px) saturate(130%) !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section { padding: 3.8rem 4.5%; }
+            #philosophy { padding: 3.8rem 4.5%; }
+            #hero h1 { font-size: 2.15rem; }
+            .hero-btns { flex-direction: column; width: 100%; max-width: 280px; }
+            .hero-btns .btn { width: 100%; justify-content: center; }
+            .hero-stats { gap: 1.2rem; }
+            .stat-num { font-size: 1.75rem; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+            .badge { font-size: 0.66rem; padding: 0.35rem 0.7rem; }
+            .badge-1 { top: 2%; left: -2px; }
+            .badge-2 { bottom: 15%; right: -2px; }
+            .badge-3 { bottom: -4px; left: 8px; }
+            .contact-form { padding: 1.6rem 1rem; }
+            .project-body { padding: 1.4rem 1.1rem; }
+            .service-card { padding: 2rem 1.4rem; }
         }
     </style>
 </head>
@@ -1471,7 +1541,7 @@
     <a href="#skills" class="mobile-link">Skills</a>
     <a href="#projects" class="mobile-link">Work</a>
     <a href="#services" class="mobile-link">Services</a>
-    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="#contact" class="mobile-link nav-cta">Hire Me</a>
 </div>
 
 <!-- ===================================
@@ -2324,17 +2394,16 @@
     }
     requestAnimationFrame(type);
 
-    // ===== PARTICLE SWARM =====
+    // ===== PARTICLE SWARM (Enabled on all devices with mobile optimization) =====
     const canvas = document.getElementById('particleCanvas');
     const heroSection = document.getElementById('hero');
-    // Skip particles entirely on touch/mobile for perf
-    if (!isTouchDevice) {
+    if (canvas && heroSection) {
         const ctx = canvas.getContext('2d');
         let W, H, particles = [];
         let mouse = { x: -9999, y: -9999 };
         const isMobile = window.innerWidth < 768;
-        const LINK_DIST = isMobile ? 70 : 110;
-        const MAX_SPEED = 3.5;
+        const LINK_DIST = isMobile ? 65 : 110;
+        const MAX_SPEED = isMobile ? 2.2 : 3.5;
 
         function resize() {
             W = canvas.width = heroSection.offsetWidth;
@@ -2349,14 +2418,24 @@
         });
         heroSection.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
 
+        // Touch event support for mobile
+        heroSection.addEventListener('touchmove', (e) => {
+            if (e.touches && e.touches[0]) {
+                const r = canvas.getBoundingClientRect();
+                mouse.x = e.touches[0].clientX - r.left;
+                mouse.y = e.touches[0].clientY - r.top;
+            }
+        }, { passive: true });
+        heroSection.addEventListener('touchend', () => { mouse.x = -9999; mouse.y = -9999; });
+
         class Particle {
             constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * W;
                 this.y = Math.random() * H;
-                this.vx = (Math.random() - 0.5) * 1.2;
-                this.vy = (Math.random() - 0.5) * 1.2;
-                this.r = Math.random() * 2.5 + 0.5;
+                this.vx = (Math.random() - 0.5) * (isMobile ? 0.7 : 1.2);
+                this.vy = (Math.random() - 0.5) * (isMobile ? 0.7 : 1.2);
+                this.r = Math.random() * (isMobile ? 1.8 : 2.5) + 0.5;
                 this.opacity = Math.random() * 0.5 + 0.3;
             }
             update() {
@@ -2383,8 +2462,9 @@
 
         function initParticles() {
             particles = [];
-            // Cap at 60 max, fewer on smaller screens
-            const n = Math.min(60, Math.floor(W * H / 14000));
+            // Cap at 24 max on mobile, 60 on desktop
+            const maxP = window.innerWidth < 768 ? 24 : 60;
+            const n = Math.min(maxP, Math.floor(W * H / 14000));
             for (let i = 0; i < n; i++) particles.push(new Particle());
         }
 
@@ -2411,9 +2491,6 @@
             requestAnimationFrame(drawParticles);
         }
         setTimeout(() => { resize(); drawParticles(); }, 100);
-    } else {
-        // Hide canvas on touch/mobile
-        canvas.style.display = 'none';
     }
 
     // ===== TOAST HELPER =====
