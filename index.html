@@ -47,12 +47,22 @@
             line-height: 1.6;
             overflow-x: hidden;
             cursor: none;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
             background-image:
                 radial-gradient(circle 800px at 70% 12%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.18) 32%, rgba(0, 0, 0, 0) 65%),
                 radial-gradient(circle 700px at 15% 48%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 30%, rgba(0, 0, 0, 0) 60%),
                 radial-gradient(circle 750px at 80% 82%, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.15) 30%, rgba(0, 0, 0, 0) 60%);
-            background-attachment: fixed;
-            -webkit-font-smoothing: antialiased;
+            background-size: cover;
+            transform: translateZ(0);
         }
 
         /* ===== CUSTOM CURSOR ===== */
@@ -1478,10 +1488,21 @@
             body, button, a, input, textarea, select { cursor: auto !important; }
             #cursor-dot, #cursor-ring { display: none !important; }
 
-            /* Smooth Glassmorphism on Mobile */
-            .glass, .tech-item, nav.scrolled, .contact-item, .contact-form, .hero-tag, .badge, .project-card, .service-card, .social-btn {
-                backdrop-filter: blur(12px) saturate(130%) !important;
-                -webkit-backdrop-filter: blur(12px) saturate(130%) !important;
+            /* Optimized Glassmorphism on Mobile: kept on fixed navbar/drawer for luxury blur, disabled on scrolling grid cards */
+            nav.scrolled, .mobile-nav {
+                backdrop-filter: blur(16px) saturate(140%) !important;
+                -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+            }
+            .tech-item, .contact-item, .contact-form, .hero-tag, .badge, .project-card, .service-card, .social-btn {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+
+            /* Lightweight aurora on mobile to save GPU fill rate */
+            .aurora-1, .aurora-2 {
+                animation: none !important;
+                filter: blur(40px) !important;
+                opacity: 0.5;
             }
         }
 
@@ -2287,16 +2308,29 @@
         animateCursor();
     }
 
-    // ===== SCROLL PROGRESS + NAVBAR (merged, throttled) =====
+    // ===== SCROLL PROGRESS, NAVBAR & BACK-TO-TOP (merged, throttled) =====
     const scrollProgress = document.getElementById('scroll-progress');
     const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('back-to-top');
     let ticking = false;
+    let docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    window.addEventListener('resize', () => {
+        docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    }, { passive: true });
+
     window.addEventListener('scroll', () => {
         if (!ticking) {
             requestAnimationFrame(() => {
-                const total = document.body.scrollHeight - window.innerHeight;
-                scrollProgress.style.width = (window.scrollY / total * 100) + '%';
-                navbar.classList.toggle('scrolled', window.scrollY > 60);
+                const scrollY = window.scrollY;
+                if (docHeight > 0 && scrollProgress) {
+                    scrollProgress.style.width = (scrollY / docHeight * 100) + '%';
+                }
+                if (navbar) {
+                    navbar.classList.toggle('scrolled', scrollY > 60);
+                }
+                if (backToTop) {
+                    backToTop.classList.toggle('visible', scrollY > 500);
+                }
                 ticking = false;
             });
             ticking = true;
@@ -2306,23 +2340,22 @@
     // ===== HAMBURGER =====
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        mobileNav.classList.toggle('open');
-    });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            mobileNav.classList.remove('open');
+    if (hamburger && mobileNav) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
         });
-    });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('open');
+            });
+        });
+    }
 
-    // ===== BACK TO TOP =====
-    const backToTop = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-        backToTop.classList.toggle('visible', window.scrollY > 500);
-    });
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    if (backToTop) {
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
 
     // ===== SCROLL REVEAL =====
     const revealEls = document.querySelectorAll('.reveal');
@@ -2369,61 +2402,76 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('.hero-stats').forEach(el => counterObserver.observe(el));
 
-    // ===== TYPED TEXT =====
+    // ===== TYPED TEXT (Optimized timeout, zero idle CPU load) =====
     const typedEl = document.getElementById('typed-text');
-    const words = ['AI-Native Builder', 'Flutter Architect', 'Full-Stack Developer', 'Vibecoder'];
-    let wordIdx = 0, charIdx = 0, deleting = false, lastTime = 0;
-    const TYPE_SPEED = 110, DELETE_SPEED = 60, PAUSE = 1800;
-    let pauseUntil = 0;
-    function type(ts) {
-        requestAnimationFrame(type);
-        if (ts < pauseUntil) return;
-        const delay = deleting ? DELETE_SPEED : TYPE_SPEED;
-        if (ts - lastTime < delay) return;
-        lastTime = ts;
-        const word = words[wordIdx];
-        if (!deleting) {
-            charIdx++;
-            typedEl.textContent = word.slice(0, charIdx);
-            if (charIdx === word.length) { deleting = true; pauseUntil = ts + PAUSE; }
-        } else {
-            charIdx--;
-            typedEl.textContent = word.slice(0, charIdx);
-            if (charIdx === 0) { deleting = false; wordIdx = (wordIdx + 1) % words.length; }
+    if (typedEl) {
+        const words = ['AI-Native Builder', 'Flutter Architect', 'Full-Stack Developer', 'Vibecoder'];
+        let wordIdx = 0, charIdx = 0, deleting = false;
+        const TYPE_SPEED = 110, DELETE_SPEED = 60, PAUSE = 1800;
+        function typeStep() {
+            const word = words[wordIdx];
+            let nextDelay = TYPE_SPEED;
+            if (!deleting) {
+                charIdx++;
+                typedEl.textContent = word.slice(0, charIdx);
+                if (charIdx === word.length) {
+                    deleting = true;
+                    nextDelay = PAUSE;
+                }
+            } else {
+                charIdx--;
+                typedEl.textContent = word.slice(0, charIdx);
+                nextDelay = DELETE_SPEED;
+                if (charIdx === 0) {
+                    deleting = false;
+                    wordIdx = (wordIdx + 1) % words.length;
+                    nextDelay = 400;
+                }
+            }
+            setTimeout(typeStep, nextDelay);
         }
+        setTimeout(typeStep, 600);
     }
-    requestAnimationFrame(type);
 
-    // ===== PARTICLE SWARM (Enabled on all devices with mobile optimization) =====
+    // ===== PARTICLE SWARM (Optimized with IntersectionObserver pause & mobile tuning) =====
     const canvas = document.getElementById('particleCanvas');
     const heroSection = document.getElementById('hero');
     if (canvas && heroSection) {
         const ctx = canvas.getContext('2d');
         let W, H, particles = [];
         let mouse = { x: -9999, y: -9999 };
+        let isHeroVisible = true;
+        let animFrameId = null;
+        let heroRect = heroSection.getBoundingClientRect();
         const isMobile = window.innerWidth < 768;
-        const LINK_DIST = isMobile ? 65 : 110;
-        const MAX_SPEED = isMobile ? 2.2 : 3.5;
+        const LINK_DIST = isMobile ? 55 : 110;
+        const MAX_SPEED = isMobile ? 2.0 : 3.5;
+
+        function updateRect() {
+            heroRect = heroSection.getBoundingClientRect();
+        }
 
         function resize() {
             W = canvas.width = heroSection.offsetWidth;
             H = canvas.height = heroSection.offsetHeight;
+            updateRect();
             initParticles();
         }
-        window.addEventListener('resize', resize);
+        window.addEventListener('resize', resize, { passive: true });
+
+        heroSection.addEventListener('mouseenter', updateRect, { passive: true });
         heroSection.addEventListener('mousemove', (e) => {
-            const r = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - r.left;
-            mouse.y = e.clientY - r.top;
-        });
+            mouse.x = e.clientX - heroRect.left;
+            mouse.y = e.clientY - heroRect.top;
+        }, { passive: true });
         heroSection.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
 
-        // Touch event support for mobile
+        // Touch event support for mobile (cached rect)
+        heroSection.addEventListener('touchstart', updateRect, { passive: true });
         heroSection.addEventListener('touchmove', (e) => {
             if (e.touches && e.touches[0]) {
-                const r = canvas.getBoundingClientRect();
-                mouse.x = e.touches[0].clientX - r.left;
-                mouse.y = e.touches[0].clientY - r.top;
+                mouse.x = e.touches[0].clientX - heroRect.left;
+                mouse.y = e.touches[0].clientY - heroRect.top;
             }
         }, { passive: true });
         heroSection.addEventListener('touchend', () => { mouse.x = -9999; mouse.y = -9999; });
@@ -2433,9 +2481,9 @@
             reset() {
                 this.x = Math.random() * W;
                 this.y = Math.random() * H;
-                this.vx = (Math.random() - 0.5) * (isMobile ? 0.7 : 1.2);
-                this.vy = (Math.random() - 0.5) * (isMobile ? 0.7 : 1.2);
-                this.r = Math.random() * (isMobile ? 1.8 : 2.5) + 0.5;
+                this.vx = (Math.random() - 0.5) * (isMobile ? 0.6 : 1.2);
+                this.vy = (Math.random() - 0.5) * (isMobile ? 0.6 : 1.2);
+                this.r = Math.random() * (isMobile ? 1.6 : 2.5) + 0.5;
                 this.opacity = Math.random() * 0.5 + 0.3;
             }
             update() {
@@ -2462,13 +2510,17 @@
 
         function initParticles() {
             particles = [];
-            // Cap at 24 max on mobile, 60 on desktop
-            const maxP = window.innerWidth < 768 ? 24 : 60;
-            const n = Math.min(maxP, Math.floor(W * H / 14000));
+            // Cap at 16 max on mobile for silky smooth touch FPS, 60 on desktop
+            const maxP = window.innerWidth < 768 ? 16 : 60;
+            const n = Math.min(maxP, Math.floor(W * H / 16000));
             for (let i = 0; i < n; i++) particles.push(new Particle());
         }
 
         function drawParticles() {
+            if (!isHeroVisible) {
+                animFrameId = null;
+                return;
+            }
             ctx.clearRect(0, 0, W, H);
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
@@ -2476,7 +2528,7 @@
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
-                    const d = dx*dx + dy*dy; // skip sqrt for distance check
+                    const d = dx*dx + dy*dy;
                     if (d < LINK_DIST * LINK_DIST) {
                         const dist = Math.sqrt(d);
                         ctx.beginPath();
@@ -2488,8 +2540,23 @@
                     }
                 }
             }
-            requestAnimationFrame(drawParticles);
+            animFrameId = requestAnimationFrame(drawParticles);
         }
+
+        // Pause particle simulation when Hero is off-screen
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isHeroVisible = entry.isIntersecting;
+                if (isHeroVisible && !animFrameId) {
+                    animFrameId = requestAnimationFrame(drawParticles);
+                } else if (!isHeroVisible && animFrameId) {
+                    cancelAnimationFrame(animFrameId);
+                    animFrameId = null;
+                }
+            });
+        }, { threshold: 0.05 });
+        heroObserver.observe(heroSection);
+
         setTimeout(() => { resize(); drawParticles(); }, 100);
     }
 
