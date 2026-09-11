@@ -587,16 +587,136 @@
         #projects {
             background: transparent;
             position: relative;
+            overflow: hidden;
+            padding: 7rem 0 6rem;
+        }
+        .projects-header-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 6%;
         }
         .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1.5rem; }
         
+        /* Stream Control Buttons */
+        .stream-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .stream-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #FFFFFF;
+            padding: 0.55rem 1.1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: all 0.3s var(--transition);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        .stream-btn:hover {
+            background: #FFFFFF;
+            color: #000000;
+            border-color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 0 16px rgba(255, 255, 255, 0.4);
+        }
+        .stream-btn.active {
+            background: #FFFFFF;
+            color: #000000;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        .stream-btn-icon {
+            font-size: 0.9rem;
+            line-height: 1;
+        }
+
+        /* Breaking Tape Banner */
+        .breaking-tape-wrapper {
+            width: 100%;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(15,20,30,0.7) 50%, rgba(0,0,0,0.85) 100%);
+            padding: 0.85rem 0;
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.8);
+        }
+        .breaking-tape {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        }
+        .breaking-tape-track {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.8rem;
+            animation: tape-flow 28s linear infinite;
+            will-change: transform;
+        }
+        @keyframes tape-flow {
+            0% { transform: translate3d(-50%, 0, 0); }
+            100% { transform: translate3d(0%, 0, 0); }
+        }
+        .tape-badge {
+            background: #FFFFFF;
+            color: #000000;
+            font-size: 0.68rem;
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            padding: 0.22rem 0.65rem;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .tape-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ef4444;
+            box-shadow: 0 0 8px #ef4444;
+            animation: pulse-dot 1.2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+        .tape-item {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #CBD5E1;
+            text-transform: uppercase;
+        }
+        .tape-sep {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
         /* Filter Tabs */
         .project-filter-wrapper {
-            margin-bottom: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto 2.5rem;
+            padding: 0 6% 0.5rem;
             display: flex;
             justify-content: flex-start;
             overflow-x: auto;
-            padding-bottom: 0.5rem;
             scrollbar-width: none;
         }
         .project-filter-wrapper::-webkit-scrollbar { display: none; }
@@ -648,7 +768,61 @@
             color: #090A0F;
         }
 
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        /* Horizontal Running Stream Track */
+        .projects-stream-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 1.5rem 0 3rem;
+            mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+        }
+        .projects-marquee-track {
+            display: flex;
+            gap: 2.2rem;
+            width: max-content;
+            will-change: transform;
+        }
+        /* Left to Right Infinite Stream */
+        .projects-marquee-track.running-ltr {
+            animation: marquee-ltr 42s linear infinite;
+        }
+        /* Right to Left Alternate Stream */
+        .projects-marquee-track.running-rtl {
+            animation: marquee-rtl 42s linear infinite;
+        }
+        .projects-stream-container:hover .projects-marquee-track,
+        .projects-marquee-track.is-paused {
+            animation-play-state: paused !important;
+        }
+
+        @keyframes marquee-ltr {
+            0% { transform: translate3d(-50%, 0, 0); }
+            100% { transform: translate3d(0%, 0, 0); }
+        }
+        @keyframes marquee-rtl {
+            0% { transform: translate3d(0%, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        .projects-marquee-track .project-card {
+            width: 380px;
+            min-width: 380px;
+            max-width: 380px;
+            flex-shrink: 0;
+            margin: 0;
+        }
+        .project-card.filter-dimmed {
+            opacity: 0.22 !important;
+            filter: grayscale(85%) blur(1px);
+            transform: scale(0.94) !important;
+            pointer-events: none !important;
+        }
+        .project-card.filter-highlight {
+            border-color: #FFFFFF !important;
+            box-shadow: 0 0 32px rgba(255, 255, 255, 0.55), 0 25px 60px #000000 !important;
+            transform: scale(1.02) !important;
+        }
 
         .project-card {
             background: #000000 !important;
@@ -1328,7 +1502,7 @@
 
         /* ===== 3D TILT — JS-driven inline transforms ===== */
         .project-card { transform-style: preserve-3d; will-change: transform; }
-        .projects-grid { perspective: 1200px; }
+        .projects-stream-container, .projects-marquee-track { perspective: 1200px; }
 
         /* ===== PROFILE SN FALLBACK ===== */
         .sn-avatar {
@@ -1466,7 +1640,8 @@
             .badge-2 { bottom: 18%; right: -6px; }
             .badge-3 { bottom: -6px; left: 15px; }
 
-            .projects-grid { grid-template-columns: 1fr; }
+            .projects-marquee-track .project-card { width: 310px; min-width: 310px; max-width: 310px; }
+            .projects-marquee-track { gap: 1.25rem; }
             .form-row { grid-template-columns: 1fr; }
             .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
             .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -1824,10 +1999,61 @@
      PROJECTS SECTION
 ==================================== -->
 <section id="projects">
-    <div class="projects-header">
-        <div>
-            <div class="section-label reveal">Portfolio</div>
-            <h2 class="section-title reveal">Featured Work</h2>
+    <div class="projects-header-wrapper">
+        <div class="projects-header">
+            <div>
+                <div class="section-label reveal">Portfolio Stream</div>
+                <h2 class="section-title reveal">Featured Work</h2>
+            </div>
+            <!-- Stream Controls -->
+            <div class="stream-controls reveal">
+                <button type="button" class="stream-btn" id="streamToggleBtn" aria-label="Toggle Stream Pause or Play" title="Pause / Play Stream">
+                    <span class="stream-btn-icon">⏸</span>
+                    <span class="stream-btn-text">Pause</span>
+                </button>
+                <button type="button" class="stream-btn" id="streamReverseBtn" aria-label="Toggle Stream Direction" title="Reverse Direction">
+                    <span class="stream-btn-icon">⇄</span>
+                    <span class="stream-btn-text">Left → Right</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breaking Tape Banner (Continuous Running Line) -->
+    <div class="breaking-tape-wrapper reveal">
+        <div class="breaking-tape">
+            <div class="breaking-tape-track">
+                <span class="tape-badge">LIVE STREAM</span>
+                <span class="tape-item">BREAKING BUILDS // 2026 ACTIVE ROADMAP</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">ORIGO: LUXURY VISION PORTFOLIO</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">ESTASH: PREDICTIVE FINTECH ENGINE</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">AEGIS: GEMINI HUD AI ASSISTANT</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">AUMBRA: RPG DISCIPLINE GAMIFIER</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">HOURGLASS: KINETIC FOCUS TIMER</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">TUTRACKER: EDUTECH MATRIX HUB</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-badge">LIVE STREAM</span>
+                <span class="tape-item">BREAKING BUILDS // 2026 ACTIVE ROADMAP</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">ORIGO: LUXURY VISION PORTFOLIO</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">ESTASH: PREDICTIVE FINTECH ENGINE</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">AEGIS: GEMINI HUD AI ASSISTANT</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">AUMBRA: RPG DISCIPLINE GAMIFIER</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">HOURGLASS: KINETIC FOCUS TIMER</span>
+                <span class="tape-sep">✦</span>
+                <span class="tape-item">TUTRACKER: EDUTECH MATRIX HUB</span>
+                <span class="tape-sep">✦</span>
+            </div>
         </div>
     </div>
 
@@ -1841,294 +2067,590 @@
         </div>
     </div>
 
-    <div class="projects-grid" id="projectsGrid">
-        <!-- Project 1: Origo (Flagship) -->
-        <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="origo">
-            <div class="project-top-badge">✨ Featured Project</div>
-            <div class="project-thumb" style="background: linear-gradient(135deg, #0b1322 0%, #17263c 50%, #1e3552 100%);">
-                <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.45) 0%, rgba(94, 139, 184, 0.15) 50%, transparent 70%);"></div>
-                <div class="mockup-window">
-                    <div class="mockup-header">
-                        <span class="mockup-dot dot-red"></span>
-                        <span class="mockup-dot dot-yellow"></span>
-                        <span class="mockup-dot dot-green"></span>
-                        <span class="mockup-title">origo.app · showcase</span>
+    <!-- Infinite Running Stream Track (Left to Right) -->
+    <div class="projects-stream-container" id="projectsStreamContainer">
+        <div class="projects-marquee-track running-ltr" id="projectsMarqueeTrack">
+            <!-- ===== SET 1 ===== -->
+            <!-- Project 1: Origo (Flagship) -->
+            <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="origo">
+                <div class="project-top-badge">✨ Featured Project</div>
+                <div class="project-thumb" style="background: linear-gradient(135deg, #0b1322 0%, #17263c 50%, #1e3552 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.45) 0%, rgba(94, 139, 184, 0.15) 50%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">origo.app · showcase</span>
+                        </div>
+                        <div class="mockup-screen screen-origo">
+                            <div class="origo-card">
+                                <span class="origo-aim">👑 Peak Vision &amp; Mastery</span>
+                                <span class="origo-badge">Showcase</span>
+                            </div>
+                            <div class="origo-bar">
+                                <div class="origo-fill"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mockup-screen screen-origo">
-                        <div class="origo-card">
-                            <span class="origo-aim">👑 Peak Vision &amp; Mastery</span>
-                            <span class="origo-badge">Showcase</span>
-                        </div>
-                        <div class="origo-bar">
-                            <div class="origo-fill"></div>
-                        </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('origo', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Origo" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
                     </div>
                 </div>
-                <div class="project-overlay">
-                    <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('origo', event)">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <span>Quick View</span>
-                    </button>
-                    <a href="https://github.com/Knecrow/Origo" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
-                        <span>Repository</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </a>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Mobile App · Flutter</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Origo — Vision Portfolio</div>
+                    <div class="project-desc">A luxury, offline-first personal vision portfolio built with tactile claymorphism and fluid gesture physics.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">SQLite</span>
+                        <span class="tag">Claymorphic UI</span>
+                    </div>
                 </div>
             </div>
-            <div class="project-body">
-                <div class="project-meta">
-                    <span class="project-category">Mobile App · Flutter</span>
-                    <span class="project-year">2026</span>
-                </div>
-                <div class="project-title">Origo — Vision Portfolio</div>
-                <div class="project-desc">A luxury, offline-first personal vision portfolio built with tactile claymorphism and fluid gesture physics.</div>
-                <div class="project-tags">
-                    <span class="tag">Flutter</span>
-                    <span class="tag">SQLite</span>
-                    <span class="tag">Claymorphic UI</span>
-                </div>
-            </div>
-        </div>
 
-        <!-- Project 2: Estash -->
-        <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="estash">
-            <div class="project-thumb" style="background: linear-gradient(135deg, #05201a 0%, #0d382f 50%, #064e3b 100%);">
-                <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);"></div>
-                <div class="mockup-window">
-                    <div class="mockup-header">
-                        <span class="mockup-dot dot-red"></span>
-                        <span class="mockup-dot dot-yellow"></span>
-                        <span class="mockup-dot dot-green"></span>
-                        <span class="mockup-title">estash.finance · live</span>
+            <!-- Project 2: Estash -->
+            <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="estash">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #05201a 0%, #0d382f 50%, #064e3b 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">estash.finance · live</span>
+                        </div>
+                        <div class="mockup-screen screen-estash">
+                            <div class="estash-header">
+                                <span class="estash-val">৳ 48,500</span>
+                                <span class="estash-alert">🟢 Budget Safe (-14%)</span>
+                            </div>
+                            <div class="estash-bars">
+                                <div class="estash-col" style="height:45%;"></div>
+                                <div class="estash-col" style="height:70%;"></div>
+                                <div class="estash-col" style="height:35%;"></div>
+                                <div class="estash-col active" style="height:90%;"></div>
+                                <div class="estash-col" style="height:60%;"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mockup-screen screen-estash">
-                        <div class="estash-header">
-                            <span class="estash-val">৳ 48,500</span>
-                            <span class="estash-alert">🟢 Budget Safe (-14%)</span>
-                        </div>
-                        <div class="estash-bars">
-                            <div class="estash-col" style="height:45%;"></div>
-                            <div class="estash-col" style="height:70%;"></div>
-                            <div class="estash-col" style="height:35%;"></div>
-                            <div class="estash-col active" style="height:90%;"></div>
-                            <div class="estash-col" style="height:60%;"></div>
-                        </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('estash', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Estash" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
                     </div>
                 </div>
-                <div class="project-overlay">
-                    <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('estash', event)">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <span>Quick View</span>
-                    </button>
-                    <a href="https://github.com/Knecrow/Estash" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
-                        <span>Repository</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </a>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">FinTech · Flutter</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Estash — Smart Budget Tracker</div>
+                    <div class="project-desc">Modern personal finance manager with predictive spending velocity alerts, OLED Dark Paynx UI, and multi-currency ledgering.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Dark Paynx</span>
+                        <span class="tag">Local Cache</span>
+                    </div>
                 </div>
             </div>
-            <div class="project-body">
-                <div class="project-meta">
-                    <span class="project-category">FinTech · Flutter</span>
-                    <span class="project-year">2026</span>
-                </div>
-                <div class="project-title">Estash — Smart Budget Tracker</div>
-                <div class="project-desc">Modern personal finance manager with predictive spending velocity alerts, OLED Dark Paynx UI, and multi-currency ledgering.</div>
-                <div class="project-tags">
-                    <span class="tag">Flutter</span>
-                    <span class="tag">Dark Paynx</span>
-                    <span class="tag">Local Cache</span>
-                </div>
-            </div>
-        </div>
 
-        <!-- Project 3: Aegis -->
-        <div class="project-card reveal from-scale" data-category="ai" data-project="aegis">
-            <div class="project-thumb" style="background: linear-gradient(135deg, #080d1a 0%, #12102e 50%, #1a0b2e 100%);">
-                <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(225, 29, 72, 0.35) 0%, rgba(6, 182, 212, 0.25) 50%, transparent 70%);"></div>
-                <div class="mockup-window">
-                    <div class="mockup-header">
-                        <span class="mockup-dot dot-red"></span>
-                        <span class="mockup-dot dot-yellow"></span>
-                        <span class="mockup-dot dot-green"></span>
-                        <span class="mockup-title">aegis.hud · gemini_v2</span>
-                    </div>
-                    <div class="mockup-screen screen-aegis">
-                        <div class="aegis-hud-ring">
-                            <div class="aegis-core"></div>
+            <!-- Project 3: Aegis -->
+            <div class="project-card reveal from-scale" data-category="ai" data-project="aegis">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #080d1a 0%, #12102e 50%, #1a0b2e 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(225, 29, 72, 0.35) 0%, rgba(6, 182, 212, 0.25) 50%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">aegis.hud · gemini_v2</span>
                         </div>
-                        <div class="aegis-status">ARC-CORE // ONLINE</div>
+                        <div class="mockup-screen screen-aegis">
+                            <div class="aegis-hud-ring">
+                                <div class="aegis-core"></div>
+                            </div>
+                            <div class="aegis-status">ARC-CORE // ONLINE</div>
+                        </div>
+                    </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('aegis', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://knecrow.github.io/Aegis/" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Live Demo</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <a href="https://github.com/Knecrow/Aegis" target="_blank" class="project-overlay-btn" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                        </a>
                     </div>
                 </div>
-                <div class="project-overlay">
-                    <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('aegis', event)">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <span>Quick View</span>
-                    </button>
-                    <a href="https://knecrow.github.io/Aegis/" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
-                        <span>Live Demo</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </a>
-                    <a href="https://github.com/Knecrow/Aegis" target="_blank" class="project-overlay-btn" onclick="event.stopPropagation()">
-                        <span>Repository</span>
-                    </a>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">AI System / HUD · Web</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Aegis — Marvel HUD AI System</div>
+                    <div class="project-desc">Marvel JARVIS-inspired web interface powered by Google Gemini AI with real-time Web Audio analysis and a nanotech swarm.</div>
+                    <div class="project-tags">
+                        <span class="tag">Gemini AI</span>
+                        <span class="tag">Web Audio</span>
+                        <span class="tag">HTML5 Canvas</span>
+                    </div>
                 </div>
             </div>
-            <div class="project-body">
-                <div class="project-meta">
-                    <span class="project-category">AI System / HUD · Web</span>
-                    <span class="project-year">2026</span>
-                </div>
-                <div class="project-title">Aegis — Marvel HUD AI System</div>
-                <div class="project-desc">Marvel JARVIS-inspired web interface powered by Google Gemini AI with real-time Web Audio analysis and a nanotech swarm.</div>
-                <div class="project-tags">
-                    <span class="tag">Gemini AI</span>
-                    <span class="tag">Web Audio</span>
-                    <span class="tag">HTML5 Canvas</span>
-                </div>
-            </div>
-        </div>
 
-        <!-- Project 4: Aumbra -->
-        <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="aumbra">
-            <div class="project-thumb" style="background: linear-gradient(135deg, #0e1528 0%, #1c1538 50%, #2e1065 100%);">
-                <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%);"></div>
-                <div class="mockup-window">
-                    <div class="mockup-header">
-                        <span class="mockup-dot dot-red"></span>
-                        <span class="mockup-dot dot-yellow"></span>
-                        <span class="mockup-dot dot-green"></span>
-                        <span class="mockup-title">aumbra.quest · rpg</span>
+            <!-- Project 4: Aumbra -->
+            <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="aumbra">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #0e1528 0%, #1c1538 50%, #2e1065 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">aumbra.quest · rpg</span>
+                        </div>
+                        <div class="mockup-screen screen-aumbra">
+                            <div class="aumbra-quest">
+                                <span class="quest-name">⚔️ Daily: Deep Code 2h</span>
+                                <span class="quest-xp">+120 XP</span>
+                            </div>
+                            <div class="quest-streak">
+                                <span>🔥 42 Days Active Streak</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mockup-screen screen-aumbra">
-                        <div class="aumbra-quest">
-                            <span class="quest-name">⚔️ Daily: Deep Code 2h</span>
-                            <span class="quest-xp">+120 XP</span>
-                        </div>
-                        <div class="quest-streak">
-                            <span>🔥 42 Days Active Streak</span>
-                        </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('aumbra', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Aumbra" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
                     </div>
                 </div>
-                <div class="project-overlay">
-                    <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('aumbra', event)">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <span>Quick View</span>
-                    </button>
-                    <a href="https://github.com/Knecrow/Aumbra" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
-                        <span>Repository</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </a>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Gamified Habits · Flutter</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Aumbra — Habit &amp; Quest Tracker</div>
+                    <div class="project-desc">RPG-inspired discipline tracker converting daily routines into quest lines with streak shields and celebration loops.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Gamification</span>
+                        <span class="tag">RPG Quests</span>
+                    </div>
                 </div>
             </div>
-            <div class="project-body">
-                <div class="project-meta">
-                    <span class="project-category">Gamified Habits · Flutter</span>
-                    <span class="project-year">2026</span>
-                </div>
-                <div class="project-title">Aumbra — Habit &amp; Quest Tracker</div>
-                <div class="project-desc">RPG-inspired discipline tracker converting daily routines into quest lines with streak shields and celebration loops.</div>
-                <div class="project-tags">
-                    <span class="tag">Flutter</span>
-                    <span class="tag">Gamification</span>
-                    <span class="tag">RPG Quests</span>
-                </div>
-            </div>
-        </div>
 
-        <!-- Project 5: Hourglass -->
-        <div class="project-card reveal from-scale" data-category="productivity ai" data-project="hourglass">
-            <div class="project-thumb" style="background: linear-gradient(135deg, #18202c 0%, #1e1b18 50%, #17120a 100%);">
-                <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(234, 179, 8, 0.35) 0%, transparent 70%);"></div>
-                <div class="mockup-window">
-                    <div class="mockup-header">
-                        <span class="mockup-dot dot-red"></span>
-                        <span class="mockup-dot dot-yellow"></span>
-                        <span class="mockup-dot dot-green"></span>
-                        <span class="mockup-title">hourglass.app · flow</span>
-                    </div>
-                    <div class="mockup-screen screen-hourglass">
-                        <div class="hg-timer">25:00</div>
-                        <div class="hg-sub">Deep Focus Sprint</div>
-                        <div class="hg-sand-dots">
-                            <span class="hg-dot"></span>
-                            <span class="hg-dot" style="animation-delay:0.3s"></span>
-                            <span class="hg-dot" style="animation-delay:0.6s"></span>
+            <!-- Project 5: Hourglass -->
+            <div class="project-card reveal from-scale" data-category="productivity ai" data-project="hourglass">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #18202c 0%, #1e1b18 50%, #17120a 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(234, 179, 8, 0.35) 0%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">hourglass.app · flow</span>
+                        </div>
+                        <div class="mockup-screen screen-hourglass">
+                            <div class="hg-timer">25:00</div>
+                            <div class="hg-sub">Deep Focus Sprint</div>
+                            <div class="hg-sand-dots">
+                                <span class="hg-dot"></span>
+                                <span class="hg-dot" style="animation-delay:0.3s"></span>
+                                <span class="hg-dot" style="animation-delay:0.6s"></span>
+                            </div>
                         </div>
                     </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('hourglass', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://knecrow.github.io/Hourglass/" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Live Demo</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <a href="https://github.com/Knecrow/Hourglass" target="_blank" class="project-overlay-btn" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="project-overlay">
-                    <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('hourglass', event)">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <span>Quick View</span>
-                    </button>
-                    <a href="https://knecrow.github.io/Hourglass/" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
-                        <span>Live Demo</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </a>
-                    <a href="https://github.com/Knecrow/Hourglass" target="_blank" class="project-overlay-btn" onclick="event.stopPropagation()">
-                        <span>Repository</span>
-                    </a>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Productivity · Web App</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Hourglass — Sand Timer &amp; Focus</div>
+                    <div class="project-desc">Minimalist focus timer simulating fluid sand grains with pure HTML5 Canvas trigonometric physics.</div>
+                    <div class="project-tags">
+                        <span class="tag">HTML5 Canvas</span>
+                        <span class="tag">Physics Math</span>
+                        <span class="tag">Focus Flow</span>
+                    </div>
                 </div>
             </div>
-            <div class="project-body">
-                <div class="project-meta">
-                    <span class="project-category">Productivity · Web App</span>
-                    <span class="project-year">2026</span>
-                </div>
-                <div class="project-title">Hourglass — Sand Timer &amp; Focus</div>
-                <div class="project-desc">Minimalist focus timer simulating fluid sand grains with pure HTML5 Canvas trigonometric physics.</div>
-                <div class="project-tags">
-                    <span class="tag">HTML5 Canvas</span>
-                    <span class="tag">Physics Math</span>
-                    <span class="tag">Focus Flow</span>
-                </div>
-            </div>
-        </div>
 
-        <!-- Project 6: TuTracker -->
-        <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="tutracker">
-            <div class="project-thumb" style="background: linear-gradient(135deg, #0e172a 0%, #172554 50%, #1e3a8a 100%);">
-                <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(37, 99, 235, 0.4) 0%, transparent 70%);"></div>
-                <div class="mockup-window">
-                    <div class="mockup-header">
-                        <span class="mockup-dot dot-red"></span>
-                        <span class="mockup-dot dot-yellow"></span>
-                        <span class="mockup-dot dot-green"></span>
-                        <span class="mockup-title">tutracker.edu · dashboard</span>
+            <!-- Project 6: TuTracker -->
+            <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="tutracker">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #0e172a 0%, #172554 50%, #1e3a8a 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(37, 99, 235, 0.4) 0%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">tutracker.edu · dashboard</span>
+                        </div>
+                        <div class="mockup-screen screen-tutracker">
+                            <div class="tu-batch">
+                                <span class="tu-title">Batch A-2 (Physics)</span>
+                                <span class="tu-badge">12/12 Present</span>
+                            </div>
+                            <div class="tu-students">
+                                <span class="tu-pill">Fees: 100% Paid</span>
+                                <span class="tu-pill">Next: 4:30 PM</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mockup-screen screen-tutracker">
-                        <div class="tu-batch">
-                            <span class="tu-title">Batch A-2 (Physics)</span>
-                            <span class="tu-badge">12/12 Present</span>
-                        </div>
-                        <div class="tu-students">
-                            <span class="tu-pill">Fees: 100% Paid</span>
-                            <span class="tu-pill">Next: 4:30 PM</span>
-                        </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('tutracker', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Tutracker" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
                     </div>
                 </div>
-                <div class="project-overlay">
-                    <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('tutracker', event)">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <span>Quick View</span>
-                    </button>
-                    <a href="https://github.com/Knecrow/Tutracker" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
-                        <span>Repository</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </a>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Education Hub · Web &amp; Mobile</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">TuTracker — Tuition &amp; Batch Hub</div>
+                    <div class="project-desc">Smart tuition management hub featuring a conflict-free batch matrix, one-tap attendance, and automated fee ledgering.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter / Web</span>
+                        <span class="tag">Batch Matrix</span>
+                        <span class="tag">Local Storage</span>
+                    </div>
                 </div>
             </div>
-            <div class="project-body">
-                <div class="project-meta">
-                    <span class="project-category">Education Hub · Web &amp; Mobile</span>
-                    <span class="project-year">2026</span>
+
+            <!-- ===== SET 2 (SEAMLESS INFINITE LOOP DUPLICATE) ===== -->
+            <!-- Duplicate Project 1: Origo -->
+            <div class="project-card" data-category="flutter productivity" data-project="origo" aria-hidden="true">
+                <div class="project-top-badge">✨ Featured Project</div>
+                <div class="project-thumb" style="background: linear-gradient(135deg, #0b1322 0%, #17263c 50%, #1e3552 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.45) 0%, rgba(94, 139, 184, 0.15) 50%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">origo.app · showcase</span>
+                        </div>
+                        <div class="mockup-screen screen-origo">
+                            <div class="origo-card">
+                                <span class="origo-aim">👑 Peak Vision &amp; Mastery</span>
+                                <span class="origo-badge">Showcase</span>
+                            </div>
+                            <div class="origo-bar">
+                                <div class="origo-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('origo', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Origo" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="project-title">TuTracker — Tuition &amp; Batch Hub</div>
-                <div class="project-desc">Smart tuition management hub featuring a conflict-free batch matrix, one-tap attendance, and automated fee ledgering.</div>
-                <div class="project-tags">
-                    <span class="tag">Flutter / Web</span>
-                    <span class="tag">Batch Matrix</span>
-                    <span class="tag">Local Storage</span>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Mobile App · Flutter</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Origo — Vision Portfolio</div>
+                    <div class="project-desc">A luxury, offline-first personal vision portfolio built with tactile claymorphism and fluid gesture physics.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">SQLite</span>
+                        <span class="tag">Claymorphic UI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate Project 2: Estash -->
+            <div class="project-card" data-category="flutter productivity" data-project="estash" aria-hidden="true">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #05201a 0%, #0d382f 50%, #064e3b 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">estash.finance · live</span>
+                        </div>
+                        <div class="mockup-screen screen-estash">
+                            <div class="estash-header">
+                                <span class="estash-val">৳ 48,500</span>
+                                <span class="estash-alert">🟢 Budget Safe (-14%)</span>
+                            </div>
+                            <div class="estash-bars">
+                                <div class="estash-col" style="height:45%;"></div>
+                                <div class="estash-col" style="height:70%;"></div>
+                                <div class="estash-col" style="height:35%;"></div>
+                                <div class="estash-col active" style="height:90%;"></div>
+                                <div class="estash-col" style="height:60%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('estash', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Estash" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">FinTech · Flutter</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Estash — Smart Budget Tracker</div>
+                    <div class="project-desc">Modern personal finance manager with predictive spending velocity alerts, OLED Dark Paynx UI, and multi-currency ledgering.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Dark Paynx</span>
+                        <span class="tag">Local Cache</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate Project 3: Aegis -->
+            <div class="project-card" data-category="ai" data-project="aegis" aria-hidden="true">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #080d1a 0%, #12102e 50%, #1a0b2e 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(225, 29, 72, 0.35) 0%, rgba(6, 182, 212, 0.25) 50%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">aegis.hud · gemini_v2</span>
+                        </div>
+                        <div class="mockup-screen screen-aegis">
+                            <div class="aegis-hud-ring">
+                                <div class="aegis-core"></div>
+                            </div>
+                            <div class="aegis-status">ARC-CORE // ONLINE</div>
+                        </div>
+                    </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('aegis', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://knecrow.github.io/Aegis/" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Live Demo</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <a href="https://github.com/Knecrow/Aegis" target="_blank" class="project-overlay-btn" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">AI System / HUD · Web</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Aegis — Marvel HUD AI System</div>
+                    <div class="project-desc">Marvel JARVIS-inspired web interface powered by Google Gemini AI with real-time Web Audio analysis and a nanotech swarm.</div>
+                    <div class="project-tags">
+                        <span class="tag">Gemini AI</span>
+                        <span class="tag">Web Audio</span>
+                        <span class="tag">HTML5 Canvas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate Project 4: Aumbra -->
+            <div class="project-card" data-category="flutter productivity" data-project="aumbra" aria-hidden="true">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #0e1528 0%, #1c1538 50%, #2e1065 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">aumbra.quest · rpg</span>
+                        </div>
+                        <div class="mockup-screen screen-aumbra">
+                            <div class="aumbra-quest">
+                                <span class="quest-name">⚔️ Daily: Deep Code 2h</span>
+                                <span class="quest-xp">+120 XP</span>
+                            </div>
+                            <div class="quest-streak">
+                                <span>🔥 42 Days Active Streak</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('aumbra', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Aumbra" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Gamified Habits · Flutter</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Aumbra — Habit &amp; Quest Tracker</div>
+                    <div class="project-desc">RPG-inspired discipline tracker converting daily routines into quest lines with streak shields and celebration loops.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Gamification</span>
+                        <span class="tag">RPG Quests</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate Project 5: Hourglass -->
+            <div class="project-card" data-category="productivity ai" data-project="hourglass" aria-hidden="true">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #18202c 0%, #1e1b18 50%, #17120a 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(234, 179, 8, 0.35) 0%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">hourglass.app · flow</span>
+                        </div>
+                        <div class="mockup-screen screen-hourglass">
+                            <div class="hg-timer">25:00</div>
+                            <div class="hg-sub">Deep Focus Sprint</div>
+                            <div class="hg-sand-dots">
+                                <span class="hg-dot"></span>
+                                <span class="hg-dot" style="animation-delay:0.3s"></span>
+                                <span class="hg-dot" style="animation-delay:0.6s"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('hourglass', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://knecrow.github.io/Hourglass/" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Live Demo</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <a href="https://github.com/Knecrow/Hourglass" target="_blank" class="project-overlay-btn" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Productivity · Web App</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Hourglass — Sand Timer &amp; Focus</div>
+                    <div class="project-desc">Minimalist focus timer simulating fluid sand grains with pure HTML5 Canvas trigonometric physics.</div>
+                    <div class="project-tags">
+                        <span class="tag">HTML5 Canvas</span>
+                        <span class="tag">Physics Math</span>
+                        <span class="tag">Focus Flow</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate Project 6: TuTracker -->
+            <div class="project-card" data-category="flutter productivity" data-project="tutracker" aria-hidden="true">
+                <div class="project-thumb" style="background: linear-gradient(135deg, #0e172a 0%, #172554 50%, #1e3a8a 100%);">
+                    <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(37, 99, 235, 0.4) 0%, transparent 70%);"></div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">tutracker.edu · dashboard</span>
+                        </div>
+                        <div class="mockup-screen screen-tutracker">
+                            <div class="tu-batch">
+                                <span class="tu-title">Batch A-2 (Physics)</span>
+                                <span class="tu-badge">12/12 Present</span>
+                            </div>
+                            <div class="tu-students">
+                                <span class="tu-pill">Fees: 100% Paid</span>
+                                <span class="tu-pill">Next: 4:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-overlay">
+                        <button type="button" class="project-overlay-btn btn-quickview" onclick="openProjectModal('tutracker', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Tutracker" target="_blank" class="project-overlay-btn btn-primary" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Education Hub · Web &amp; Mobile</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">TuTracker — Tuition &amp; Batch Hub</div>
+                    <div class="project-desc">Smart tuition management hub featuring a conflict-free batch matrix, one-tap attendance, and automated fee ledgering.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter / Web</span>
+                        <span class="tag">Batch Matrix</span>
+                        <span class="tag">Local Storage</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2667,7 +3189,7 @@
         }, 4000);
     }
 
-    // ===== PROJECT CATEGORY FILTERING =====
+    // ===== PROJECT CATEGORY FILTERING & STREAM CONTROLS =====
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
     filterBtns.forEach(btn => {
@@ -2678,23 +3200,57 @@
             const filter = btn.dataset.filter;
             projectCards.forEach(card => {
                 const categories = card.dataset.category ? card.dataset.category.split(' ') : [];
-                if (filter === 'all' || categories.includes(filter)) {
-                    card.classList.remove('filter-hidden');
-                    card.style.display = '';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 20);
+                if (filter === 'all') {
+                    card.classList.remove('filter-dimmed', 'filter-highlight');
+                } else if (categories.includes(filter)) {
+                    card.classList.remove('filter-dimmed');
+                    card.classList.add('filter-highlight');
                 } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.96)';
-                    setTimeout(() => {
-                        card.classList.add('filter-hidden');
-                    }, 250);
+                    card.classList.add('filter-dimmed');
+                    card.classList.remove('filter-highlight');
                 }
             });
         });
     });
+
+    // Stream Controls (Pause/Play & Reverse Direction)
+    const streamTrack = document.getElementById('projectsMarqueeTrack');
+    const streamToggleBtn = document.getElementById('streamToggleBtn');
+    const streamReverseBtn = document.getElementById('streamReverseBtn');
+
+    if (streamToggleBtn && streamTrack) {
+        streamToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isPaused = streamTrack.classList.toggle('is-paused');
+            const icon = streamToggleBtn.querySelector('.stream-btn-icon');
+            const text = streamToggleBtn.querySelector('.stream-btn-text');
+            if (isPaused) {
+                if (icon) icon.textContent = '▶';
+                if (text) text.textContent = 'Play';
+                streamToggleBtn.classList.add('active');
+            } else {
+                if (icon) icon.textContent = '⏸';
+                if (text) text.textContent = 'Pause';
+                streamToggleBtn.classList.remove('active');
+            }
+        });
+    }
+
+    if (streamReverseBtn && streamTrack) {
+        streamReverseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const text = streamReverseBtn.querySelector('.stream-btn-text');
+            if (streamTrack.classList.contains('running-ltr')) {
+                streamTrack.classList.remove('running-ltr');
+                streamTrack.classList.add('running-rtl');
+                if (text) text.textContent = 'Right → Left';
+            } else {
+                streamTrack.classList.remove('running-rtl');
+                streamTrack.classList.add('running-ltr');
+                if (text) text.textContent = 'Left → Right';
+            }
+        });
+    }
 
     // ===== PROJECT DATA DICTIONARY =====
     const projectsData = {
