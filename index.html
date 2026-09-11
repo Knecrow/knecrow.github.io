@@ -597,231 +597,43 @@
         }
         .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1.5rem; }
         
-        /* Stream Control Buttons */
-        .stream-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .stream-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #FFFFFF;
-            padding: 0.55rem 1.1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            transition: all 0.3s var(--transition);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
-        .stream-btn:hover {
-            background: #FFFFFF;
-            color: #000000;
-            border-color: #FFFFFF;
-            transform: translateY(-2px);
-            box-shadow: 0 0 16px rgba(255, 255, 255, 0.4);
-        }
-        .stream-btn.active {
-            background: #FFFFFF;
-            color: #000000;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-        .stream-btn-icon {
-            font-size: 0.9rem;
-            line-height: 1;
-        }
-
-        /* Breaking Tape Banner */
-        .breaking-tape-wrapper {
+        /* Draggable & Auto-Gliding Projects Showcase */
+        .projects-slider-wrapper {
             width: 100%;
-            margin-bottom: 2.5rem;
-            overflow: hidden;
-            position: relative;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(15,20,30,0.7) 50%, rgba(0,0,0,0.85) 100%);
-            padding: 0.85rem 0;
-            box-shadow: inset 0 0 25px rgba(0,0,0,0.8);
-        }
-        .breaking-tape {
-            display: flex;
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-        }
-        .breaking-tape-track {
-            display: inline-flex;
-            align-items: center;
-            gap: 1.8rem;
-            animation: tape-flow 28s linear infinite;
-            will-change: transform;
-        }
-        @keyframes tape-flow {
-            0% { transform: translate3d(-50%, 0, 0); }
-            100% { transform: translate3d(0%, 0, 0); }
-        }
-        .tape-badge {
-            background: #FFFFFF;
-            color: #000000;
-            font-size: 0.68rem;
-            font-weight: 900;
-            letter-spacing: 1.2px;
-            padding: 0.22rem 0.65rem;
-            border-radius: 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        .tape-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #ef4444;
-            box-shadow: 0 0 8px #ef4444;
-            animation: pulse-dot 1.2s infinite;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(0.7); }
-        }
-        .tape-item {
-            font-family: 'Space Grotesk', monospace;
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            color: #CBD5E1;
-            text-transform: uppercase;
-        }
-        .tape-sep {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.9rem;
-        }
-
-        /* Filter Tabs */
-        .project-filter-wrapper {
-            max-width: 1200px;
-            margin: 0 auto 2.5rem;
-            padding: 0 6% 0.5rem;
-            display: flex;
-            justify-content: flex-start;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        .project-filter-wrapper::-webkit-scrollbar { display: none; }
-        .project-filters {
-            display: inline-flex;
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            padding: 0.35rem;
-            border-radius: 50px;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            gap: 0.35rem;
-        }
-        .filter-btn {
-            border: none;
-            background: transparent;
-            padding: 0.55rem 1.25rem;
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.3s var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            white-space: nowrap;
-        }
-        .filter-btn:hover {
-            color: #FFFFFF;
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .filter-btn.active {
-            background: #FFFFFF;
-            color: #090A0F;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
-        }
-        .filter-count {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 0.1rem 0.45rem;
-            border-radius: 50px;
-            font-size: 0.72rem;
-            font-weight: 700;
-        }
-        .filter-btn.active .filter-count {
-            background: rgba(0, 0, 0, 0.15);
-            color: #090A0F;
-        }
-
-        /* Horizontal Running Stream Track */
-        .projects-stream-container {
-            width: 100%;
-            overflow: hidden;
+            overflow-x: scroll;
+            overflow-y: hidden;
             position: relative;
             padding: 1.5rem 0 3rem;
-            mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            scroll-behavior: auto;
+            -webkit-overflow-scrolling: touch;
         }
-        .projects-marquee-track {
+        .projects-slider-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        .projects-slider-wrapper.is-dragging {
+            cursor: grabbing !important;
+        }
+        .projects-slider-track {
             display: flex;
             gap: 2.2rem;
             width: max-content;
+            padding: 0 4vw;
             will-change: transform;
         }
-        /* Left to Right Infinite Stream */
-        .projects-marquee-track.running-ltr {
-            animation: marquee-ltr 42s linear infinite;
-        }
-        /* Right to Left Alternate Stream */
-        .projects-marquee-track.running-rtl {
-            animation: marquee-rtl 42s linear infinite;
-        }
-        .projects-stream-container:hover .projects-marquee-track,
-        .projects-marquee-track.is-paused {
-            animation-play-state: paused !important;
-        }
-
-        @keyframes marquee-ltr {
-            0% { transform: translate3d(-50%, 0, 0); }
-            100% { transform: translate3d(0%, 0, 0); }
-        }
-        @keyframes marquee-rtl {
-            0% { transform: translate3d(0%, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        .projects-marquee-track .project-card {
+        .projects-slider-track .project-card {
             width: 380px;
             min-width: 380px;
             max-width: 380px;
             flex-shrink: 0;
             margin: 0;
-        }
-        .project-card.filter-dimmed {
-            opacity: 0.22 !important;
-            filter: grayscale(85%) blur(1px);
-            transform: scale(0.94) !important;
-            pointer-events: none !important;
-        }
-        .project-card.filter-highlight {
-            border-color: #FFFFFF !important;
-            box-shadow: 0 0 32px rgba(255, 255, 255, 0.55), 0 25px 60px #000000 !important;
-            transform: scale(1.02) !important;
+            user-select: none;
         }
 
         .project-card {
@@ -1502,7 +1314,7 @@
 
         /* ===== 3D TILT — JS-driven inline transforms ===== */
         .project-card { transform-style: preserve-3d; will-change: transform; }
-        .projects-stream-container, .projects-marquee-track { perspective: 1200px; }
+        .projects-slider-wrapper, .projects-slider-track { perspective: 1200px; }
 
         /* ===== PROFILE SN FALLBACK ===== */
         .sn-avatar {
@@ -1640,8 +1452,8 @@
             .badge-2 { bottom: 18%; right: -6px; }
             .badge-3 { bottom: -6px; left: 15px; }
 
-            .projects-marquee-track .project-card { width: 310px; min-width: 310px; max-width: 310px; }
-            .projects-marquee-track { gap: 1.25rem; }
+            .projects-slider-track .project-card { width: 310px; min-width: 310px; max-width: 310px; }
+            .projects-slider-track { gap: 1.25rem; }
             .form-row { grid-template-columns: 1fr; }
             .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
             .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -2002,77 +1814,18 @@
     <div class="projects-header-wrapper">
         <div class="projects-header">
             <div>
-                <div class="section-label reveal">Portfolio Stream</div>
-                <h2 class="section-title reveal">Featured Work</h2>
-            </div>
-            <!-- Stream Controls -->
-            <div class="stream-controls reveal">
-                <button type="button" class="stream-btn" id="streamToggleBtn" aria-label="Toggle Stream Pause or Play" title="Pause / Play Stream">
-                    <span class="stream-btn-icon">⏸</span>
-                    <span class="stream-btn-text">Pause</span>
-                </button>
-                <button type="button" class="stream-btn" id="streamReverseBtn" aria-label="Toggle Stream Direction" title="Reverse Direction">
-                    <span class="stream-btn-icon">⇄</span>
-                    <span class="stream-btn-text">Left → Right</span>
-                </button>
+                <div class="section-label reveal">Featured Work</div>
+                <h2 class="section-title reveal">Selected Creations</h2>
             </div>
         </div>
     </div>
 
-    <!-- Breaking Tape Banner (Continuous Running Line) -->
-    <div class="breaking-tape-wrapper reveal">
-        <div class="breaking-tape">
-            <div class="breaking-tape-track">
-                <span class="tape-badge">LIVE STREAM</span>
-                <span class="tape-item">BREAKING BUILDS // 2026 ACTIVE ROADMAP</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">ORIGO: LUXURY VISION PORTFOLIO</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">ESTASH: PREDICTIVE FINTECH ENGINE</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">AEGIS: GEMINI HUD AI ASSISTANT</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">AUMBRA: RPG DISCIPLINE GAMIFIER</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">HOURGLASS: KINETIC FOCUS TIMER</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">TUTRACKER: EDUTECH MATRIX HUB</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-badge">LIVE STREAM</span>
-                <span class="tape-item">BREAKING BUILDS // 2026 ACTIVE ROADMAP</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">ORIGO: LUXURY VISION PORTFOLIO</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">ESTASH: PREDICTIVE FINTECH ENGINE</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">AEGIS: GEMINI HUD AI ASSISTANT</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">AUMBRA: RPG DISCIPLINE GAMIFIER</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">HOURGLASS: KINETIC FOCUS TIMER</span>
-                <span class="tape-sep">✦</span>
-                <span class="tape-item">TUTRACKER: EDUTECH MATRIX HUB</span>
-                <span class="tape-sep">✦</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Interactive Category Filter -->
-    <div class="project-filter-wrapper reveal">
-        <div class="project-filters" id="projectFilters">
-            <button class="filter-btn active" data-filter="all">All Projects <span class="filter-count">6</span></button>
-            <button class="filter-btn" data-filter="flutter">Flutter &amp; Mobile <span class="filter-count">4</span></button>
-            <button class="filter-btn" data-filter="ai">AI &amp; Web <span class="filter-count">2</span></button>
-            <button class="filter-btn" data-filter="productivity">Productivity <span class="filter-count">4</span></button>
-        </div>
-    </div>
-
-    <!-- Infinite Running Stream Track (Left to Right) -->
-    <div class="projects-stream-container" id="projectsStreamContainer">
-        <div class="projects-marquee-track running-ltr" id="projectsMarqueeTrack">
+    <!-- Infinite Draggable & Auto-Gliding Showcase -->
+    <div class="projects-slider-wrapper reveal" id="projectsSliderWrapper">
+        <div class="projects-slider-track" id="projectsSliderTrack">
             <!-- ===== SET 1 ===== -->
             <!-- Project 1: Origo (Flagship) -->
-            <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="origo">
+            <div class="project-card" data-category="flutter productivity" data-project="origo">
                 <div class="project-top-badge">✨ Featured Project</div>
                 <div class="project-thumb" style="background: linear-gradient(135deg, #0b1322 0%, #17263c 50%, #1e3552 100%);">
                     <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.45) 0%, rgba(94, 139, 184, 0.15) 50%, transparent 70%);"></div>
@@ -2120,7 +1873,7 @@
             </div>
 
             <!-- Project 2: Estash -->
-            <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="estash">
+            <div class="project-card" data-category="flutter productivity" data-project="estash">
                 <div class="project-thumb" style="background: linear-gradient(135deg, #05201a 0%, #0d382f 50%, #064e3b 100%);">
                     <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);"></div>
                     <div class="mockup-window">
@@ -2171,7 +1924,7 @@
             </div>
 
             <!-- Project 3: Aegis -->
-            <div class="project-card reveal from-scale" data-category="ai" data-project="aegis">
+            <div class="project-card" data-category="ai" data-project="aegis">
                 <div class="project-thumb" style="background: linear-gradient(135deg, #080d1a 0%, #12102e 50%, #1a0b2e 100%);">
                     <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(225, 29, 72, 0.35) 0%, rgba(6, 182, 212, 0.25) 50%, transparent 70%);"></div>
                     <div class="mockup-window">
@@ -2218,7 +1971,7 @@
             </div>
 
             <!-- Project 4: Aumbra -->
-            <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="aumbra">
+            <div class="project-card" data-category="flutter productivity" data-project="aumbra">
                 <div class="project-thumb" style="background: linear-gradient(135deg, #0e1528 0%, #1c1538 50%, #2e1065 100%);">
                     <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%);"></div>
                     <div class="mockup-window">
@@ -2265,7 +2018,7 @@
             </div>
 
             <!-- Project 5: Hourglass -->
-            <div class="project-card reveal from-scale" data-category="productivity ai" data-project="hourglass">
+            <div class="project-card" data-category="productivity ai" data-project="hourglass">
                 <div class="project-thumb" style="background: linear-gradient(135deg, #18202c 0%, #1e1b18 50%, #17120a 100%);">
                     <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(234, 179, 8, 0.35) 0%, transparent 70%);"></div>
                     <div class="mockup-window">
@@ -2315,7 +2068,7 @@
             </div>
 
             <!-- Project 6: TuTracker -->
-            <div class="project-card reveal from-scale" data-category="flutter productivity" data-project="tutracker">
+            <div class="project-card" data-category="flutter productivity" data-project="tutracker">
                 <div class="project-thumb" style="background: linear-gradient(135deg, #0e172a 0%, #172554 50%, #1e3a8a 100%);">
                     <div class="project-thumb-bg" style="background: radial-gradient(circle, rgba(37, 99, 235, 0.4) 0%, transparent 70%);"></div>
                     <div class="mockup-window">
@@ -3189,67 +2942,118 @@
         }, 4000);
     }
 
-    // ===== PROJECT CATEGORY FILTERING & STREAM CONTROLS =====
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.dataset.filter;
-            projectCards.forEach(card => {
-                const categories = card.dataset.category ? card.dataset.category.split(' ') : [];
-                if (filter === 'all') {
-                    card.classList.remove('filter-dimmed', 'filter-highlight');
-                } else if (categories.includes(filter)) {
-                    card.classList.remove('filter-dimmed');
-                    card.classList.add('filter-highlight');
-                } else {
-                    card.classList.add('filter-dimmed');
-                    card.classList.remove('filter-highlight');
-                }
-            });
+    // ===== DRAGGABLE & AUTO-GLIDING PROJECTS SHOWCASE =====
+    const sliderWrapper = document.getElementById('projectsSliderWrapper');
+    const sliderTrack = document.getElementById('projectsSliderTrack');
+
+    if (sliderWrapper && sliderTrack) {
+        let isDown = false;
+        let startX = 0;
+        let scrollLeftStart = 0;
+        let isDragging = false;
+        let isHovered = false;
+        let resumeTimer = null;
+        const glideSpeed = 0.75; // Smooth 60fps/120fps auto-glide speed
+
+        function checkInfiniteLoop() {
+            const halfWidth = sliderTrack.scrollWidth / 2;
+            if (halfWidth <= 0) return;
+            if (sliderWrapper.scrollLeft >= halfWidth) {
+                sliderWrapper.scrollLeft -= halfWidth;
+            } else if (sliderWrapper.scrollLeft <= 0) {
+                sliderWrapper.scrollLeft += halfWidth;
+            }
+        }
+
+        // Continuous Glide Animation Frame Loop
+        let lastTime = performance.now();
+        function glideLoop(time) {
+            const dt = Math.min((time - lastTime) / 16.67, 2.5); // Normalize frame rate (60/120/144Hz)
+            lastTime = time;
+
+            if (!isDown && !isHovered) {
+                sliderWrapper.scrollLeft += glideSpeed * dt;
+                checkInfiniteLoop();
+            }
+            requestAnimationFrame(glideLoop);
+        }
+        requestAnimationFrame(glideLoop);
+
+        // Mouse Drag Interaction (Desktop)
+        sliderWrapper.addEventListener('mousedown', (e) => {
+            isDown = true;
+            isDragging = false;
+            startX = e.pageX - sliderWrapper.offsetLeft;
+            scrollLeftStart = sliderWrapper.scrollLeft;
+            sliderWrapper.classList.add('is-dragging');
+            clearTimeout(resumeTimer);
         });
-    });
 
-    // Stream Controls (Pause/Play & Reverse Direction)
-    const streamTrack = document.getElementById('projectsMarqueeTrack');
-    const streamToggleBtn = document.getElementById('streamToggleBtn');
-    const streamReverseBtn = document.getElementById('streamReverseBtn');
+        window.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            const x = e.pageX - sliderWrapper.offsetLeft;
+            const walk = (x - startX);
+            if (Math.abs(walk) > 4) {
+                isDragging = true;
+            }
+            sliderWrapper.scrollLeft = scrollLeftStart - walk;
+            checkInfiniteLoop();
+        });
 
-    if (streamToggleBtn && streamTrack) {
-        streamToggleBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isPaused = streamTrack.classList.toggle('is-paused');
-            const icon = streamToggleBtn.querySelector('.stream-btn-icon');
-            const text = streamToggleBtn.querySelector('.stream-btn-text');
-            if (isPaused) {
-                if (icon) icon.textContent = '▶';
-                if (text) text.textContent = 'Play';
-                streamToggleBtn.classList.add('active');
-            } else {
-                if (icon) icon.textContent = '⏸';
-                if (text) text.textContent = 'Pause';
-                streamToggleBtn.classList.remove('active');
+        window.addEventListener('mouseup', () => {
+            if (!isDown) return;
+            isDown = false;
+            sliderWrapper.classList.remove('is-dragging');
+            clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(() => {
+                isHovered = false;
+            }, 2500);
+        });
+
+        // Hover Detection
+        sliderWrapper.addEventListener('mouseenter', () => {
+            isHovered = true;
+        });
+        sliderWrapper.addEventListener('mouseleave', () => {
+            if (!isDown) {
+                clearTimeout(resumeTimer);
+                resumeTimer = setTimeout(() => {
+                    isHovered = false;
+                }, 800);
             }
         });
-    }
 
-    if (streamReverseBtn && streamTrack) {
-        streamReverseBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const text = streamReverseBtn.querySelector('.stream-btn-text');
-            if (streamTrack.classList.contains('running-ltr')) {
-                streamTrack.classList.remove('running-ltr');
-                streamTrack.classList.add('running-rtl');
-                if (text) text.textContent = 'Right → Left';
-            } else {
-                streamTrack.classList.remove('running-rtl');
-                streamTrack.classList.add('running-ltr');
-                if (text) text.textContent = 'Left → Right';
+        // Touch Interaction (Mobile / Tablet)
+        sliderWrapper.addEventListener('touchstart', () => {
+            isDown = true;
+            clearTimeout(resumeTimer);
+        }, { passive: true });
+
+        sliderWrapper.addEventListener('touchmove', () => {
+            isDragging = true;
+            checkInfiniteLoop();
+        }, { passive: true });
+
+        sliderWrapper.addEventListener('touchend', () => {
+            isDown = false;
+            clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(() => {
+                isHovered = false;
+            }, 2500);
+        }, { passive: true });
+
+        sliderWrapper.addEventListener('scroll', () => {
+            checkInfiniteLoop();
+        }, { passive: true });
+
+        // Suppress click events if the user was actively dragging
+        sliderWrapper.addEventListener('click', (e) => {
+            if (isDragging) {
+                e.preventDefault();
+                e.stopPropagation();
+                isDragging = false;
             }
-        });
+        }, true);
     }
 
     // ===== PROJECT DATA DICTIONARY =====
