@@ -9,6 +9,7 @@
     <meta property="og:title" content="Syed Nahian Siam — CS Student &amp; Aspiring Software Engineer">
     <meta property="og:description" content="Portfolio &amp; Online CV of Syed Nahian Siam — Computer Science Student at UIU, Flutter &amp; Web Developer, and Rapid Prototyper.">
     <meta property="og:url" content="https://knecrow.github.io/">
+    <meta property="og:image" content="https://knecrow.github.io/profile.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
@@ -1298,6 +1299,9 @@
         }
         #back-to-top.visible { opacity: 1; pointer-events: all; }
         #back-to-top:hover { transform: translateY(-4px); }
+        @media (max-width: 768px) {
+            #back-to-top { bottom: 1.2rem; right: 1.2rem; width: 42px; height: 42px; }
+        }
 
 
 
@@ -1651,7 +1655,7 @@
         </div>
         <div class="hero-stats">
             <div class="stat-item">
-                <div class="stat-num"><span class="counter" data-target="11">0</span>+</div>
+                <div class="stat-num"><span class="counter" data-target="19">0</span>+</div>
                 <div class="stat-label">GitHub Repos</div>
             </div>
             <div class="stat-item">
@@ -1722,6 +1726,10 @@
                 <span>Email Syed Nahian</span>
             </a>
         </div>
+        <div style="margin-top:2rem; overflow:hidden; border-radius:12px; opacity:0.75;">
+            <p style="font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:0.6rem;">GitHub Activity</p>
+            <img src="https://ghchart.rshah.org/ef4444/Knecrow" alt="Syed Nahian GitHub activity heatmap" style="width:100%; border-radius:8px;" loading="lazy">
+        </div>
     </div>
 </section>
 
@@ -1780,8 +1788,10 @@
         <h2 class="section-title reveal" style="justify-content:center;">Technologies &amp; Competencies</h2>
         <p class="section-desc reveal" style="margin:0.8rem auto 0; max-width:600px;">Languages, frameworks, and modern tools I actively use in coursework and independent projects.</p>
     </div>
-    <div class="reveal from-scale" style="max-width: 900px; margin: 0 auto;">
-        <div class="tech-grid" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1.2rem;">
+    <div class="reveal from-scale" style="max-width: 960px; margin: 0 auto;">
+        <!-- LANGUAGES -->
+        <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:0.8rem;padding-left:0.25rem;font-weight:600;">Languages</p>
+        <div class="tech-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom:1.8rem;">
             <!-- 1. Flutter -->
             <div class="tech-item">
                 <div class="tech-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M14.314 0L2.3 12 6 15.7 21.7 0h-7.386zM6 15.7L14.314 24H21.7l-7.386-7.386L6 15.7z" fill="#02569B"/><path d="M6 15.7L14.314 23.333l3.693-3.693L9.693 12 6 15.7z" fill="#0175C2"/><path d="M14.314 7.386L9.693 12l4.621 4.621 3.693-3.693-3.693-5.542z" fill="#40D0FD"/></svg></div>
@@ -1797,6 +1807,20 @@
                 </div>
                 <span>JavaScript</span>
             </div>
+            <!-- TypeScript -->
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <rect width="24" height="24" rx="4" fill="#3178C6"/>
+                        <path d="M13.5 14.5v1.8c.3.15.65.27 1.05.35.4.08.82.12 1.25.12.42 0 .82-.05 1.2-.14.38-.09.72-.24 1-.44.28-.2.5-.46.67-.77.17-.31.25-.69.25-1.13 0-.33-.05-.62-.14-.87a2.1 2.1 0 00-.42-.67 3.3 3.3 0 00-.67-.52 7.6 7.6 0 00-.88-.44 5.9 5.9 0 01-.58-.3 1.9 1.9 0 01-.38-.3.98.98 0 01-.21-.33.98.98 0 01-.07-.37c0-.13.03-.25.08-.35.06-.1.14-.19.24-.26.1-.07.23-.12.37-.16.14-.04.3-.06.47-.06.13 0 .26.01.4.04.14.03.27.07.4.13.13.06.25.14.36.24.11.1.2.21.27.34V11.1a4.4 4.4 0 00-.92-.27 5.6 5.6 0 00-1.03-.09c-.41 0-.8.05-1.17.14a2.9 2.9 0 00-.97.44c-.28.2-.5.45-.66.76-.16.3-.24.67-.24 1.09 0 .54.14.99.43 1.37.29.37.73.68 1.33.92l.57.22c.19.08.36.16.5.26.14.1.26.21.34.33.09.12.13.26.13.42 0 .14-.03.27-.08.38-.05.11-.14.21-.25.29-.11.08-.25.14-.41.19-.16.04-.35.07-.56.07-.37 0-.73-.07-1.08-.21a3.3 3.3 0 01-.95-.62zm-2.5-3.5H9V9.5H5.5v1.5H3.5V9.5H2v8h1.5v-5H5.5v5H7v-5h1.5v-1z" fill="#fff"/>
+                    </svg>
+                </div>
+                <span>TypeScript</span>
+            </div>
+        </div>
+        <!-- FRAMEWORKS & UI -->
+        <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:0.8rem;padding-left:0.25rem;font-weight:600;">Frameworks &amp; UI</p>
+        <div class="tech-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom:1.8rem;">
             <!-- 3. React / Next.js -->
             <div class="tech-item">
                 <div class="tech-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="#61DAFB"><circle cx="12" cy="12" r="2.05"/><g stroke="#61DAFB" stroke-width="1" fill="none"><ellipse cx="12" cy="12" rx="11" ry="4.2"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)"/></g></svg></div>
@@ -1834,6 +1858,38 @@
             <div class="tech-item">
                 <div class="tech-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="#777BB4"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.892 16.536l-2.008-6.049h1.776l1.173 4.148 1.189-4.148h1.76l-2.008 6.049h-1.882zm5.728 0h-1.632V7.464h1.632v9.072zm-9.392 0H4.812V7.464h3.048c1.376 0 2.256.784 2.256 2.016 0 1.088-.704 1.808-1.808 1.952 1.296.144 2.064.976 2.064 2.192 0 1.504-1.12 2.912-3.928 2.912zm-.304-5.392H5.984v2.096h.464c.784 0 1.232-.384 1.232-1.04 0-.672-.448-1.056-1.248-1.056zm.208-2.608H5.984v1.872h.464c.752 0 1.184-.352 1.184-.944 0-.608-.432-.928-1.184-.928z"/></svg></div>
                 <span>PHP</span>
+            </div>
+            <!-- Tailwind CSS -->
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" fill="#38BDF8"/>
+                    </svg>
+                </div>
+                <span>Tailwind CSS</span>
+            </div>
+        </div>
+        <!-- TOOLS & PLATFORMS -->
+        <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:0.8rem;padding-left:0.25rem;font-weight:600;">Tools &amp; Platforms</p>
+        <div class="tech-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom:1.8rem;">
+            <!-- PostgreSQL -->
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <path d="M17.128 0a1.343 1.343 0 0 0-.234.021c-.69.122-1.37.4-2.065.688-.398.164-.8.33-1.207.455a9.794 9.794 0 0 1-1.07.228 9.027 9.027 0 0 1-1.078.059c-.453 0-.899-.046-1.344-.102a11.898 11.898 0 0 1-1.432-.312c-.637-.196-1.254-.455-1.846-.69-.592-.234-1.165-.455-1.735-.509a2.344 2.344 0 0 0-.248-.012c-.367 0-.724.071-1.044.252-.32.18-.598.456-.803.837-.3.56-.452 1.3-.452 2.235 0 .93.154 2.03.418 3.19.312 1.38.774 2.823 1.396 4.055.187.372.388.726.602 1.055.214.329.44.635.682.904a2.37 2.37 0 0 0 .848.65 2.1 2.1 0 0 0 .9.199c.47 0 .95-.137 1.413-.427.459-.29.9-.733 1.33-1.33.14-.194.277-.405.413-.623.287.012.577.019.869.019.42 0 .843-.012 1.257-.038a4.1 4.1 0 0 0 1.37.573c.218.051.44.078.665.078.396 0 .796-.076 1.179-.24.383-.165.75-.413 1.09-.748.527-.514 1.019-1.242 1.44-2.14.26-.556.49-1.17.69-1.826.282.016.546.023.796.023.636 0 1.19-.063 1.655-.23.608-.218 1.013-.597 1.154-1.113.1-.367.08-.788-.05-1.223-.131-.435-.38-.88-.713-1.283-.334-.404-.748-.77-1.218-1.038a4.138 4.138 0 0 0-.636-.29 2.44 2.44 0 0 0-.03-.29c-.07-.49-.234-.9-.49-1.197a1.483 1.483 0 0 0-1.135-.507z" fill="#336791"/>
+                    </svg>
+                </div>
+                <span>PostgreSQL</span>
+            </div>
+            <!-- Drizzle ORM -->
+            <div class="tech-item">
+                <div class="tech-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#C5F74F"/>
+                        <path d="M8 12h16M8 16h12M8 20h8" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span>Drizzle ORM</span>
             </div>
             <!-- 9. Antigravity AI (Futuristic Core) -->
             <div class="tech-item">
@@ -2198,7 +2254,148 @@
                 </div>
             </div>
 
-            <!-- ===== SET 2 (SEAMLESS INFINITE LOOP DUPLICATE) ===== -->
+            <!-- Project: Untold -->
+            <div class="project-card" data-category="web fullstack" data-project="untold">
+                <div class="project-top-badge" style="background:rgba(99,102,241,0.15);border-color:rgba(99,102,241,0.4);color:#a5b4fc;">
+                    🌐 Web App · Next.js
+                </div>
+                <div class="project-thumb">
+                    <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.45) 0%, rgba(139, 92, 246, 0.25) 50%, transparent 75%);"></div>
+                    <div class="project-preview-chip">
+                        <div class="preview-top-row">
+                            <span class="preview-badge" style="background: rgba(99,102,241,0.16); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.35);">Next.js · TypeScript</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #22c55e; box-shadow: 0 0 8px #22c55e;"></span> Live on Vercel</span>
+                        </div>
+                        <div class="preview-center-metric">
+                            <div class="preview-metric-value">📌 Untold</div>
+                            <div class="preview-metric-label">Anonymous Digital Corkboard</div>
+                        </div>
+                        <div class="preview-foot-row">
+                            <span>Zero Login</span>
+                            <span>PostgreSQL Persistence</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Full-Stack Web · Next.js</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Untold — Anonymous Corkboard</div>
+                    <div class="project-desc">Post short thoughts, confessions, and wins as colorful sticky notes — no login, no tracking, 100% anonymous.</div>
+                    <div class="project-tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Drizzle ORM</span>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="project-action-btn btn-quickview" onclick="openProjectModal('untold', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://untold-gilt.vercel.app" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()">
+                            <span>Live Demo</span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <a href="https://github.com/Knecrow/Untold" target="_blank" class="project-action-btn btn-link" onclick="event.stopPropagation()">
+                            <span>Repo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Battleframe -->
+            <div class="project-card" data-category="game web" data-project="battleframe">
+                <div class="project-top-badge" style="background:rgba(234,179,8,0.12);border-color:rgba(234,179,8,0.4);color:#fbbf24;">
+                    🎮 Canvas Game · Vanilla JS
+                </div>
+                <div class="project-thumb">
+                    <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(234,179,8,0.35) 0%, rgba(161,110,0,0.2) 50%, transparent 75%);"></div>
+                    <div class="project-preview-chip">
+                        <div class="preview-top-row">
+                            <span class="preview-badge" style="background: rgba(234,179,8,0.14); color: #fbbf24; border: 1px solid rgba(234,179,8,0.35);">HTML5 Canvas · JS</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #fbbf24; box-shadow: 0 0 8px #fbbf24;"></span> Nothing OS</span>
+                        </div>
+                        <div class="preview-center-metric">
+                            <div class="preview-metric-value">⬛ Battleframe</div>
+                            <div class="preview-metric-label">Sci-Fi Fortress Defender</div>
+                        </div>
+                        <div class="preview-foot-row">
+                            <span>60fps Game Loop</span>
+                            <span>Zero Dependencies</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">HTML5 Game · Canvas</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Battleframe — Nothing OS Shooter</div>
+                    <div class="project-desc">Tactical top-down sci-fi fortress shooter with Nothing OS industrial aesthetic. Defend the Glyph Perimeter against alien waves.</div>
+                    <div class="project-tags">
+                        <span class="tag">HTML5 Canvas</span>
+                        <span class="tag">Vanilla JS</span>
+                        <span class="tag">Nothing OS Design</span>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="project-action-btn btn-quickview" onclick="openProjectModal('battleframe', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Battleframe" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Orvo (In Progress) -->
+            <div class="project-card" data-category="flutter" data-project="orvo" style="opacity:0.75;">
+                <div class="project-top-badge" style="background:rgba(234,179,8,0.14);border-color:rgba(234,179,8,0.4);color:#fbbf24;">
+                    🚧 In Progress
+                </div>
+                <div class="project-thumb">
+                    <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(248,113,113,0.3) 0%, rgba(239,68,68,0.15) 50%, transparent 75%);"></div>
+                    <div class="project-preview-chip">
+                        <div class="preview-top-row">
+                            <span class="preview-badge" style="background: rgba(248,113,113,0.14); color: #fca5a5; border: 1px solid rgba(248,113,113,0.3);">Flutter · Mobile</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #fbbf24; box-shadow: 0 0 8px #fbbf24;"></span> Early Dev</span>
+                        </div>
+                        <div class="preview-center-metric">
+                            <div class="preview-metric-value">🔧 Orvo</div>
+                            <div class="preview-metric-label">New Flutter App — Coming Soon</div>
+                        </div>
+                        <div class="preview-foot-row">
+                            <span>Dart · Flutter</span>
+                            <span>Stay Tuned</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Mobile App · Flutter</span>
+                        <span class="project-year">2026 · WIP</span>
+                    </div>
+                    <div class="project-title">Orvo — Flutter App</div>
+                    <div class="project-desc">A new Flutter mobile application currently in early development. Details coming soon — watch this space.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Dart</span>
+                        <span class="tag">In Progress</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/Knecrow/Orvo" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- ===== SET 2 (SEAMLESS INFINITE LOOP DUPLICATE) ===== -->
             <!-- Duplicate Project 1: Origo -->
             <div class="project-card" data-category="flutter productivity" data-project="origo" aria-hidden="true">
                 <div class="project-top-badge">
@@ -2469,6 +2666,99 @@
                             <span>Repository</span>
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                         </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate: Untold -->
+            <div class="project-card" data-category="web fullstack" data-project="untold" aria-hidden="true">
+                <div class="project-top-badge" style="background:rgba(99,102,241,0.15);border-color:rgba(99,102,241,0.4);color:#a5b4fc;">🌐 Web App · Next.js</div>
+                <div class="project-thumb">
+                    <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.45) 0%, rgba(139, 92, 246, 0.25) 50%, transparent 75%);"></div>
+                    <div class="project-preview-chip">
+                        <div class="preview-top-row">
+                            <span class="preview-badge" style="background: rgba(99,102,241,0.16); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.35);">Next.js · TypeScript</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #22c55e; box-shadow: 0 0 8px #22c55e;"></span> Live on Vercel</span>
+                        </div>
+                        <div class="preview-center-metric">
+                            <div class="preview-metric-value">📌 Untold</div>
+                            <div class="preview-metric-label">Anonymous Digital Corkboard</div>
+                        </div>
+                        <div class="preview-foot-row"><span>Zero Login</span><span>PostgreSQL Persistence</span></div>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta"><span class="project-category">Full-Stack Web · Next.js</span><span class="project-year">2026</span></div>
+                    <div class="project-title">Untold — Anonymous Corkboard</div>
+                    <div class="project-desc">Post short thoughts, confessions, and wins as colorful sticky notes — no login, no tracking, 100% anonymous.</div>
+                    <div class="project-tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">Drizzle ORM</span></div>
+                    <div class="project-actions">
+                        <button type="button" class="project-action-btn btn-quickview" onclick="openProjectModal('untold', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://untold-gilt.vercel.app" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()"><span>Live Demo</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                        <a href="https://github.com/Knecrow/Untold" target="_blank" class="project-action-btn btn-link" onclick="event.stopPropagation()"><span>Repo</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate: Battleframe -->
+            <div class="project-card" data-category="game web" data-project="battleframe" aria-hidden="true">
+                <div class="project-top-badge" style="background:rgba(234,179,8,0.12);border-color:rgba(234,179,8,0.4);color:#fbbf24;">🎮 Canvas Game · Vanilla JS</div>
+                <div class="project-thumb">
+                    <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(234,179,8,0.35) 0%, rgba(161,110,0,0.2) 50%, transparent 75%);"></div>
+                    <div class="project-preview-chip">
+                        <div class="preview-top-row">
+                            <span class="preview-badge" style="background: rgba(234,179,8,0.14); color: #fbbf24; border: 1px solid rgba(234,179,8,0.35);">HTML5 Canvas · JS</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #fbbf24; box-shadow: 0 0 8px #fbbf24;"></span> Nothing OS</span>
+                        </div>
+                        <div class="preview-center-metric">
+                            <div class="preview-metric-value">⬛ Battleframe</div>
+                            <div class="preview-metric-label">Sci-Fi Fortress Defender</div>
+                        </div>
+                        <div class="preview-foot-row"><span>60fps Game Loop</span><span>Zero Dependencies</span></div>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta"><span class="project-category">HTML5 Game · Canvas</span><span class="project-year">2026</span></div>
+                    <div class="project-title">Battleframe — Nothing OS Shooter</div>
+                    <div class="project-desc">Tactical top-down sci-fi fortress shooter with Nothing OS industrial aesthetic. Defend the Glyph Perimeter against alien waves.</div>
+                    <div class="project-tags"><span class="tag">HTML5 Canvas</span><span class="tag">Vanilla JS</span><span class="tag">Nothing OS Design</span></div>
+                    <div class="project-actions">
+                        <button type="button" class="project-action-btn btn-quickview" onclick="openProjectModal('battleframe', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Battleframe" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()"><span>Repository</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate: Orvo (In Progress) -->
+            <div class="project-card" data-category="flutter" data-project="orvo" aria-hidden="true" style="opacity:0.75;">
+                <div class="project-top-badge" style="background:rgba(234,179,8,0.14);border-color:rgba(234,179,8,0.4);color:#fbbf24;">🚧 In Progress</div>
+                <div class="project-thumb">
+                    <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(248,113,113,0.3) 0%, rgba(239,68,68,0.15) 50%, transparent 75%);"></div>
+                    <div class="project-preview-chip">
+                        <div class="preview-top-row">
+                            <span class="preview-badge" style="background: rgba(248,113,113,0.14); color: #fca5a5; border: 1px solid rgba(248,113,113,0.3);">Flutter · Mobile</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #fbbf24; box-shadow: 0 0 8px #fbbf24;"></span> Early Dev</span>
+                        </div>
+                        <div class="preview-center-metric">
+                            <div class="preview-metric-value">🔧 Orvo</div>
+                            <div class="preview-metric-label">New Flutter App — Coming Soon</div>
+                        </div>
+                        <div class="preview-foot-row"><span>Dart · Flutter</span><span>Stay Tuned</span></div>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta"><span class="project-category">Mobile App · Flutter</span><span class="project-year">2026 · WIP</span></div>
+                    <div class="project-title">Orvo — Flutter App</div>
+                    <div class="project-desc">A new Flutter mobile application currently in early development. Details coming soon — watch this space.</div>
+                    <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">In Progress</span></div>
+                    <div class="project-actions">
+                        <a href="https://github.com/Knecrow/Orvo" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()"><span>Repository</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
                     </div>
                 </div>
             </div>
@@ -3279,6 +3569,59 @@
             tech: ["Flutter / Dart", "Web & Mobile", "Management Engine", "Offline Local Storage", "Export to CSV/PDF"],
             links: [
                 { label: "View Source on GitHub", url: "https://github.com/Knecrow/Tutracker", primary: true }
+            ]
+        },
+        untold: {
+            title: "Untold — Anonymous Digital Corkboard",
+            category: "Full-Stack Web App · Next.js & TypeScript",
+            year: "2026 · Live on Vercel",
+            role: "Creator & Full-Stack Developer",
+            desc: "Untold is an anonymous digital corkboard for posting short thoughts, micro-confessions, and small wins as colorful sticky notes without any account or login tracking. Built on Next.js with TypeScript, Drizzle ORM, and PostgreSQL for persistent, database-backed note storage.",
+            benchmarks: [
+                { icon: "🔒", val: "Zero Login", label: "100% Anonymous" },
+                { icon: "⚡", val: "Vercel Edge", label: "Global CDN Deploy" },
+                { icon: "🗃️", val: "PostgreSQL", label: "DB Persistence" }
+            ],
+            tradeoff: {
+                title: "Drizzle ORM + Serverless Postgres vs Traditional Backend",
+                text: "Chose Drizzle ORM with PostgreSQL over Firebase/Supabase for full control over schema migrations and type-safe queries. Deployed serverless on Vercel, eliminating cold-start latency while keeping infrastructure costs at zero."
+            },
+            highlights: [
+                { title: "Anonymous First Design", text: "No accounts, no tracking — anyone can post. Architecture intentionally excludes IP logging or fingerprinting." },
+                { title: "Soft Neubrutalism UI", text: "Pastel sticky-note cards with bold borders and playful shadows — a tactile digital corkboard feel." },
+                { title: "Full-Stack TypeScript", text: "End-to-end TypeScript from Next.js API routes to Drizzle ORM schema to React components — zero implicit any." },
+                { title: "Live Cloud Deployment", text: "Deployed to Vercel with automatic CI/CD from GitHub main branch on every push." }
+            ],
+            tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Drizzle ORM", "PostgreSQL", "Vercel"],
+            links: [
+                { label: "Launch Live Demo", url: "https://untold-gilt.vercel.app", primary: true },
+                { label: "View Source on GitHub", url: "https://github.com/Knecrow/Untold", primary: false }
+            ]
+        },
+        battleframe: {
+            title: "Battleframe — Nothing OS Fortress Shooter",
+            category: "HTML5 Canvas Game · Vanilla JavaScript",
+            year: "2026 · Personal Project",
+            role: "Creator & Game Developer",
+            desc: "A tactical top-down sci-fi fortress shooter inspired by Galaxy Defense, redesigned with the Nothing OS/Nothing Phone industrial aesthetic. Defend the Glyph Defensive Perimeter against escalating waves of alien swarms, sprint crashers, armored carapaces, and titan dreadnoughts.",
+            benchmarks: [
+                { icon: "🎮", val: "60fps Loop", label: "Canvas Game Engine" },
+                { icon: "⬛", val: "Nothing OS", label: "Industrial Design" },
+                { icon: "⚡", val: "Zero Deps", label: "Vanilla JS Only" }
+            ],
+            tradeoff: {
+                title: "Vanilla Canvas Game Engine vs External Game Frameworks",
+                text: "Built the entire game loop, enemy AI, collision detection, and wave progression engine from scratch using HTML5 Canvas and Vanilla JavaScript, avoiding heavyweight game frameworks like Phaser or Unity WebGL for instant load and zero dependency overhead."
+            },
+            highlights: [
+                { title: "Nothing OS Design Language", text: "Stark OLED pitch-black palette, ceramic-white accents, and glyph-inspired geometric UI faithful to Carl Pei's industrial design philosophy." },
+                { title: "Enemy Wave AI System", text: "Escalating alien waves with distinct behaviors: sprint crashers, armored carapaces, shield drones, and titan dreadnoughts with unique attack patterns." },
+                { title: "Pure Canvas Rendering", text: "Entire game rendered on HTML5 Canvas with a custom game loop, delta-time physics, and frame-capped 60fps animation." },
+                { title: "Zero-Dependency Architecture", text: "No game frameworks, no physics engines, no external libraries — only HTML, CSS, and Vanilla JavaScript." }
+            ],
+            tech: ["HTML5 Canvas", "Vanilla JavaScript", "CSS", "Game Loop Architecture", "Nothing OS Design"],
+            links: [
+                { label: "View Source on GitHub", url: "https://github.com/Knecrow/Battleframe", primary: true }
             ]
         }
     };
