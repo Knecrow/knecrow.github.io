@@ -2312,77 +2312,348 @@
             z-index: 5;
         }
 
+    
+        /* =========================================================================
+           NOTHING OS 3.0 TOP STATUS BAR & HARDWARE NAVIGATION
+        ========================================================================= */
+        nav#navbar.nothing-nav {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 2.5rem);
+            max-width: 1200px;
+            padding: 0.65rem 1.6rem;
+            background: rgba(255, 255, 255, 0.94) !important;
+            backdrop-filter: blur(28px) saturate(180%) !important;
+            border: 1.5px solid rgba(0, 0, 0, 0.14) !important;
+            border-radius: 9999px;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s var(--transition);
+        }
+        nav#navbar.nothing-nav.scrolled {
+            top: 10px;
+            background: #FFFFFF !important;
+            border-color: #0E0F12 !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        .nothing-os-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #0E0F12;
+            font-family: var(--font-ndot);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+        .brand-glyph {
+            color: var(--nothing-red);
+            font-size: 0.75rem;
+            animation: pulse-red 1.4s infinite ease-in-out;
+        }
+        .brand-spec {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            color: #787D8C;
+            letter-spacing: 1px;
+            margin-left: 2px;
+        }
+        .nothing-nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .nothing-nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: #484C56;
+            text-decoration: none;
+            letter-spacing: 0.8px;
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .nav-idx {
+            color: var(--nothing-red);
+            font-size: 0.62rem;
+        }
+        .nothing-nav-links a:hover {
+            color: #0E0F12;
+            background: #F4F5F7;
+        }
+        .nothing-nav-cta {
+            background: #0E0F12 !important;
+            color: #FFFFFF !important;
+            border-radius: 999px !important;
+            padding: 0.45rem 1.15rem !important;
+            font-family: var(--font-mono) !important;
+            font-size: 0.72rem !important;
+            letter-spacing: 0.8px !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+        }
+        .nothing-nav-cta .rec-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--nothing-red);
+            display: inline-block;
+        }
+        .nothing-nav-cta:hover {
+            background: var(--nothing-red) !important;
+            box-shadow: 0 0 20px var(--nothing-red-glow) !important;
+        }
+        .nothing-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .nothing-telemetry-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #787D8C;
+            background: #F7F8FA;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .tele-dot {
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: #22C55E;
+            box-shadow: 0 0 6px #22C55E;
+        }
+
+        /* =========================================================================
+           NOTHING OS 3.0 MOBILE SYSTEM DOCK
+        ========================================================================= */
+        .nothing-system-dock {
+            display: none;
+            position: fixed;
+            bottom: 1.2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 2.5rem);
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.94) !important;
+            backdrop-filter: blur(28px) !important;
+            border: 1.5px solid rgba(0, 0, 0, 0.16) !important;
+            border-radius: 9999px;
+            padding: 0.5rem 0.75rem;
+            z-index: 10000;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.1);
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nothing-dock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            color: #787D8C;
+            text-decoration: none;
+            padding: 0.35rem 0.55rem;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            font-size: 0.62rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            letter-spacing: 0.5px;
+        }
+        .dock-dot {
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: #A6ABB8;
+            transition: all 0.2s;
+        }
+        .nothing-dock-item:hover, .nothing-dock-item.active {
+            color: #0E0F12;
+        }
+        .nothing-dock-item.active .dock-dot {
+            background: var(--nothing-red);
+            box-shadow: 0 0 6px var(--nothing-red);
+            transform: scale(1.4);
+        }
+
+        @media (max-width: 768px) {
+            .nothing-system-dock { display: flex; }
+            .nothing-nav-links { display: none; }
+            .nothing-telemetry-badge { display: none; }
+        }
+
+    
+        /* =========================================================================
+           NOTHING OS 3.0 SECTION ARCHITECTURE & CASING
+        ========================================================================= */
+        section {
+            padding: 5rem 5%;
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Section Telemetry Headers */
+        .nothing-section-header {
+            margin-bottom: 2.8rem;
+            position: relative;
+        }
+        .nothing-section-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #787D8C;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding-bottom: 0.5rem;
+        }
+        .nothing-section-tag {
+            color: var(--nothing-red);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nothing-section-tag::before {
+            content: '●';
+            color: var(--nothing-red);
+            font-size: 0.75rem;
+        }
+        .nothing-section-title {
+            font-family: var(--font-ndot);
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-weight: 700;
+            color: #0E0F12;
+            line-height: 1.12;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .nothing-section-desc {
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            color: #484C56;
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        /* Hardware Module Borders & Grid */
+        .nothing-hardware-bento {
+            background: #FFFFFF !important;
+            border: 1.5px solid rgba(0, 0, 0, 0.14) !important;
+            border-radius: 28px;
+            padding: 2.2rem;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.04);
+            position: relative;
+            transition: all 0.3s var(--transition);
+        }
+        .nothing-hardware-bento:hover {
+            border-color: #0E0F12 !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.09);
+        }
+
+        /* Skill SMD IC Grid - Monochromatic Nothing App Icon styling */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
+            gap: 1.2rem !important;
+        }
+        .tech-item {
+            background: #FFFFFF !important;
+            border: 1.5px solid rgba(0, 0, 0, 0.14) !important;
+            border-radius: 22px !important;
+            padding: 1.6rem 0.8rem 1.2rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.75rem !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+            position: relative !important;
+            transition: all 0.25s var(--transition) !important;
+        }
+        .tech-item .tech-icon {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 50% !important;
+            background: #F4F5F7 !important;
+            border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            filter: grayscale(100%) contrast(120%) !important;
+            transition: all 0.25s ease !important;
+        }
+        .tech-item:hover {
+            transform: translateY(-5px) !important;
+            border-color: #0E0F12 !important;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12) !important;
+        }
+        .tech-item:hover .tech-icon {
+            filter: grayscale(0%) contrast(100%) !important;
+            background: #0E0F12 !important;
+            transform: scale(1.08) !important;
+        }
+        .tech-item span {
+            font-family: var(--font-mono) !important;
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+            color: #0E0F12 !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+        }
+
+        /* Project Cassettes */
+        .project-card {
+            background: #FFFFFF !important;
+            border: 1.5px solid rgba(0, 0, 0, 0.14) !important;
+            border-radius: 28px !important;
+            overflow: hidden !important;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.05) !important;
+        }
+        .project-thumb {
+            background: #F4F5F7 !important;
+            border-bottom: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+            position: relative !important;
+        }
+        .preview-badge {
+            background: #0E0F12 !important;
+            color: #FFFFFF !important;
+            border: none !important;
+            font-family: var(--font-mono) !important;
+            font-size: 0.65rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.8px !important;
+            padding: 0.25rem 0.6rem !important;
+            border-radius: 6px !important;
+            text-transform: uppercase !important;
+        }
+        .project-title {
+            font-family: var(--font-ndot) !important;
+            font-size: 1.25rem !important;
+            color: #0E0F12 !important;
+            letter-spacing: 0.5px !important;
+        }
+
     </style>
 </head>
 <body>
-
-<!-- ===================================
-     APPLE DYNAMIC ISLAND (iOS 18)
-==================================== -->
-<div class="dynamic-island-wrapper" id="islandWrapper">
-    <div class="dynamic-island" id="dynamicIsland" role="button" aria-expanded="false" tabindex="0">
-        <!-- Compact Pill State -->
-        <div class="island-compact" id="islandCompact">
-            <div class="island-compact-left">
-                <span class="nothing-rec-dot"></span>
-                <span class="island-title" style="font-family: var(--font-ndot); letter-spacing: 1px;">NAHIAN // SYS</span>
-            </div>
-            <div class="island-compact-right">
-                <span class="nothing-mono-chip">[01/09]</span>
-                <span class="nothing-mono-chip" style="color: var(--nothing-red);">[LIVE]</span>
-                <div class="nothing-glyph-mini" aria-hidden="true">
-                    <span></span><span></span><span></span>
-                </div>
-            </div>
-        </div>
-        <!-- Expanded Island Modal / Activity Card -->
-        <div class="island-expanded" id="islandExpanded">
-            <div class="island-expanded-header">
-                <div class="island-avatar-box">
-                    <img src="profile.jpg" alt="Nahian" class="island-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="island-avatar-fallback" style="display:none;">SN</div>
-                </div>
-                <div class="island-header-text">
-                    <div class="island-name">Syed Nahian Siam</div>
-                    <div class="island-role">CS Undergrad @ UIU · Flutter &amp; Web Builder</div>
-                </div>
-                <div class="island-pill-status">
-                    <span class="island-pulse"></span>
-                    <span>ONLINE</span>
-                </div>
-            </div>
-            <div class="island-stats-grid">
-                <div class="island-stat-card">
-                    <span class="island-stat-value">19+</span>
-                    <span class="island-stat-label">GitHub Repos</span>
-                </div>
-                <div class="island-stat-card">
-                    <span class="island-stat-value">Flutter</span>
-                    <span class="island-stat-label">Mobile Apps</span>
-                </div>
-                <div class="island-stat-card">
-                    <span class="island-stat-value">Next.js</span>
-                    <span class="island-stat-label">Full-Stack Web</span>
-                </div>
-            </div>
-            <div class="island-actions">
-                <a href="https://www.linkedin.com/in/syed-nahian-760234280/" target="_blank" class="island-action-btn island-primary">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://github.com/Knecrow" target="_blank" class="island-action-btn">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    <span>GitHub</span>
-                </a>
-                <a href="mailto:syednahian906@gmail.com" class="island-action-btn">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span>Email</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!-- Custom Cursor -->
 <div id="cursor-dot"></div>
@@ -2397,21 +2668,29 @@
 </button>
 
 <!-- ===== NAVIGATION ===== -->
-<nav id="navbar">
-    <a href="#hero" class="logo">Nahian<em>.</em></a>
-    <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Work</a></li>
-        <li><a href="#strengths">Strengths</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="https://www.linkedin.com/in/syed-nahian-760234280/" target="_blank" class="nav-cta" style="display:inline-flex;align-items:center;gap:0.4rem;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            LinkedIn
+<nav id="navbar" class="nothing-nav">
+    <div class="nothing-nav-left">
+        <a href="#hero" class="nothing-os-brand">
+            <span class="brand-glyph">●</span>
+            <span class="brand-text">NOTHING (R)</span>
+            <span class="brand-spec">[OS 3.0 // DEV]</span>
+        </a>
+    </div>
+    <ul class="nav-links nothing-nav-links">
+        <li><a href="#about"><span class="nav-idx">01</span> ABOUT</a></li>
+        <li><a href="#education"><span class="nav-idx">02</span> EDU</a></li>
+        <li><a href="#skills"><span class="nav-idx">03</span> STACK</a></li>
+        <li><a href="#projects"><span class="nav-idx">04</span> CASSETTES</a></li>
+        <li><a href="#contact"><span class="nav-idx">05</span> CONNECT</a></li>
+        <li><a href="https://www.linkedin.com/in/syed-nahian-760234280/" target="_blank" class="nav-cta nothing-nav-cta">
+            <span class="rec-dot"></span> LINKEDIN [↗]
         </a></li>
     </ul>
-    <div style="display:flex;align-items:center;gap:0.8rem;">
+    <div class="nothing-nav-right">
+        <div class="nothing-telemetry-badge">
+            <span class="tele-dot"></span>
+            <span class="tele-text">DHAKA // 24°C</span>
+        </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
             <span></span><span></span><span></span>
         </button>
@@ -4748,79 +5027,32 @@
     });
 
     
-    // ===== iOS 18 DYNAMIC ISLAND & TAB BAR CONTROLLER =====
-    (function initIOSFeatures() {
-        const islandWrapper = document.getElementById('islandWrapper');
-        const dynamicIsland = document.getElementById('dynamicIsland');
-        const iosTabBar = document.getElementById('iosTabBar');
+    // ===== NOTHING OS 3.0 DOCK ACTIVE STATE CONTROLLER =====
+    (function initNothingDock() {
+        const dock = document.getElementById('nothingDock');
+        if (!dock) return;
+        const items = dock.querySelectorAll('.nothing-dock-item');
+        const sections = ['hero', 'about', 'education', 'skills', 'projects', 'contact'];
 
-        if (dynamicIsland) {
-            // Toggle expanded on click or keypress
-            function toggleIsland(e) {
-                if (e.target.closest('a')) return; // let links work
-                const isExpanded = dynamicIsland.classList.toggle('expanded');
-                dynamicIsland.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-            }
-
-            dynamicIsland.addEventListener('click', toggleIsland);
-            dynamicIsland.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleIsland(e);
-                }
-            });
-
-            // Close island if clicked outside
-            document.addEventListener('click', (e) => {
-                if (!dynamicIsland.contains(e.target)) {
-                    dynamicIsland.classList.remove('expanded');
-                    dynamicIsland.setAttribute('aria-expanded', 'false');
-                }
-            });
-
-            // Auto-collapse island on scroll
-            let lastScrollY = window.scrollY;
-            window.addEventListener('scroll', () => {
-                if (Math.abs(window.scrollY - lastScrollY) > 40 && dynamicIsland.classList.contains('expanded')) {
-                    dynamicIsland.classList.remove('expanded');
-                    dynamicIsland.setAttribute('aria-expanded', 'false');
-                }
-                lastScrollY = window.scrollY;
-            }, { passive: true });
-        }
-
-        // iOS Bottom Tab Bar active indicator sync with scroll sections
-        if (iosTabBar) {
-            const tabItems = iosTabBar.querySelectorAll('.ios-tab-item');
-            const sections = ['hero', 'about', 'education', 'skills', 'projects', 'contact'];
-
-            function updateActiveTab() {
-                const scrollPos = window.scrollY + window.innerHeight * 0.35;
-                let currentSection = 'hero';
-
-                for (const id of sections) {
-                    const el = document.getElementById(id);
-                    if (el) {
-                        const top = el.offsetTop;
-                        const height = el.offsetHeight;
-                        if (scrollPos >= top && scrollPos < top + height) {
-                            currentSection = id;
-                        }
+        function updateDock() {
+            const scrollPos = window.scrollY + window.innerHeight * 0.35;
+            let current = 'hero';
+            for (const id of sections) {
+                const el = document.getElementById(id);
+                if (el) {
+                    const top = el.offsetTop;
+                    const h = el.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + h) {
+                        current = id;
                     }
                 }
-
-                tabItems.forEach(tab => {
-                    if (tab.dataset.section === currentSection) {
-                        tab.classList.add('active');
-                    } else {
-                        tab.classList.remove('active');
-                    }
-                });
             }
-
-            window.addEventListener('scroll', updateActiveTab, { passive: true });
-            updateActiveTab();
+            items.forEach(item => {
+                item.classList.toggle('active', item.dataset.section === current);
+            });
         }
+        window.addEventListener('scroll', updateDock, { passive: true });
+        updateDock();
     })();
 
     // ===== TEXT SCRAMBLE / GLITCH EFFECT =====
@@ -4996,34 +5228,33 @@
 
 
 <!-- ===================================
-     APPLE iOS FLOATING BOTTOM TAB BAR (MOBILE)
+     NOTHING OS 3.0 SYSTEM DOCK (MOBILE QUICK CONTROLS)
 ==================================== -->
-<nav class="ios-tab-bar" id="iosTabBar" aria-label="iOS Quick Navigation">
-    <a href="#hero" class="ios-tab-item active" data-section="hero">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-        <span>Home</span>
+<nav class="nothing-system-dock" id="nothingDock" aria-label="Nothing OS Quick Controls">
+    <a href="#hero" class="nothing-dock-item active" data-section="hero">
+        <span class="dock-dot"></span>
+        <span class="dock-label">01 // SYS</span>
     </a>
-    <a href="#about" class="ios-tab-item" data-section="about">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        <span>About</span>
+    <a href="#about" class="nothing-dock-item" data-section="about">
+        <span class="dock-dot"></span>
+        <span class="dock-label">02 // DEV</span>
     </a>
-    <a href="#education" class="ios-tab-item" data-section="education">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-        <span>Education</span>
+    <a href="#education" class="nothing-dock-item" data-section="education">
+        <span class="dock-dot"></span>
+        <span class="dock-label">03 // EDU</span>
     </a>
-    <a href="#skills" class="ios-tab-item" data-section="skills">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect></svg>
-        <span>Skills</span>
+    <a href="#skills" class="nothing-dock-item" data-section="skills">
+        <span class="dock-dot"></span>
+        <span class="dock-label">04 // STK</span>
     </a>
-    <a href="#projects" class="ios-tab-item" data-section="projects">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-        <span>Work</span>
+    <a href="#projects" class="nothing-dock-item" data-section="projects">
+        <span class="dock-dot"></span>
+        <span class="dock-label">05 // WORK</span>
     </a>
-    <a href="#contact" class="ios-tab-item" data-section="contact">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-        <span>Contact</span>
+    <a href="#contact" class="nothing-dock-item" data-section="contact">
+        <span class="dock-dot"></span>
+        <span class="dock-label">06 // MSG</span>
     </a>
 </nav>
-
 </body>
 </html>
