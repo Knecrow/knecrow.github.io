@@ -1393,6 +1393,925 @@
             .project-body { padding: 1.3rem 1.1rem; }
             .service-card { padding: 2rem 1.4rem; }
         }
+    
+        /* =========================================================================
+           AUTHENTIC NOTHING OS 3.0 BENTO WIDGETS & HARDWARE CASING
+        ========================================================================= */
+        .nothing-hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            padding: 0 1rem;
+        }
+
+        /* Top System Status Bar */
+        .nothing-sys-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 1.4rem;
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 999px;
+            margin-bottom: 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .nothing-sys-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: 1px;
+            color: #0E0F12;
+            text-transform: uppercase;
+        }
+        .nothing-sys-metrics {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            color: #787D8C;
+            letter-spacing: 0.5px;
+        }
+        .nothing-red-text {
+            color: var(--nothing-red) !important;
+            font-weight: 700;
+        }
+
+        /* The Bento Widget Grid (Home Screen) */
+        .nothing-widget-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.25rem;
+            width: 100%;
+        }
+
+        /* Base Nothing Widget Casing */
+        .nothing-widget {
+            background: #FFFFFF !important;
+            border: 1px solid rgba(0, 0, 0, 0.12) !important;
+            border-radius: 28px;
+            position: relative;
+            padding: 1.8rem;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
+            transition: all 0.35s var(--transition);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .nothing-widget:hover {
+            border-color: #0E0F12 !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.09);
+            transform: translateY(-3px);
+        }
+
+        /* Hardware Screws at widget corners */
+        .widget-corner-screw {
+            position: absolute;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, 0.22);
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .widget-corner-screw.top-left { top: 10px; left: 12px; }
+        .widget-corner-screw.top-right { top: 10px; right: 12px; }
+        .widget-corner-screw.bottom-left { bottom: 10px; left: 12px; }
+        .widget-corner-screw.bottom-right { bottom: 10px; right: 12px; }
+
+        .widget-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-family: var(--font-mono);
+        }
+        .widget-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--nothing-red);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .widget-barcode {
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            color: #787D8C;
+            font-family: var(--font-mono);
+        }
+
+        /* Widget 1: Main Identity Card (Spans 7 cols) */
+        .widget-identity {
+            grid-column: span 7;
+            justify-content: space-between;
+            min-height: 380px;
+        }
+        .nothing-hero-title {
+            margin: 0.8rem 0 1.2rem;
+        }
+        .ndot-sub {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #787D8C;
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+        }
+        .ndot-main {
+            display: block;
+            font-family: var(--font-ndot);
+            font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+            font-weight: 700;
+            color: #0E0F12;
+            line-height: 1.08;
+            letter-spacing: -0.5px;
+        }
+        .ndot-type {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #484C56;
+            margin-top: 0.4rem;
+        }
+        .nothing-hero-bio {
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+            color: #484C56;
+            line-height: 1.7;
+            max-width: 580px;
+            margin-bottom: 2rem;
+        }
+        .nothing-hero-bio strong { color: #0E0F12; }
+        .nothing-hero-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .nothing-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.6rem;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            text-decoration: none;
+            transition: all 0.25s var(--transition);
+        }
+        .nothing-btn-primary {
+            background: #0E0F12;
+            color: #FFFFFF;
+            border: 1px solid #0E0F12;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+        .nothing-btn-primary:hover {
+            background: var(--nothing-red);
+            border-color: var(--nothing-red);
+            color: #FFFFFF;
+            box-shadow: 0 0 25px var(--nothing-red-glow);
+            transform: translateY(-2px);
+        }
+        .nothing-btn-outline {
+            background: #F7F8FA;
+            color: #0E0F12;
+            border: 1px solid rgba(0, 0, 0, 0.14);
+        }
+        .nothing-btn-outline:hover {
+            background: #0E0F12;
+            color: #FFFFFF;
+            border-color: #0E0F12;
+            transform: translateY(-2px);
+        }
+
+        /* Widget 2: Camera Module Profile Housing (Spans 5 cols) */
+        .widget-camera {
+            grid-column: span 5;
+            background: #F7F8FA !important;
+            border: 1px dashed rgba(0, 0, 0, 0.2) !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 1.6rem;
+        }
+        .camera-lens-housing {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            width: 100%;
+        }
+        .lens-outer-ring {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 2px solid #0E0F12;
+            padding: 10px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        .lens-outer-ring::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 1px dashed rgba(0, 0, 0, 0.25);
+            pointer-events: none;
+        }
+        .lens-glass {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            background: #0E0F12;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+        }
+        .lens-profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(108%);
+        }
+        .lens-glare {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, transparent 50%);
+            pointer-events: none;
+            border-radius: 50%;
+        }
+        .camera-sensor-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            font-family: var(--font-mono);
+            text-align: center;
+        }
+        .sensor-spec {
+            font-size: 0.65rem;
+            color: var(--nothing-red);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .sensor-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #0E0F12;
+            letter-spacing: 0.5px;
+        }
+        .camera-hardware-specs {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+        }
+        .spec-line { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .spec-k { color: #787D8C; font-weight: 700; font-size: 0.62rem; }
+        .spec-v { color: #0E0F12; font-weight: 700; }
+
+        /* Widget 3: Nothing OS Clock Widget (Spans 4 cols) */
+        .widget-clock {
+            grid-column: span 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 250px;
+        }
+        .nothing-clock-circle {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            border: 2px solid #0E0F12;
+            background: #F7F8FA;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        .clock-dial-dots span {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: #0E0F12;
+            border-radius: 50%;
+        }
+        .clock-dial-dots span:nth-child(1) { top: 8px; left: 50%; transform: translateX(-50%); }
+        .clock-dial-dots span:nth-child(2) { right: 8px; top: 50%; transform: translateY(-50%); }
+        .clock-dial-dots span:nth-child(3) { bottom: 8px; left: 50%; transform: translateX(-50%); }
+        .clock-dial-dots span:nth-child(4) { left: 8px; top: 50%; transform: translateY(-50%); }
+
+        .clock-second-orbit {
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.25s linear;
+        }
+        .clock-second-dot {
+            width: 8px; height: 8px;
+            background: var(--nothing-red);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--nothing-red);
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .clock-time-display {
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+        }
+        .clock-digits {
+            font-family: var(--font-ndot);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0E0F12;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+        .clock-seconds {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--nothing-red);
+            font-weight: 700;
+        }
+        .clock-date-display {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #484C56;
+            margin-top: 4px;
+            letter-spacing: 0.8px;
+        }
+        .clock-city {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            color: #787D8C;
+            letter-spacing: 1px;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Widget 4: Voice Memo / Tape Reel Widget (Spans 4 cols) */
+        .widget-recorder {
+            grid-column: span 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+        }
+        .recorder-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+        }
+        .recorder-title { color: #0E0F12; letter-spacing: 0.8px; }
+        .recorder-timer { color: var(--nothing-red); letter-spacing: 1px; }
+
+        /* The Cassette Spool Assembly */
+        .cassette-spool-assembly {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #F4F5F7;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 1rem 1.4rem;
+            margin: 0.6rem 0;
+            position: relative;
+        }
+        .cassette-wheel {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 2px solid #0E0F12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .spinning-reel {
+            animation: spin-reel 4s infinite linear;
+        }
+        @keyframes spin-reel {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .wheel-cog {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0E0F12;
+        }
+        .wheel-spokes {
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            border: 1px dashed rgba(0, 0, 0, 0.4);
+        }
+        .cassette-window {
+            flex: 1;
+            height: 24px;
+            background: rgba(0, 0, 0, 0.05);
+            margin: 0 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .magnetic-tape-band {
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background: #0E0F12;
+            opacity: 0.3;
+        }
+        .tape-meter-ticks {
+            display: flex;
+            gap: 6px;
+            z-index: 1;
+        }
+        .tape-meter-ticks span {
+            width: 1px; height: 10px; background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Audio VU Bars */
+        .audio-vu-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 32px;
+            justify-content: center;
+            margin: 0.3rem 0;
+        }
+        .vu-bar {
+            width: 4px;
+            background: #0E0F12;
+            border-radius: 2px;
+            height: 10px;
+            animation: vu-dance 1.4s infinite ease-in-out alternate;
+        }
+        .vu-bar:nth-child(even) { background: var(--nothing-red); }
+        .vu-bar.v1 { animation-delay: 0.1s; height: 8px; }
+        .vu-bar.v2 { animation-delay: 0.3s; height: 16px; }
+        .vu-bar.v3 { animation-delay: 0.05s; height: 24px; }
+        .vu-bar.v4 { animation-delay: 0.4s; height: 12px; }
+        .vu-bar.v5 { animation-delay: 0.2s; height: 28px; }
+        .vu-bar.v6 { animation-delay: 0.5s; height: 14px; }
+        .vu-bar.v7 { animation-delay: 0.15s; height: 22px; }
+        .vu-bar.v8 { animation-delay: 0.35s; height: 30px; }
+        .vu-bar.v9 { animation-delay: 0.25s; height: 18px; }
+        .vu-bar.v10 { animation-delay: 0.45s; height: 10px; }
+        .vu-bar.v11 { animation-delay: 0.1s; height: 26px; }
+        .vu-bar.v12 { animation-delay: 0.3s; height: 15px; }
+        .vu-bar.v13 { animation-delay: 0.05s; height: 20px; }
+        .vu-bar.v14 { animation-delay: 0.4s; height: 12px; }
+        .vu-bar.v15 { animation-delay: 0.2s; height: 8px; }
+
+        @keyframes vu-dance {
+            0% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+            100% { transform: scaleY(0.5); }
+        }
+
+        .recorder-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: #787D8C;
+            font-weight: 700;
+        }
+
+        /* Widget 5: Quick Settings Connectivity Dials (Spans 4 cols) */
+        .widget-quick-toggles {
+            grid-column: span 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+        }
+        .quick-toggles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+            margin: 0.6rem 0;
+        }
+        .nothing-dial {
+            background: #F7F8FA;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 20px;
+            padding: 0.9rem 0.6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.25s var(--transition);
+            position: relative;
+        }
+        .nothing-dial:hover {
+            border-color: #0E0F12;
+            transform: scale(1.03);
+        }
+        .nothing-dial.active {
+            background: #0E0F12;
+            color: #FFFFFF;
+            border-color: #0E0F12;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+        }
+        .dial-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+        .dial-icon { font-size: 1.1rem; line-height: 1; }
+        .dial-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .dial-led {
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: #A6ABB8;
+            margin-top: 2px;
+        }
+        .nothing-dial.active .dial-led {
+            background: var(--nothing-red);
+            box-shadow: 0 0 6px var(--nothing-red);
+        }
+        .dial-status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: #787D8C;
+            font-weight: 700;
+        }
+
+        /* Widget 6: Environmental & Activity Metrics (Spans 6 cols) */
+        .widget-metrics {
+            grid-column: span 6;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 210px;
+        }
+        .metrics-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding-bottom: 1rem;
+        }
+        .weather-mini {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .weather-glyph {
+            font-size: 1.8rem;
+            color: #0E0F12;
+            line-height: 1;
+        }
+        .weather-temp {
+            font-family: var(--font-ndot);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0E0F12;
+            line-height: 1;
+        }
+        .weather-loc {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: #787D8C;
+            letter-spacing: 0.5px;
+            margin-top: 3px;
+        }
+        .aqi-pill {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--nothing-red);
+            background: rgba(224, 30, 38, 0.08);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(224, 30, 38, 0.25);
+            letter-spacing: 0.5px;
+        }
+        .metrics-ring-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding-top: 0.6rem;
+        }
+        .metric-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 3px;
+        }
+        .metric-ndot {
+            font-family: var(--font-ndot);
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #0E0F12;
+            line-height: 1;
+        }
+        .metric-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #787D8C;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+        .metric-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Widget 7: Interactive Glyph Interface Backplate (Spans 6 cols) */
+        .widget-glyph-strip {
+            grid-column: span 6;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 210px;
+        }
+        .glyph-strip-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .glyph-trigger-btn {
+            background: #0E0F12;
+            color: #FFFFFF;
+            border: none;
+            padding: 0.35rem 0.95rem;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .glyph-trigger-btn:hover {
+            background: var(--nothing-red);
+            box-shadow: 0 0 15px var(--nothing-red-glow);
+            transform: scale(1.05);
+        }
+        .glyph-lights-schematic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            padding: 1.2rem 0;
+            position: relative;
+        }
+        .glyph-track {
+            background: rgba(0, 0, 0, 0.1);
+            transition: all 0.25s ease;
+        }
+        .glyph-track.lit {
+            background: #0E0F12 !important;
+            box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
+            transform: scale(1.08);
+        }
+        .glyph-c-ring {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            border: 4px solid rgba(0, 0, 0, 0.12);
+            border-right-color: transparent;
+            background: transparent !important;
+        }
+        .glyph-c-ring.lit {
+            border-color: #0E0F12 !important;
+            border-right-color: transparent !important;
+            box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+        }
+        .glyph-diagonal {
+            width: 4px; height: 38px;
+            border-radius: 2px;
+            transform: rotate(45deg);
+        }
+        .glyph-center-slash {
+            width: 5px; height: 48px;
+            border-radius: 2px;
+        }
+        .glyph-exclamation-bar {
+            width: 5px; height: 32px;
+            border-radius: 2px;
+        }
+        .glyph-exclamation-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+        }
+        .glyph-rec-indicator {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--nothing-red);
+            box-shadow: 0 0 10px var(--nothing-red);
+            animation: pulse-red 1.2s infinite ease-in-out;
+        }
+        .glyph-footer-text {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: #787D8C;
+            font-weight: 700;
+        }
+
+        /* =========================================================================
+           SKILLS: AUTHENTIC SMD PCB HARDWARE CHIPS (NOTHING OS ICON PACK)
+        ========================================================================= */
+        .tech-item {
+            background: #FFFFFF !important;
+            border: 1.5px solid rgba(0, 0, 0, 0.14) !important;
+            border-radius: 20px;
+            padding: 1.5rem 0.9rem 1.1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s var(--transition);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+        /* Top & Bottom Solder Pins (SMD Hardware Chip) */
+        .tech-item::before {
+            content: ':::';
+            position: absolute;
+            top: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            color: #0E0F12;
+            opacity: 0.4;
+        }
+        .tech-item::after {
+            content: ':::';
+            position: absolute;
+            bottom: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            color: #0E0F12;
+            opacity: 0.4;
+        }
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: #0E0F12 !important;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 0 0 1px #0E0F12;
+        }
+        .tech-item:hover::before, .tech-item:hover::after {
+            opacity: 1;
+            color: var(--nothing-red);
+        }
+        .tech-item .tech-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #F7F8FA;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease;
+        }
+        .tech-item:hover .tech-icon {
+            transform: scale(1.1);
+            background: #0E0F12;
+        }
+        .tech-item:hover .tech-icon svg path, .tech-item:hover .tech-icon svg rect {
+            /* inverted contrast on hover */
+        }
+        .tech-item span {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #0E0F12;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .chip-pin-one {
+            position: absolute;
+            top: 8px; left: 10px;
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: var(--nothing-red);
+        }
+
+        /* =========================================================================
+           PROJECT CASSETTE TAPES (TRANSLUCENT HARDWARE)
+        ========================================================================= */
+        .project-card {
+            background: #FFFFFF !important;
+            border: 1.5px solid rgba(0, 0, 0, 0.14) !important;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+        .project-card:hover {
+            border-color: #0E0F12 !important;
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.14) !important;
+        }
+        .project-card:hover .spinning-reel {
+            animation-duration: 1.5s; /* speed up tape reels on card hover */
+        }
+
+        /* Responsive Hero Grid */
+        @media (max-width: 1024px) {
+            .widget-identity { grid-column: span 12; }
+            .widget-camera { grid-column: span 12; }
+            .widget-clock { grid-column: span 6; }
+            .widget-recorder { grid-column: span 6; }
+            .widget-quick-toggles { grid-column: span 12; }
+            .widget-metrics { grid-column: span 12; }
+            .widget-glyph-strip { grid-column: span 12; }
+        }
+        @media (max-width: 640px) {
+            .widget-clock { grid-column: span 12; }
+            .widget-recorder { grid-column: span 12; }
+            .quick-toggles-grid { grid-template-columns: 1fr 1fr; }
+            .nothing-widget { padding: 1.4rem 1.2rem; }
+        }
+
+    
+        /* Mechanical Screws & Silkscreen on Bento Cards */
+        .education-card, .contact-form, .about-highlight, .service-card, .philosophy-card, .project-card {
+            position: relative;
+        }
+        .education-card::after, .about-highlight::after, .contact-form::after, .service-card::after, .philosophy-card::after {
+            content: '⊗';
+            position: absolute;
+            top: 10px; right: 14px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, 0.25);
+            pointer-events: none;
+        }
+        .project-card::after {
+            content: '⊗';
+            position: absolute;
+            top: 10px; right: 14px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, 0.25);
+            pointer-events: none;
+            z-index: 5;
+        }
+
     </style>
 </head>
 <body>
@@ -1515,65 +2434,251 @@
 ==================================== -->
 <section id="hero">
     <canvas id="particleCanvas"></canvas>
-    <!-- Aurora Background -->
-    <div class="aurora-bg">
-        <div class="aurora-blob aurora-1"></div>
-        <div class="aurora-blob aurora-2"></div>
-        <div class="aurora-blob aurora-3"></div>
-    </div>
+    
+    <div class="nothing-hero-container">
+        <!-- Top System Status Header -->
+        <div class="nothing-sys-status reveal">
+            <div class="nothing-sys-badge">
+                <span class="nothing-rec-dot"></span>
+                <span>NOTHING OS 3.0 // DEV_EDITION</span>
+            </div>
+            <div class="nothing-sys-metrics">
+                <span>RAM: 64KB VIRTUAL</span>
+                <span>SERIAL: #NS-906-BD</span>
+                <span class="nothing-red-text">[ONLINE]</span>
+            </div>
+        </div>
 
-    <div class="hero-left reveal from-left">
-        <div class="hero-tag" style="margin-bottom: 1.2rem;">
-            <span class="hero-tag-dot"></span>
-            <span style="font-size: 0.82rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;">CS Student • United International University</span>
-        </div>
-        <h1>
-            <span class="line" style="font-size: 0.42em; color: var(--text-muted); font-family: var(--font-mono); display:block; margin-bottom: 0.4em; letter-spacing: 2px; font-weight: 700; text-transform: uppercase;">I'M SYED NAHIAN SIAM,</span>
-            <span class="line" id="glitch-title" style="text-transform: uppercase; line-height: 1.05; display: block;">CS STUDENT &amp; BUILDER</span>
-            <span class="line typed-line">&amp; <span id="typed-text"></span></span>
-        </h1>
-        <p class="hero-desc">
-            Computer Science undergraduate at <strong>United International University (UIU)</strong> combining core CS foundations with modern AI-accelerated workflows to prototype, build, and ship real <strong>mobile and web applications</strong>.
-        </p>
-        <div class="hero-btns">
-            <a href="#projects" class="btn">
-                <span>View My Work</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/syed-nahian-760234280/" target="_blank" class="btn btn-outline" style="display:inline-flex; align-items:center; gap:0.5rem;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                <span>LinkedIn</span>
-            </a>
-            <a href="#contact" class="btn btn-outline">
-                <span>Get In Touch</span>
-            </a>
-        </div>
-        <div class="hero-stats">
-            <div class="stat-item">
-                <div class="stat-num"><span class="counter" data-target="19">0</span>+</div>
-                <div class="stat-label">GitHub Repos</div>
+        <!-- Main Hero Bento Grid (Nothing Phone Home Screen Widgets) -->
+        <div class="nothing-widget-grid">
+            <!-- Widget 1: Hero Identity Banner (7 columns) -->
+            <div class="nothing-widget widget-identity reveal from-left">
+                <div class="widget-corner-screw top-left">⊗</div>
+                <div class="widget-corner-screw top-right">⊗</div>
+                <div class="widget-corner-screw bottom-left">⊗</div>
+                <div class="widget-corner-screw bottom-right">⊗</div>
+                <div class="widget-header-row">
+                    <span class="widget-tag">[01 // IDENTITY]</span>
+                    <span class="widget-barcode">||| | || |||| | ||</span>
+                </div>
+                <div class="nothing-hero-title">
+                    <span class="ndot-sub">I'M SYED NAHIAN SIAM,</span>
+                    <span class="ndot-main" id="glitch-title">CS STUDENT &amp; BUILDER</span>
+                    <span class="ndot-type">&amp; <span id="typed-text"></span></span>
+                </div>
+                <p class="nothing-hero-bio">
+                    Computer Science undergraduate at <strong>United International University (UIU)</strong> combining computational science with modern AI-accelerated velocity to engineer resilient <strong>mobile apps (Flutter)</strong>, <strong>full-stack web platforms (Next.js &amp; PostgreSQL)</strong>, and real-time canvas games.
+                </p>
+                <div class="nothing-hero-actions">
+                    <a href="#projects" class="nothing-btn nothing-btn-primary">
+                        <span>[VIEW CASSETTES]</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/syed-nahian-760234280/" target="_blank" class="nothing-btn nothing-btn-outline">
+                        <span>[LINKEDIN ↗]</span>
+                    </a>
+                    <a href="#contact" class="nothing-btn nothing-btn-outline">
+                        <span>[GET IN TOUCH]</span>
+                    </a>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-num"><span class="counter" data-target="200">0</span>+</div>
-                <div class="stat-label">Code Commits</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-num"><span class="counter" data-target="6">0</span>+</div>
-                <div class="stat-label">Featured Projects</div>
-            </div>
-        </div>
-    </div>
 
-    <div class="hero-right reveal from-right">
-        <div class="profile-ring-outer">
-            <div class="profile-blob">
-                <img src="profile.jpg" alt="Syed Nahian Siam — CS Student &amp; Emerging Developer"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="img-fallback sn-avatar" style="display:none;">SN</div>
+            <!-- Widget 2: Transparent Camera Housing (Profile Photo with Nothing Hardware Details) -->
+            <div class="nothing-widget widget-camera reveal from-right">
+                <div class="widget-corner-screw top-left">⊗</div>
+                <div class="widget-corner-screw top-right">⊗</div>
+                <div class="widget-corner-screw bottom-left">⊗</div>
+                <div class="widget-corner-screw bottom-right">⊗</div>
+                <div class="camera-lens-housing">
+                    <div class="lens-outer-ring">
+                        <div class="lens-glass">
+                            <img src="profile.jpg" alt="Syed Nahian Siam" class="lens-profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="img-fallback sn-avatar" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; font-family:var(--font-ndot); font-size:2.5rem; color:#FFFFFF;">SN</div>
+                            <div class="lens-glare"></div>
+                        </div>
+                    </div>
+                    <div class="camera-sensor-label">
+                        <span class="sensor-spec">50MP 1/1.56" OIS SENSOR</span>
+                        <span class="sensor-title">SYED NAHIAN // CORE PROFILE</span>
+                    </div>
+                </div>
+                <div class="camera-hardware-specs">
+                    <div class="spec-line"><span class="spec-k">OPTICAL:</span> <span class="spec-v">24MM EQUIV</span></div>
+                    <div class="spec-line"><span class="spec-k">FOCUS:</span> <span class="spec-v">FULL-STACK &amp; APPS</span></div>
+                    <div class="spec-line"><span class="spec-k">STATUS:</span> <span class="spec-v nothing-red-text">● RECORDING</span></div>
+                </div>
             </div>
-            <div class="badge badge-1">UIU CS Student</div>
-            <div class="badge badge-2">Flutter &amp; Web</div>
-            <div class="badge badge-3">AI Vibecoder</div>
+
+            <!-- Widget 3: Nothing OS Circular Analog / Digital Clock Widget -->
+            <div class="nothing-widget widget-clock reveal from-scale">
+                <div class="widget-corner-screw top-left">⊗</div>
+                <div class="widget-corner-screw top-right">⊗</div>
+                <div class="widget-corner-screw bottom-left">⊗</div>
+                <div class="widget-corner-screw bottom-right">⊗</div>
+                <div class="nothing-clock-circle">
+                    <div class="clock-dial-dots">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="clock-second-orbit" id="nothingClockOrbit">
+                        <div class="clock-second-dot"></div>
+                    </div>
+                    <div class="clock-time-display">
+                        <span class="clock-digits" id="nothingLiveClock">03:09</span>
+                        <span class="clock-seconds" id="nothingLiveSeconds">42</span>
+                    </div>
+                    <div class="clock-date-display" id="nothingLiveDate">MON 16 NOV</div>
+                    <span class="clock-city">DHAKA [UTC+6]</span>
+                </div>
+            </div>
+
+            <!-- Widget 4: Nothing Voice Memo / Tape Reel Widget -->
+            <div class="nothing-widget widget-recorder reveal from-scale">
+                <div class="widget-corner-screw top-left">⊗</div>
+                <div class="widget-corner-screw top-right">⊗</div>
+                <div class="widget-corner-screw bottom-left">⊗</div>
+                <div class="widget-corner-screw bottom-right">⊗</div>
+                <div class="recorder-header">
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <span class="nothing-rec-dot"></span>
+                        <span class="recorder-title">RECORDER // AUDIO_LOG</span>
+                    </div>
+                    <span class="recorder-timer" id="recorderTimer">00:04:12</span>
+                </div>
+                <!-- Exposed Cassette Tape Wheels -->
+                <div class="cassette-spool-assembly">
+                    <div class="cassette-wheel spinning-reel">
+                        <div class="wheel-cog"></div>
+                        <div class="wheel-spokes"></div>
+                    </div>
+                    <div class="cassette-window">
+                        <div class="magnetic-tape-band"></div>
+                        <div class="tape-meter-ticks">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="cassette-wheel spinning-reel">
+                        <div class="wheel-cog"></div>
+                        <div class="wheel-spokes"></div>
+                    </div>
+                </div>
+                <!-- Audio VU Waveform Bars -->
+                <div class="audio-vu-bars">
+                    <span class="vu-bar v1"></span><span class="vu-bar v2"></span><span class="vu-bar v3"></span>
+                    <span class="vu-bar v4"></span><span class="vu-bar v5"></span><span class="vu-bar v6"></span>
+                    <span class="vu-bar v7"></span><span class="vu-bar v8"></span><span class="vu-bar v9"></span>
+                    <span class="vu-bar v10"></span><span class="vu-bar v11"></span><span class="vu-bar v12"></span>
+                    <span class="vu-bar v13"></span><span class="vu-bar v14"></span><span class="vu-bar v15"></span>
+                </div>
+                <div class="recorder-footer">
+                    <span>"BUILDING PRODUCTS THAT SCALE"</span>
+                    <span class="nothing-red-text">LIVE_MIC</span>
+                </div>
+            </div>
+
+            <!-- Widget 5: Nothing OS Quick Settings Connectivity Dials -->
+            <div class="nothing-widget widget-quick-toggles reveal from-scale">
+                <div class="widget-corner-screw top-left">⊗</div>
+                <div class="widget-corner-screw top-right">⊗</div>
+                <div class="widget-corner-screw bottom-left">⊗</div>
+                <div class="widget-corner-screw bottom-right">⊗</div>
+                <div class="widget-header-row">
+                    <span class="widget-tag">[05 // QUICK_TOGGLES]</span>
+                    <span class="widget-barcode">|||| || |</span>
+                </div>
+                <div class="quick-toggles-grid">
+                    <button class="nothing-dial active" data-dial="flutter" aria-label="Toggle Flutter">
+                        <div class="dial-inner">
+                            <span class="dial-icon">📱</span>
+                            <span class="dial-label">FLUTTER</span>
+                        </div>
+                        <span class="dial-led"></span>
+                    </button>
+                    <button class="nothing-dial active" data-dial="web" aria-label="Toggle Next.js">
+                        <div class="dial-inner">
+                            <span class="dial-icon">🌐</span>
+                            <span class="dial-label">NEXT.JS</span>
+                        </div>
+                        <span class="dial-led"></span>
+                    </button>
+                    <button class="nothing-dial" data-dial="sql" aria-label="Toggle SQL">
+                        <div class="dial-inner">
+                            <span class="dial-icon">⚡</span>
+                            <span class="dial-label">SQL/DB</span>
+                        </div>
+                        <span class="dial-led"></span>
+                    </button>
+                    <button class="nothing-dial" data-dial="canvas" aria-label="Toggle Canvas Game">
+                        <div class="dial-inner">
+                            <span class="dial-icon">🎮</span>
+                            <span class="dial-label">CANVAS</span>
+                        </div>
+                        <span class="dial-led"></span>
+                    </button>
+                </div>
+                <div class="dial-status-bar">
+                    <span>ACTIVE DOMAINS</span>
+                    <span class="nothing-red-text" id="activeDialCount">2 ACTIVE</span>
+                </div>
+            </div>
+
+            <!-- Widget 6: Nothing Activity Ring & Weather Capsule -->
+            <div class="nothing-widget widget-metrics reveal from-scale">
+                <div class="widget-corner-screw top-left">⊗</div>
+                <div class="widget-corner-screw top-right">⊗</div>
+                <div class="widget-corner-screw bottom-left">⊗</div>
+                <div class="widget-corner-screw bottom-right">⊗</div>
+                <div class="metrics-top-row">
+                    <div class="weather-mini">
+                        <span class="weather-glyph">☼</span>
+                        <div>
+                            <div class="weather-temp">24°C</div>
+                            <div class="weather-loc">DHAKA // SUNNY</div>
+                        </div>
+                    </div>
+                    <div class="aqi-pill">[AQI 42 // GOOD]</div>
+                </div>
+                <div class="metrics-ring-row">
+                    <div class="metric-block">
+                        <span class="metric-ndot counter" data-target="19">0</span>
+                        <span class="metric-label">REPOSITORIES</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-block">
+                        <span class="metric-ndot counter" data-target="200">0</span>
+                        <span class="metric-label">COMMITS</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-block">
+                        <span class="metric-ndot counter" data-target="6">0</span>
+                        <span class="metric-label">PROJECTS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Widget 7: Interactive Glyph Interface Backplate Strip -->
+            <div class="nothing-widget widget-glyph-strip reveal from-scale" id="glyphSimulator">
+                <div class="widget-corner-screw top-left">⊗</div>
+                <div class="widget-corner-screw top-right">⊗</div>
+                <div class="widget-corner-screw bottom-left">⊗</div>
+                <div class="widget-corner-screw bottom-right">⊗</div>
+                <div class="glyph-strip-header">
+                    <span class="widget-tag">[07 // GLYPH_INTERFACE]</span>
+                    <button class="glyph-trigger-btn" id="glyphTriggerBtn" type="button">FLASH GLYPH ⚡</button>
+                </div>
+                <!-- Glyph Lights Layout (Nothing Phone Pattern) -->
+                <div class="glyph-lights-schematic">
+                    <div class="glyph-track glyph-c-ring" id="glyphCRing"></div>
+                    <div class="glyph-track glyph-diagonal" id="glyphDiag"></div>
+                    <div class="glyph-track glyph-center-slash" id="glyphSlash"></div>
+                    <div class="glyph-track glyph-exclamation-bar" id="glyphExBar"></div>
+                    <div class="glyph-track glyph-exclamation-dot" id="glyphExDot"></div>
+                    <div class="glyph-rec-indicator"></div>
+                </div>
+                <div class="glyph-footer-text">
+                    <span>LIGHT MATRIX V3.0</span>
+                    <span id="glyphStatusText" class="nothing-red-text">READY // CLICK FLASH</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -3744,6 +4849,97 @@
     })();
 
 
+
+
+    // ===== NOTHING OS 3.0 LIVE CLOCK & RECORDER ENGINE =====
+    (function initNothingOSClock() {
+        const clockDigits = document.getElementById('nothingLiveClock');
+        const clockSeconds = document.getElementById('nothingLiveSeconds');
+        const clockOrbit = document.getElementById('nothingClockOrbit');
+        const clockDate = document.getElementById('nothingLiveDate');
+        const recorderTimer = document.getElementById('recorderTimer');
+
+        const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+        let recordSeconds = 252; // 00:04:12 start
+
+        function updateClock() {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+
+            if (clockDigits) clockDigits.textContent = `${h}:${m}`;
+            if (clockSeconds) clockSeconds.textContent = s;
+            if (clockOrbit) clockOrbit.style.transform = `rotate(${(now.getSeconds() / 60) * 360}deg)`;
+
+            if (clockDate) {
+                const dayName = days[now.getDay()];
+                const dateNum = String(now.getDate()).padStart(2, '0');
+                const monthName = months[now.getMonth()];
+                clockDate.textContent = `${dayName} ${dateNum} ${monthName}`;
+            }
+
+            // Recorder timer countup
+            recordSeconds++;
+            const recM = String(Math.floor(recordSeconds / 60)).padStart(2, '0');
+            const recS = String(recordSeconds % 60).padStart(2, '0');
+            if (recorderTimer) recorderTimer.textContent = `00:${recM}:${recS}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    })();
+
+    // ===== NOTHING OS QUICK SETTINGS DIALS INTERACTION =====
+    document.querySelectorAll('.nothing-dial').forEach(dial => {
+        dial.addEventListener('click', () => {
+            dial.classList.toggle('active');
+            const count = document.querySelectorAll('.nothing-dial.active').length;
+            const countEl = document.getElementById('activeDialCount');
+            if (countEl) countEl.textContent = `${count} ACTIVE`;
+        });
+    });
+
+    // ===== NOTHING PHONE GLYPH INTERFACE FLASH SIMULATOR =====
+    const glyphTriggerBtn = document.getElementById('glyphTriggerBtn');
+    if (glyphTriggerBtn) {
+        const glyphCRing = document.getElementById('glyphCRing');
+        const glyphDiag = document.getElementById('glyphDiag');
+        const glyphSlash = document.getElementById('glyphSlash');
+        const glyphExBar = document.getElementById('glyphExBar');
+        const glyphExDot = document.getElementById('glyphExDot');
+        const statusText = document.getElementById('glyphStatusText');
+
+        let isFlashing = false;
+
+        function flashGlyphSequence() {
+            if (isFlashing) return;
+            isFlashing = true;
+            if (statusText) statusText.textContent = "TRANSMITTING GLYPH...";
+
+            const tracks = [glyphCRing, glyphDiag, glyphSlash, glyphExBar, glyphExDot];
+            
+            // Sequence of rhythm flashes
+            const beats = [0, 120, 240, 360, 500, 650, 800, 1000];
+            beats.forEach((time, idx) => {
+                setTimeout(() => {
+                    tracks.forEach(t => t.classList.add('lit'));
+                }, time);
+                setTimeout(() => {
+                    tracks.forEach(t => t.classList.remove('lit'));
+                }, time + 70);
+            });
+
+            setTimeout(() => {
+                isFlashing = false;
+                if (statusText) statusText.textContent = "READY // CLICK FLASH";
+            }, 1200);
+        }
+
+        glyphTriggerBtn.addEventListener('click', flashGlyphSequence);
+    }
 
 </script>
 
