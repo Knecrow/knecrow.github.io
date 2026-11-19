@@ -9,6 +9,14 @@
     <meta property="og:title" content="Syed Nahian Siam — Student &amp; Vibecoder">
     <meta property="og:description" content="Portfolio of Syed Nahian Siam — a Student &amp; Vibecoder building cool things.">
     <meta property="og:url" content="https://knecrow.github.io/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23000'/><text x='50' y='64' font-size='44' font-weight='800' font-family='sans-serif' text-anchor='middle' fill='%23fff'>SN</text><circle cx='80' cy='25' r='8' fill='%2322c55e'/></svg>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Syed Nahian Siam — Portfolio">
+    <meta property="og:image" content="https://knecrow.github.io/profile.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Syed Nahian Siam — Student & Vibecoder">
+    <meta name="twitter:description" content="Portfolio of Syed Nahian Siam — CS Undergrad at UIU (CGPA 3.80), builder & vibecoder building with Flutter, Next.js, and modern AI tools. Open for internships.">
+    <meta name="twitter:image" content="https://knecrow.github.io/profile.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
@@ -32,6 +40,34 @@
             --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --nav-bg: rgba(0, 0, 0, 0.9);
             --footer-bg: #000000;
+        }
+
+        
+        /* ===== PROJECT CATEGORY FILTERS ===== */
+        .project-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .filter-pill {
+            padding: 0.42rem 1.05rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .filter-pill:hover, .filter-pill.active {
+            background: #FFFFFF;
+            color: #000000;
+            border-color: #FFFFFF;
+            transform: translateY(-1px);
         }
 
         /* ===== RESET & BASE ===== */
@@ -1601,7 +1637,7 @@
         </div>
         <div class="hero-stats">
             <div class="stat-item">
-                <div class="stat-num"><span class="counter" data-target="11">0</span>+</div>
+                <div class="stat-num"><span class="counter" data-target="19">0</span>+</div>
                 <div class="stat-label">GitHub Repos</div>
             </div>
             <div class="stat-item">
@@ -1649,7 +1685,7 @@
                 </div>
                 <div class="about-info-text">
                     <strong>Education</strong>
-                    <span>B.Sc. in Computer Science — UIU</span>
+                    <span>B.Sc. in CSE (4th Year) — UIU &bull; CGPA 3.80 / 4.00</span>
                 </div>
             </div>
             <div class="about-info-row">
@@ -1663,7 +1699,7 @@
             </div>
         </div>
         <div style="margin-top:2rem;">
-            <a href="cv.pdf" download class="btn" style="display:inline-flex;">
+            <a href="cv.pdf" download="Syed_Nahian_Siam_CV.pdf" class="btn" style="display:inline-flex;">
                 <span>Download CV</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             </a>
@@ -1809,11 +1845,18 @@
      PROJECTS SECTION
 ==================================== -->
 <section id="projects">
-    <div class="projects-header-wrapper">
+            <div class="projects-header-wrapper">
         <div class="projects-header">
             <div>
                 <div class="section-label reveal">Featured Work</div>
                 <h2 class="section-title reveal">Selected Creations</h2>
+            </div>
+            <!-- Category Filter Pills -->
+            <div class="project-filters reveal" id="projectFilters">
+                <button type="button" class="filter-pill active" data-filter="all">All</button>
+                <button type="button" class="filter-pill" data-filter="flutter">Flutter / Mobile</button>
+                <button type="button" class="filter-pill" data-filter="web">Web &amp; Next.js</button>
+                <button type="button" class="filter-pill" data-filter="ai">AI &amp; Tools</button>
             </div>
         </div>
     </div>
@@ -2089,6 +2132,94 @@
                             <span>Quick View</span>
                         </button>
                         <a href="https://github.com/Knecrow/Tutracker" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Project: Untold -->
+            <div class="project-card" data-category="web productivity" data-project="untold">
+                <div class="project-thumb">
+                    <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.45) 0%, rgba(139, 92, 246, 0.25) 50%, transparent 75%);"></div>
+                    <div class="project-preview-chip">
+                        <div class="preview-top-row">
+                            <span class="preview-badge" style="background: rgba(99, 102, 241, 0.16); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.35);">Next.js 15 · Web</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #6366f1; box-shadow: 0 0 8px #6366f1;"></span> PostgreSQL</span>
+                        </div>
+                        <div class="preview-center-metric">
+                            <div class="preview-metric-value">📌 Untold Wall</div>
+                            <div class="preview-metric-label">Anonymous Digital Corkboard &amp; Notes</div>
+                        </div>
+                        <div class="preview-foot-row">
+                            <span>Drizzle ORM</span>
+                            <span>Zero Auth Barrier</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Full-Stack Web · Next.js 15</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Untold — Anonymous Corkboard</div>
+                    <div class="project-desc">Anonymous note-posting corkboard platform with color-coded categories, Drizzle ORM, and PostgreSQL.</div>
+                    <div class="project-tags">
+                        <span class="tag">Next.js 15</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Drizzle ORM</span>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="project-action-btn btn-quickview" onclick="openProjectModal('untold', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Untold" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Battleframe -->
+            <div class="project-card" data-category="web game" data-project="battleframe">
+                <div class="project-thumb">
+                    <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.45) 0%, rgba(217, 119, 6, 0.25) 50%, transparent 75%);"></div>
+                    <div class="project-preview-chip">
+                        <div class="preview-top-row">
+                            <span class="preview-badge" style="background: rgba(245, 158, 11, 0.16); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.35);">HTML5 Canvas · Web</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #f59e0b; box-shadow: 0 0 8px #f59e0b;"></span> 60 FPS</span>
+                        </div>
+                        <div class="preview-center-metric">
+                            <div class="preview-metric-value">🛡️ Fortress Def</div>
+                            <div class="preview-metric-label">Kinetic Game Loop &amp; Vector Physics</div>
+                        </div>
+                        <div class="preview-foot-row">
+                            <span>Trigonometric Math</span>
+                            <span>Vanilla JS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Game Dev · Physics Canvas</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">Battleframe — Fortress Defender</div>
+                    <div class="project-desc">Kinetic fortress defense game running on an artisanal 60fps HTML5 Canvas particle & collision physics loop.</div>
+                    <div class="project-tags">
+                        <span class="tag">HTML5 Canvas</span>
+                        <span class="tag">Game Physics</span>
+                        <span class="tag">Vanilla JS</span>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="project-action-btn btn-quickview" onclick="openProjectModal('battleframe', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Battleframe" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()">
                             <span>Repository</span>
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                         </a>
@@ -3022,6 +3153,57 @@
 
     // ===== PROJECT DATA DICTIONARY =====
     const projectsData = {
+        untold: {
+            title: "Untold — Anonymous Digital Corkboard",
+            category: "Full-Stack Web App · Next.js 15 & PostgreSQL",
+            year: "2026 · Active Project",
+            role: "Full-Stack Builder & Learner",
+            desc: "Untold is an anonymous, zero-friction digital corkboard web app where users can pin thoughts, reflections, and messages with zero login barriers. Designed with vibrant color-coded cards and instant database persistence using PostgreSQL and Drizzle ORM.",
+            benchmarks: [
+                { icon: "⚡", val: "0-Auth Barrier", label: "Instant Access" },
+                { icon: "🐘", val: "PostgreSQL", label: "Drizzle ORM Core" },
+                { icon: "🚀", val: "Next.js 15", label: "Server Components" }
+            ],
+            tradeoff: {
+                title: "Zero-Friction Anonymous UX vs Traditional Auth",
+                text: "By removing registration requirements, Untold maximizes organic engagement while implementing rate limiting and content tagging to maintain a welcoming community wall."
+            },
+            highlights: [
+                { title: "Next.js 15 App Router", text: "Built with modern React Server Components, fast server-side hydration, and edge-ready API routes." },
+                { title: "Drizzle ORM & Postgres", text: "Type-safe database queries with zero runtime bloat and seamless relational migrations." },
+                { title: "Color-Coded Canvas", text: "Tactile sticky-note visual cards with expressive mood tags and smooth layout grid reflow." }
+            ],
+            tech: ["Next.js 15", "TypeScript", "PostgreSQL", "Drizzle ORM", "Tailwind CSS"],
+            links: [
+                { label: "View Source on GitHub", url: "https://github.com/Knecrow/Untold", primary: true }
+            ]
+        },
+        battleframe: {
+            title: "Battleframe — Fortress Defender Kinetic Game",
+            category: "Game Dev & Physics Math · HTML5 Canvas",
+            year: "2026 · Interactive Build",
+            role: "Frontend Creator & Canvas Explorer",
+            desc: "Battleframe is a high-speed browser-based fortress defense game running on a custom 60fps kinetic game loop. Features vector particle explosions, angular turret aim mechanics, and mathematical trajectory calculation entirely in vanilla JavaScript.",
+            benchmarks: [
+                { icon: "🎮", val: "60 FPS", label: "Kinetic Game Loop" },
+                { icon: "🎯", val: "Trigonometric", label: "Vector Physics Math" },
+                { icon: "📦", val: "Zero Libs", label: "Pure Canvas & JS" }
+            ],
+            tradeoff: {
+                title: "Custom Canvas Loop vs Heavy Game Engines",
+                text: "Chose pure HTML5 Canvas and native requestAnimationFrame over heavyweight game engines (Phaser/Pixi). This kept the bundle under 50KB with instantaneous mobile and desktop load times."
+            },
+            highlights: [
+                { title: "Fluid 60fps Kinetic Loop", text: "Sub-millisecond collision detection, projectile velocity vectors, and particle burst physics." },
+                { title: "Responsive Canvas Scale", text: "Dynamically adapts to viewport dimensions and DPI scale for pixel-crisp rendering on retina screens." },
+                { title: "Dynamic Wave Progression", text: "Increasingly complex enemy swarms with variable speed and armor statistics." }
+            ],
+            tech: ["HTML5 Canvas", "JavaScript", "Vector Math", "Kinetic Physics", "Web Audio"],
+            links: [
+                { label: "View Source on GitHub", url: "https://github.com/Knecrow/Battleframe", primary: true }
+            ]
+        },
+
         origo: {
             title: "Origo — Luxury Vision Portfolio",
             category: "Luxury Vision & Dream Portfolio · Flutter",
@@ -3302,6 +3484,32 @@
             setTimeout(() => { card.style.transition = ''; }, 500);
         });
     });
+
+    
+    // ===== PROJECT CATEGORY FILTER HANDLER =====
+    (function() {
+        const filterBtns = document.querySelectorAll('.filter-pill');
+        const track = document.getElementById('projectsSliderTrack');
+        if (!filterBtns.length || !track) return;
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                const cards = track.querySelectorAll('.project-card');
+                cards.forEach(card => {
+                    const cat = (card.dataset.category || '').toLowerCase();
+                    if (filter === 'all' || cat.includes(filter)) {
+                        card.style.display = '';
+                        card.style.opacity = '1';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    })();
 
     // ===== TEXT SCRAMBLE / GLITCH EFFECT =====
     (function() {
