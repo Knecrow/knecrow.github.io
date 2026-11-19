@@ -282,7 +282,7 @@
         .btn-outline:hover { color: #FFFFFF; border-color: rgba(255, 255, 255, 0.5); box-shadow: 0 0 25px rgba(255, 255, 255, 0.15); }
 
         /* ===== SECTION BASE ===== */
-        section { padding: 7rem 6%; position: relative; }
+        section { padding: 3.5rem 6%; position: relative; }
         .section-label {
             display: inline-flex; align-items: center; gap: 0.6rem;
             font-size: 0.78rem; font-weight: 700; letter-spacing: 2px;
@@ -328,10 +328,10 @@
            SECTION 1 — HERO
         ==================================== */
         #hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex; flex-direction: row;
             align-items: center; justify-content: space-between;
-            padding-top: 8rem; gap: 4rem;
+            padding-top: 7rem; padding-bottom: 2.5rem; gap: 3.5rem;
             background: transparent;
             overflow: hidden;
             position: relative;
@@ -624,7 +624,7 @@
             background: transparent;
             position: relative;
             overflow: hidden;
-            padding: 6rem 0 0;
+            padding: 3.5rem 0 1rem;
         }
         .projects-header-wrapper {
             max-width: 1200px;
@@ -1077,7 +1077,6 @@
         #services {
             background: transparent;
             position: relative;
-            padding-top: 0;
         }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
         .service-card {
@@ -1252,7 +1251,7 @@
         /* ===== FOOTER ===== */
         footer {
             background: #000000; color: #94A3B8;
-            padding: 5rem 6% 3rem;
+            padding: 3.5rem 6% 2.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.12);
             position: relative; overflow: hidden;
             background-image: radial-gradient(ellipse 90% 50% at 50% 105%, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.10) 50%, transparent 75%);
@@ -1362,7 +1361,7 @@
         /* ===== ENGINEERING PHILOSOPHY SECTION ===== */
         #philosophy {
             background: transparent;
-            padding: 5rem 6%;
+            padding: 3.5rem 6%;
             position: relative;
         }
         .philosophy-grid {
@@ -1459,13 +1458,12 @@
             .project-card.featured 
         }
         @media (max-width: 768px) {
-            section { padding: 4.5rem 5%; }
-            #philosophy { padding: 4.5rem 5%; }
-            #projects { padding: 4.5rem 0 0.8rem; }
-            #services { padding-top: 0; }
+            section { padding: 2.5rem 5%; }
+            #philosophy { padding: 2.5rem 5%; }
+            #projects { padding: 2.5rem 0 0.8rem; }
             .nav-links { display: none; }
             .hamburger { display: flex; }
-            #hero { padding-top: 6.5rem; padding-bottom: 3.5rem; }
+            #hero { padding-top: 5.5rem; padding-bottom: 2rem; }
             #hero h1 { font-size: clamp(2.3rem, 7.5vw, 3.2rem); letter-spacing: -1px; }
             #hero h1 .typed-line { justify-content: center; font-size: 0.48em; }
 
@@ -1546,10 +1544,9 @@
         }
 
         @media (max-width: 480px) {
-            section { padding: 3.8rem 4.5%; }
-            #philosophy { padding: 3.8rem 4.5%; }
-            #projects { padding: 3.8rem 0 0.6rem; }
-            #services { padding-top: 0; }
+            section { padding: 2rem 4.5%; }
+            #philosophy { padding: 2rem 4.5%; }
+            #projects { padding: 2rem 0 0.6rem; }
             #hero h1 { font-size: 2.15rem; }
             .hero-btns { flex-direction: column; width: 100%; max-width: 280px; }
             .hero-btns .btn { width: 100%; justify-content: center; }
