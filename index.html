@@ -1624,7 +1624,7 @@
             <span class="line typed-line">&amp; <span id="typed-text"></span></span>
         </h1>
         <p class="hero-desc">
-            4th-year Computer Science undergraduate at <strong>United International University (UIU)</strong>. I love building real-world software with <strong>Flutter, Next.js, and modern AI tools</strong> — actively seeking <strong>internships &amp; work opportunities</strong> where curiosity, product focus, and rapid execution matter.
+            4th-year Computer Science undergraduate at <strong>United International University (UIU)</strong> and an enthusiastic <strong>vibe coder</strong>. I build real-world software with <strong>Flutter, Next.js, and modern AI tools</strong> — actively seeking <strong>internships &amp; work opportunities</strong> where curiosity, product focus, and rapid execution matter.
         </p>
         <div class="hero-btns">
             <a href="#projects" class="btn">
@@ -1694,7 +1694,7 @@
                 </div>
                 <div class="about-info-text">
                     <strong>Focus</strong>
-                    <span>Mobile &amp; Web Development &bull; <span style="color:#4ade80;font-weight:600;">Seeking Internships</span></span>
+                    <span>Mobile &amp; Web Development &bull; Vibe Coding &amp; AI &bull; <span style="color:#4ade80;font-weight:600;">Seeking Internships</span></span>
                 </div>
             </div>
         </div>
@@ -1853,13 +1853,6 @@
             <div>
                 <div class="section-label reveal">Featured Work</div>
                 <h2 class="section-title reveal">Selected Creations</h2>
-            </div>
-            <!-- Category Filter Pills -->
-            <div class="project-filters reveal" id="projectFilters">
-                <button type="button" class="filter-pill active" data-filter="all">All</button>
-                <button type="button" class="filter-pill" data-filter="flutter">Flutter / Mobile</button>
-                <button type="button" class="filter-pill" data-filter="web">Web &amp; Next.js</button>
-                <button type="button" class="filter-pill" data-filter="ai">AI &amp; Tools</button>
             </div>
         </div>
     </div>
@@ -2885,7 +2878,7 @@
     // ===== TYPED TEXT (Optimized timeout, zero idle CPU load) =====
     const typedEl = document.getElementById('typed-text');
     if (typedEl) {
-        const words = ['CS Undergrad @ UIU', 'Flutter & Mobile Builder', 'Web & UI Explorer', 'Open to Internships', 'Creative Prototyper'];
+        const words = ['CS Undergrad @ UIU', 'Vibe Coder', 'Flutter & Mobile Builder', 'Open to Internships', 'Creative Prototyper'];
         let wordIdx = 0, charIdx = 0, deleting = false;
         const TYPE_SPEED = 110, DELETE_SPEED = 60, PAUSE = 1800;
         function typeStep() {
@@ -3597,38 +3590,6 @@
             setTimeout(() => { card.style.transition = ''; }, 500);
         });
     });
-
-    
-    // ===== PROJECT CATEGORY FILTER HANDLER =====
-    (function() {
-        const filterBtns = document.querySelectorAll('.filter-pill');
-        const track = document.getElementById('projectsSliderTrack');
-        const wrapper = document.getElementById('projectsSliderWrapper');
-        if (!filterBtns.length || !track || !wrapper) return;
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                const cards = track.querySelectorAll('.project-card');
-                
-                cards.forEach(card => {
-                    const cat = (card.dataset.category || '').toLowerCase();
-                    if (filter === 'all' || cat.includes(filter)) {
-                        card.style.display = '';
-                        card.style.opacity = '1';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-
-                // Reset scroll position to 0 so filtered items are immediately visible
-                wrapper.scrollTo({ left: 0, behavior: 'smooth' });
-            });
-        });
-    })();
 
     // ===== TEXT SCRAMBLE / GLITCH EFFECT =====
     (function() {
