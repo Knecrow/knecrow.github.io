@@ -624,7 +624,7 @@
             background: transparent;
             position: relative;
             overflow: hidden;
-            padding: 6rem 0 1.5rem;
+            padding: 6rem 0 0;
         }
         .projects-header-wrapper {
             max-width: 1200px;
@@ -1077,7 +1077,7 @@
         #services {
             background: transparent;
             position: relative;
-            padding-top: 3rem;
+            padding-top: 0;
         }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
         .service-card {
@@ -1456,11 +1456,13 @@
             .philosophy-grid { grid-template-columns: 1fr; max-width: 620px; margin: 2.5rem auto 0; }
             .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
             .project-card.featured { grid-column: auto; display: block; }
-            .project-card.featured .project-thumb { height: 220px; }
+            .project-card.featured 
         }
         @media (max-width: 768px) {
             section { padding: 4.5rem 5%; }
             #philosophy { padding: 4.5rem 5%; }
+            #projects { padding: 4.5rem 0 0.8rem; }
+            #services { padding-top: 0; }
             .nav-links { display: none; }
             .hamburger { display: flex; }
             #hero { padding-top: 6.5rem; padding-bottom: 3.5rem; }
@@ -1546,6 +1548,8 @@
         @media (max-width: 480px) {
             section { padding: 3.8rem 4.5%; }
             #philosophy { padding: 3.8rem 4.5%; }
+            #projects { padding: 3.8rem 0 0.6rem; }
+            #services { padding-top: 0; }
             #hero h1 { font-size: 2.15rem; }
             .hero-btns { flex-direction: column; width: 100%; max-width: 280px; }
             .hero-btns .btn { width: 100%; justify-content: center; }
@@ -2224,8 +2228,9 @@
                 </div>
             </div>
 
-            <!-- ===== SET 2 (SEAMLESS INFINITE LOOP DUPLICATE) ===== -->
-            <!-- Duplicate Project 1: Origo -->
+            <!-- ===== <!-- ===== SET 2 (SEAMLESS INFINITE LOOP DUPLICATE) ===== -->
+            SET 1 ===== -->
+            <!-- Duplicate Project 1: Origo (Flagship) -->
             <div class="project-card" data-category="flutter productivity" data-project="origo" aria-hidden="true">
                 <div class="project-top-badge">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
@@ -2474,8 +2479,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="project-category">Education Hub · Web &amp; Mobile</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-title">TuTracker — Tuition &amp; Batch Hub</div>
+                    <div class="project-desc">Smart tuition management hub featuring a conflict-free batch matrix, one-tap attendance, and automated fee ledgering.</div>
+                    <div class="project-tags">
+                        <span class="tag">Flutter / Web</span>
+                        <span class="tag">Batch Matrix</span>
+                        <span class="tag">Local Storage</span>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="project-action-btn btn-quickview" onclick="openProjectModal('tutracker', event)">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Quick View</span>
+                        </button>
+                        <a href="https://github.com/Knecrow/Tutracker" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()">
+                            <span>Repository</span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-            <!-- Duplicate Project 7: Untold -->
+                        <!-- Duplicate Project: Untold -->
             <div class="project-card" data-category="web productivity" data-project="untold" aria-hidden="true">
                 <div class="project-thumb">
                     <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.45) 0%, rgba(139, 92, 246, 0.25) 50%, transparent 75%);"></div>
@@ -2519,7 +2548,7 @@
                 </div>
             </div>
 
-            <!-- Duplicate Project 8: Battleframe -->
+            <!-- Duplicate Project: Battleframe -->
             <div class="project-card" data-category="web game" data-project="battleframe" aria-hidden="true">
                 <div class="project-thumb">
                     <div class="project-thumb-glow" style="background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.45) 0%, rgba(217, 119, 6, 0.25) 50%, transparent 75%);"></div>
@@ -2562,30 +2591,9 @@
                     </div>
                 </div>
             </div>
-                <div class="project-body">
-                    <div class="project-meta">
-                        <span class="project-category">Education Hub · Web &amp; Mobile</span>
-                        <span class="project-year">2026</span>
-                    </div>
-                    <div class="project-title">TuTracker — Tuition &amp; Batch Hub</div>
-                    <div class="project-desc">Smart tuition management hub featuring a conflict-free batch matrix, one-tap attendance, and automated fee ledgering.</div>
-                    <div class="project-tags">
-                        <span class="tag">Flutter / Web</span>
-                        <span class="tag">Batch Matrix</span>
-                        <span class="tag">Local Storage</span>
-                    </div>
-                    <div class="project-actions">
-                        <button type="button" class="project-action-btn btn-quickview" onclick="openProjectModal('tutracker', event)">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                            <span>Quick View</span>
-                        </button>
-                        <a href="https://github.com/Knecrow/Tutracker" target="_blank" class="project-action-btn btn-primary-link" onclick="event.stopPropagation()">
-                            <span>Repository</span>
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
+
+            <!-- =====
+        
         </div>
     </div>
 </section>
