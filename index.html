@@ -658,6 +658,7 @@
         }
         .projects-slider-track {
             display: flex;
+            align-items: flex-start;
             gap: 2.2rem;
             width: max-content;
             padding: 0 4vw;
@@ -810,33 +811,32 @@
             letter-spacing: 0.2px;
         }
         .project-body {
-            padding: 1.1rem 1.25rem 1.2rem;
+            padding: 1rem 1.15rem 1.1rem;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
         }
         .project-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.35rem;
             gap: 0.5rem;
         }
         .project-category {
-            font-size: 0.68rem;
+            font-size: 0.66rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.8px;
             color: #94A3B8;
         }
         .project-year {
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.5);
             font-weight: 600;
             font-family: 'Space Grotesk', monospace;
         }
         .project-title {
-            font-size: 1.12rem;
+            font-size: 1.08rem;
             font-weight: 800;
             color: #FFFFFF;
             margin-bottom: 0.35rem;
@@ -846,36 +846,37 @@
         .project-desc {
             font-size: 0.82rem;
             color: #94A3B8;
-            line-height: 1.5;
-            margin-bottom: 0.75rem;
+            line-height: 1.45;
+            margin-bottom: 0.65rem;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
+            min-height: 2.38rem;
         }
         .project-tags {
             display: flex;
             gap: 0.35rem;
             flex-wrap: wrap;
-            margin-bottom: 0.9rem;
+            margin-bottom: 0.65rem;
         }
         .tag {
             background: rgba(255, 255, 255, 0.05);
             color: #E2E8F0;
-            padding: 0.22rem 0.6rem;
+            padding: 0.2rem 0.55rem;
             border-radius: 50px;
-            font-size: 0.68rem;
+            font-size: 0.66rem;
             font-weight: 600;
             border: 1px solid rgba(255, 255, 255, 0.25);
         }
         .project-actions {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            padding-top: 0.85rem;
+            gap: 0.5rem;
+            padding-top: 0.75rem;
             border-top: 1px solid rgba(255, 255, 255, 0.15);
-            margin-top: auto;
+            margin-top: 0;
         }
         .project-action-btn {
             padding: 0.52rem 0.95rem;
