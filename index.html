@@ -401,7 +401,7 @@
         }
 
         .hero-desc {
-            font-size: 0.98rem; color: var(--text-muted);
+            font-size: 0.98rem; color: #CBD5E1;
             max-width: 520px; margin-bottom: 1.4rem;
             line-height: 1.55; font-weight: 400;
         }
@@ -1562,6 +1562,24 @@
             .project-body { padding: 1rem 1.1rem; }
             .service-card { padding: 2rem 1.4rem; }
         }
+        /* Mobile/tablet hero: photo first, readable text, compact controls */
+        @media (max-width: 1024px) {
+            .hero-right { order: -1; margin-top: 0; }
+        }
+        @media (max-width: 768px) {
+            .profile-ring-outer { width: min(200px, 55vw); height: min(200px, 55vw); }
+            .aurora-1, .aurora-2 { opacity: 0.2; }
+            .hero-desc { color: #E2E8F0; }
+            .hero-stats { flex-wrap: nowrap; gap: 1.4rem; }
+            .stat-num { font-size: 1.5rem; }
+            .stat-label { font-size: 0.62rem; letter-spacing: 0.5px; }
+            #back-to-top {
+                width: 40px; height: 40px; bottom: 1rem; right: 1rem;
+                background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.35);
+                box-shadow: none;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -1826,30 +1844,30 @@
 ==================================== -->
 <section id="philosophy">
     <div style="max-width:680px; margin-bottom:2.2rem;">
-        <div class="section-label reveal">Builder Mindset</div>
+        <div class="section-label reveal">My Approach</div>
         <h2 class="section-title reveal">How I Think &amp; Build</h2>
-        <p class="section-desc reveal" style="margin-top:0.8rem;">Core architectural philosophies that guide every system, interface, and line of code I write.</p>
+        <p class="section-desc reveal" style="margin-top:0.8rem;">A few simple ideas that guide how I approach every project.</p>
     </div>
     <div class="philosophy-grid">
         <div class="philosophy-card reveal from-scale" style="transition-delay: 0.1s;">
             <div class="philosophy-num">01</div>
-            <div class="philosophy-title">Offline-First &amp; Data Sovereignty</div>
+            <div class="philosophy-title">Build Things People Can Use</div>
             <div class="philosophy-desc">
-                Great software should never be held hostage by a spotty internet connection. I architect mobile apps with local embedded databases (SQLite, reactive state) for instant zero-latency loads and 100% private data persistence, treating cloud sync as an enhancement rather than a dependency.
+                I start from a real need — mine or someone else's — and build something that actually works. Several of my apps work offline and keep data on the device, because I want them to be simple, fast and private.
             </div>
         </div>
         <div class="philosophy-card reveal from-scale" style="transition-delay: 0.2s;">
             <div class="philosophy-num">02</div>
-            <div class="philosophy-title">60fps Fluidity &amp; Micro-Polish</div>
+            <div class="philosophy-title">Care About the Details</div>
             <div class="philosophy-desc">
-                The divide between an average app and a product users fall in love with is measured in micro-interactions: sub-100ms haptic feedback, spring-damped gesture physics, zero layout shifts, and seamless 60fps animations. If an interface doesn't feel alive, it's not finished.
+                I enjoy polishing how an app looks and feels: smooth animations, clear layouts, and small touches that make it pleasant to use. I keep tweaking until it feels right.
             </div>
         </div>
         <div class="philosophy-card reveal from-scale" style="transition-delay: 0.3s;">
             <div class="philosophy-num">03</div>
-            <div class="philosophy-title">AI-Accelerated Development Velocity</div>
+            <div class="philosophy-title">Learn by Building, with AI</div>
             <div class="philosophy-desc">
-                AI doesn't replace Computer Science foundations—it accelerates them. I harness modern agentic tools and LLMs to rapidly prototype ideas, shorten build cycles, and learn software architecture by doing rather than just reading theory.
+                I use AI tools to turn ideas into working projects quickly, and I use each project to learn how things work underneath. My next step is learning from experienced engineers to build a stronger foundation.
             </div>
         </div>
     </div>
@@ -1883,10 +1901,10 @@
                     <div class="project-preview-chip">
                         <div class="preview-top-row">
                             <span class="preview-badge" style="background: rgba(59, 130, 246, 0.16); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35);">Flutter · Mobile</span>
-                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #22c55e; box-shadow: 0 0 8px #22c55e;"></span> Offline Core</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #22c55e; box-shadow: 0 0 8px #22c55e;"></span> Mobile App</span>
                         </div>
                         <div class="preview-center-metric">
-                            <div class="preview-metric-value">👑 Peak Vision</div>
+                            <div class="preview-metric-value">🎯 Origo</div>
                             <div class="preview-metric-label">Personal Goals Board</div>
                         </div>
                         <div class="preview-foot-row">
@@ -1927,10 +1945,10 @@
                     <div class="project-preview-chip">
                         <div class="preview-top-row">
                             <span class="preview-badge" style="background: rgba(16, 185, 129, 0.16); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.35);">FinTech · Flutter</span>
-                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #34d399; box-shadow: 0 0 8px #34d399;"></span> Budget Safe (-14%)</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #34d399; box-shadow: 0 0 8px #34d399;"></span> Mobile App</span>
                         </div>
                         <div class="preview-center-metric">
-                            <div class="preview-metric-value">৳ 48,500.00</div>
+                            <div class="preview-metric-value">💰 Estash</div>
                             <div class="preview-metric-label">Spending Overview</div>
                         </div>
                         <div class="preview-foot-row">
@@ -1971,10 +1989,10 @@
                     <div class="project-preview-chip">
                         <div class="preview-top-row">
                             <span class="preview-badge" style="background: rgba(225, 29, 72, 0.16); color: #fda4af; border: 1px solid rgba(225, 29, 72, 0.35);">Gemini AI · HUD</span>
-                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #06b6d4; box-shadow: 0 0 8px #06b6d4;"></span> Arc Core Live</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #06b6d4; box-shadow: 0 0 8px #06b6d4;"></span> Live Demo</span>
                         </div>
                         <div class="preview-center-metric">
-                            <div class="preview-metric-value">🤖 Aegis AI</div>
+                            <div class="preview-metric-value">🤖 Aegis</div>
                             <div class="preview-metric-label">AI Voice Assistant</div>
                         </div>
                         <div class="preview-foot-row">
@@ -1988,7 +2006,7 @@
                         <span class="project-category">AI System / HUD · Web</span>
                         <span class="project-year">2026</span>
                     </div>
-                    <div class="project-title">Aegis — Marvel HUD AI System</div>
+                    <div class="project-title">Aegis — Sci-Fi AI Assistant</div>
                     <div class="project-desc">A sci-fi AI assistant fan project powered by Google Gemini, with voice replies and live audio waveforms.</div>
                     <div class="project-tags">
                         <span class="tag">Gemini AI</span>
@@ -2018,10 +2036,10 @@
                     <div class="project-preview-chip">
                         <div class="preview-top-row">
                             <span class="preview-badge" style="background: rgba(168, 85, 247, 0.16); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.35);">Gamification · RPG</span>
-                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #f97316; box-shadow: 0 0 8px #f97316;"></span> Active Streak</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #f97316; box-shadow: 0 0 8px #f97316;"></span> Mobile App</span>
                         </div>
                         <div class="preview-center-metric">
-                            <div class="preview-metric-value">⚔️ 42 Days Streak</div>
+                            <div class="preview-metric-value">⚔️ Aumbra</div>
                             <div class="preview-metric-label">Habits as RPG Quests</div>
                         </div>
                         <div class="preview-foot-row">
@@ -2062,10 +2080,10 @@
                     <div class="project-preview-chip">
                         <div class="preview-top-row">
                             <span class="preview-badge" style="background: rgba(234, 179, 8, 0.16); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.35);">Productivity · Web</span>
-                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #eab308; box-shadow: 0 0 8px #eab308;"></span> Deep Focus</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #eab308; box-shadow: 0 0 8px #eab308;"></span> Live Demo</span>
                         </div>
                         <div class="preview-center-metric">
-                            <div class="preview-metric-value">25:00 Focus Flow</div>
+                            <div class="preview-metric-value">⏳ Hourglass</div>
                             <div class="preview-metric-label">Falling Sand Timer</div>
                         </div>
                         <div class="preview-foot-row">
@@ -2109,10 +2127,10 @@
                     <div class="project-preview-chip">
                         <div class="preview-top-row">
                             <span class="preview-badge" style="background: rgba(37, 99, 235, 0.16); color: #93c5fd; border: 1px solid rgba(37, 99, 235, 0.35);">Education Hub · Flutter</span>
-                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #22c55e; box-shadow: 0 0 8px #22c55e;"></span> 12/12 Present</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #22c55e; box-shadow: 0 0 8px #22c55e;"></span> Mobile App</span>
                         </div>
                         <div class="preview-center-metric">
-                            <div class="preview-metric-value">Batch A-2 (Physics)</div>
+                            <div class="preview-metric-value">📚 TuTracker</div>
                             <div class="preview-metric-label">Batches, Attendance &amp; Fees</div>
                         </div>
                         <div class="preview-foot-row">
@@ -2153,10 +2171,10 @@
                     <div class="project-preview-chip">
                         <div class="preview-top-row">
                             <span class="preview-badge" style="background: rgba(99, 102, 241, 0.16); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.35);">Next.js 15 · Web</span>
-                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #6366f1; box-shadow: 0 0 8px #6366f1;"></span> PostgreSQL</span>
+                            <span class="preview-status-pill"><span class="preview-status-dot" style="background: #6366f1; box-shadow: 0 0 8px #6366f1;"></span> Web App</span>
                         </div>
                         <div class="preview-center-metric">
-                            <div class="preview-metric-value">📌 Untold Wall</div>
+                            <div class="preview-metric-value">📌 Untold</div>
                             <div class="preview-metric-label">Anonymous Digital Corkboard &amp; Notes</div>
                         </div>
                         <div class="preview-foot-row">
@@ -2200,7 +2218,7 @@
                             <span class="preview-status-pill"><span class="preview-status-dot" style="background: #f59e0b; box-shadow: 0 0 8px #f59e0b;"></span> Browser Game</span>
                         </div>
                         <div class="preview-center-metric">
-                            <div class="preview-metric-value">🛡️ Fortress Def</div>
+                            <div class="preview-metric-value">🛡️ Battleframe</div>
                             <div class="preview-metric-label">Wave-Based Defense Game</div>
                         </div>
                         <div class="preview-foot-row">
@@ -2243,7 +2261,7 @@
 ==================================== -->
 <section id="services">
     <div style="max-width:680px; margin-bottom:2.2rem;">
-        <div class="section-label reveal">What I Bring</div>
+        <div class="section-label reveal">Strengths</div>
         <h2 class="section-title reveal">What I Bring<br>to a Team</h2>
         <p class="section-desc reveal" style="margin-top:0.8rem;">Where I can help today, and where I'm ready to grow:</p>
     </div>
