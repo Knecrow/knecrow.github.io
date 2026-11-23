@@ -496,9 +496,11 @@
             border-color: #FFFFFF;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 20px 45px #000000;
         }
-        .badge-1 { top: 10%; left: -30px; animation: float-badge 5s ease-in-out infinite; }
-        .badge-2 { bottom: 20%; right: -20px; animation: float-badge 6s ease-in-out infinite reverse; }
-        .badge-3 { bottom: 5%; left: 10px; animation: float-badge 4s ease-in-out infinite 1s; }
+        /* Badges sit just outside the photo circle */
+        .hero-badges { position: absolute; inset: 0; z-index: 2; }
+        .badge-1 { top: 4%; right: 86%; animation: float-badge 5s ease-in-out infinite; }
+        .badge-2 { top: 46%; left: 97%; animation: float-badge 6s ease-in-out infinite reverse; }
+        .badge-3 { bottom: 2%; right: 79%; animation: float-badge 4s ease-in-out infinite 1s; }
         @keyframes float-badge {
             0%,100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -1480,9 +1482,6 @@
                 font-size: 0.72rem;
                 box-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 8px 20px #000000;
             }
-            .badge-1 { top: 3%; left: -6px; }
-            .badge-2 { bottom: 18%; right: -6px; }
-            .badge-3 { bottom: -6px; left: 15px; }
 
             .projects-slider-track .project-card { width: 310px; min-width: 310px; max-width: 310px; }
             .projects-slider-track { gap: 1.25rem; }
@@ -1555,9 +1554,6 @@
             .stat-num { font-size: 1.75rem; }
             .tech-grid { grid-template-columns: repeat(2, 1fr); }
             .badge { font-size: 0.66rem; padding: 0.35rem 0.7rem; }
-            .badge-1 { top: 2%; left: -2px; }
-            .badge-2 { bottom: 15%; right: -2px; }
-            .badge-3 { bottom: -4px; left: 8px; }
             .contact-form { padding: 1.6rem 1rem; }
             .project-body { padding: 1rem 1.1rem; }
             .service-card { padding: 2rem 1.4rem; }
@@ -1567,7 +1563,9 @@
             .hero-right { order: -1; margin-top: 0; }
         }
         @media (max-width: 768px) {
-            .profile-ring-outer { width: min(200px, 55vw); height: min(200px, 55vw); }
+            .profile-ring-outer { width: min(200px, 55vw); height: min(200px, 55vw); margin-bottom: 1rem; }
+            /* Phones: badges stay outside the photo; right one moves to bottom-right so it fits the screen */
+            .badge-2 { top: auto; bottom: 2%; left: 79%; }
             .aurora-1, .aurora-2 { opacity: 0.2; }
             .hero-desc { color: #E2E8F0; }
             .hero-stats { flex-wrap: nowrap; gap: 1.4rem; }
@@ -1687,9 +1685,11 @@
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="img-fallback sn-avatar" style="display:none;">SN</div>
             </div>
-            <div class="badge badge-1">Vibe Coder</div>
-            <div class="badge badge-2">Problem Solver</div>
-            <div class="badge badge-3">AI Enthusiast</div>
+            <div class="hero-badges">
+                <div class="badge badge-1">Vibe Coder</div>
+                <div class="badge badge-2">Problem Solver</div>
+                <div class="badge badge-3">AI Enthusiast</div>
+            </div>
         </div>
     </div>
 </section>
