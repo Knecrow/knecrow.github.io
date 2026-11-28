@@ -90,7 +90,6 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100vw;
-            cursor: none;
             -webkit-font-smoothing: antialiased;
             position: relative;
         }
@@ -102,40 +101,12 @@
             z-index: -1;
             pointer-events: none;
             background-image:
-                radial-gradient(circle 800px at 70% 12%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.18) 32%, rgba(0, 0, 0, 0) 65%),
-                radial-gradient(circle 700px at 15% 48%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 30%, rgba(0, 0, 0, 0) 60%),
-                radial-gradient(circle 750px at 80% 82%, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.15) 30%, rgba(0, 0, 0, 0) 60%);
+                radial-gradient(circle 800px at 70% 12%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.06) 32%, rgba(0, 0, 0, 0) 65%),
+                radial-gradient(circle 700px at 15% 48%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.04) 30%, rgba(0, 0, 0, 0) 60%),
+                radial-gradient(circle 750px at 80% 82%, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.05) 30%, rgba(0, 0, 0, 0) 60%);
             background-size: cover;
             transform: translateZ(0);
         }
-
-        /* ===== CUSTOM CURSOR ===== */
-        #cursor-dot {
-            width: 8px; height: 8px;
-            background: #FFFFFF;
-            border-radius: 50%;
-            position: fixed;
-            top: 0; left: 0;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
-        }
-        #cursor-ring {
-            width: 36px; height: 36px;
-            border: 1.5px solid rgba(255, 255, 255, 0.35);
-            border-radius: 50%;
-            position: fixed;
-            top: 0; left: 0;
-            pointer-events: none;
-            z-index: 99998;
-            transform: translate(-50%, -50%);
-            transition: transform 0.18s var(--transition), width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
-            opacity: 0.7;
-        }
-        body:has(a:hover, button:hover, .btn:hover) #cursor-dot { transform: translate(-50%,-50%) scale(2.2); }
-        body:has(a:hover, button:hover, .btn:hover) #cursor-ring { width: 52px; height: 52px; opacity: 0.3; border-color: #FFFFFF; }
 
         /* ===== SCROLL PROGRESS BAR ===== */
         #scroll-progress {
@@ -216,7 +187,7 @@
 
         /* Hamburger */
         .hamburger {
-            display: none; flex-direction: column; gap: 5px; cursor: none;
+            display: none; flex-direction: column; gap: 5px; cursor: pointer;
             background: none; border: none; padding: 5px;
         }
         .hamburger span { display: block; width: 24px; height: 2px; background: #FFFFFF; transition: all 0.3s ease; border-radius: 2px; }
@@ -256,7 +227,7 @@
             border: 1px solid #FFFFFF;
             border-radius: 50px;
             font-weight: 700; font-size: 0.95rem;
-            text-decoration: none; cursor: none;
+            text-decoration: none; cursor: pointer;
             transition: all 0.3s var(--transition);
             letter-spacing: 0.3px; position: relative; overflow: hidden;
             box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 0 10px 25px rgba(0, 0, 0, 0.5);
@@ -427,11 +398,6 @@
         }
         .profile-ring-outer {
             position: relative; width: min(340px, 28vw); height: min(340px, 28vw);
-            animation: float-ring 7s ease-in-out infinite;
-        }
-        @keyframes float-ring {
-            0%,100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-14px) rotate(2deg); }
         }
         /* Refined coronal eclipse backlight */
         .profile-ring-outer::before {
@@ -442,19 +408,6 @@
             filter: blur(25px);
             z-index: 0;
             pointer-events: none;
-            animation: pulse-coronal 5s ease-in-out infinite alternate;
-        }
-        .profile-ring-outer::after {
-            content: ''; position: absolute;
-            inset: -12px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            animation: spin-slow 35s linear infinite;
-            pointer-events: none;
-        }
-        @keyframes pulse-coronal {
-            0% { transform: scale(0.96); opacity: 0.75; }
-            100% { transform: scale(1.05); opacity: 1; }
         }
         .profile-blob {
             width: 100%; height: 100%;
@@ -498,13 +451,9 @@
         }
         /* Badges sit just outside the photo circle */
         .hero-badges { position: absolute; inset: 0; z-index: 2; }
-        .badge-1 { top: 4%; right: 86%; animation: float-badge 5s ease-in-out infinite; }
-        .badge-2 { top: 46%; left: 97%; animation: float-badge 6s ease-in-out infinite reverse; }
-        .badge-3 { bottom: 2%; right: 79%; animation: float-badge 4s ease-in-out infinite 1s; }
-        @keyframes float-badge {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+        .badge-1 { top: 4%; right: 86%; }
+        .badge-2 { top: 46%; left: 97%; }
+        .badge-3 { bottom: 2%; right: 79%; }
         .badge-icon { margin-right: 6px; }
 
         /* ===================================
@@ -606,7 +555,7 @@
             border: 1px solid rgba(255, 255, 255, 0.45);
             border-radius: 14px;
             padding: 1.5rem 1rem;
-            text-align: center; cursor: none;
+            text-align: center;
             transition: all 0.35s var(--transition);
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.18), 0 12px 30px #000000;
         }
@@ -1086,7 +1035,7 @@
             background: #000000 !important;
             border: 1px solid rgba(255, 255, 255, 0.55);
             border-radius: 24px; padding: 2.5rem 2rem;
-            transition: all 0.4s var(--transition); cursor: none;
+            transition: all 0.4s var(--transition);
             position: relative; overflow: hidden;
             box-shadow: 0 0 14px rgba(255, 255, 255, 0.22), 0 25px 60px #000000;
         }
@@ -1196,7 +1145,7 @@
             border: 1px solid rgba(255, 255, 255, 0.45);
             display: flex; align-items: center; justify-content: center;
             color: var(--text-muted); text-decoration: none;
-            transition: all 0.3s var(--transition); cursor: none;
+            transition: all 0.3s var(--transition); cursor: pointer;
             box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
         }
         .social-btn:hover { background: #FFFFFF !important; color: #000000; border-color: #FFFFFF; transform: translateY(-4px); box-shadow: 0 0 24px rgba(255, 255, 255, 0.5); }
@@ -1270,28 +1219,13 @@
         .footer-links a:hover { color: #FFFFFF; }
         .footer-copy { font-size: 0.85rem; color: #94A3B8; }
 
-        .footer-watermark {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(4.5rem, 18vw, 15rem);
-            font-weight: 900;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.14);
-            letter-spacing: -3px;
-            line-height: 0.85;
-            margin-top: 3rem;
-            user-select: none;
-            pointer-events: none;
-            text-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
-            position: relative; z-index: 1;
-        }
-
         /* Back to top */
         #back-to-top {
             position: fixed; bottom: 2rem; right: 2rem;
             width: 48px; height: 48px; border-radius: 50%;
             background: var(--red); color: var(--text);
             display: flex; align-items: center; justify-content: center;
-            cursor: none; box-shadow: 0 8px 30px var(--red-glow);
+            cursor: pointer; box-shadow: 0 8px 30px var(--red-glow);
             opacity: 0; pointer-events: none;
             transition: all 0.4s var(--transition);
             z-index: 500; border: none;
@@ -1314,13 +1248,13 @@
         }
         .aurora-1 {
             width: 450px; height: 450px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.04) 50%, transparent 75%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 75%);
             top: 5%; right: 10%;
             animation: aurora-drift 18s ease-in-out infinite alternate;
         }
         .aurora-2 {
             width: 350px; height: 350px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 75%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 75%);
             top: 25%; left: 10%;
             animation: aurora-drift 22s ease-in-out infinite alternate-reverse;
         }
@@ -1344,10 +1278,6 @@
         .status-building { background: #000000; color: #E2E8F0; border: 1px solid rgba(255,255,255,0.22); }
         .status-ready { background: #000000; color: #E2E8F0; border: 1px solid rgba(255,255,255,0.22); }
         .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 6px #FFFFFF; }
-
-        /* ===== 3D TILT — JS-driven inline transforms ===== */
-        .project-card { transform-style: preserve-3d; will-change: transform; }
-        .projects-slider-wrapper, .projects-slider-track { perspective: 1200px; }
 
         /* ===== PROFILE SN FALLBACK ===== */
         .sn-avatar {
@@ -1505,17 +1435,6 @@
                 border-radius: var(--card-radius);
             }
 
-            /* Fluid Footer Watermark */
-            .footer-watermark {
-                font-size: clamp(3.2rem, 14vw, 6rem);
-                letter-spacing: -1px;
-                margin-top: 2rem;
-            }
-
-            /* Mobile touch pointer handling */
-            body, button, a, input, textarea, select { cursor: auto !important; }
-            #cursor-dot, #cursor-ring { display: none !important; }
-
             /* Optimized Glassmorphism on Mobile: kept on fixed navbar/drawer for luxury blur, disabled on scrolling grid cards */
             nav.scrolled, .mobile-nav {
                 backdrop-filter: blur(16px) saturate(140%) !important;
@@ -1590,8 +1509,6 @@
 <body>
 
 <!-- Custom Cursor -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
 
 <!-- Scroll Progress -->
 <div id="scroll-progress"></div>
@@ -1663,11 +1580,11 @@
         </div>
         <div class="hero-stats">
             <div class="stat-item">
-                <div class="stat-num"><span class="counter" data-target="19">0</span>+</div>
+                <div class="stat-num">19+</div>
                 <div class="stat-label">GitHub Repos</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num"><span class="counter" data-target="8">0</span></div>
+                <div class="stat-num">8</div>
                 <div class="stat-label">Projects</div>
             </div>
             <div class="stat-item">
@@ -1736,7 +1653,6 @@
 ==================================== -->
 <section id="skills">
     <div style="margin-bottom:2.5rem; max-width:680px;">
-        <div class="section-label">Technologies</div>
         <h2 class="section-title reveal">Skills</h2>
         <p class="section-desc reveal" style="margin-top:0.8rem;">
             Languages and tools I've used in my projects.
@@ -1840,27 +1756,23 @@
 ==================================== -->
 <section id="philosophy">
     <div style="max-width:680px; margin-bottom:2.2rem;">
-        <div class="section-label reveal">My Approach</div>
         <h2 class="section-title reveal">How I Think &amp; Build</h2>
         <p class="section-desc reveal" style="margin-top:0.8rem;">A few simple ideas that guide how I approach every project.</p>
     </div>
     <div class="philosophy-grid">
         <div class="philosophy-card reveal from-scale" style="transition-delay: 0.1s;">
-            <div class="philosophy-num">01</div>
             <div class="philosophy-title">Build Things People Can Use</div>
             <div class="philosophy-desc">
                 Most of my projects started from a real need, often my own. Several of them work offline and keep data on the phone, so they stay private.
             </div>
         </div>
         <div class="philosophy-card reveal from-scale" style="transition-delay: 0.2s;">
-            <div class="philosophy-num">02</div>
             <div class="philosophy-title">Care About the Details</div>
             <div class="philosophy-desc">
                 I spend a lot of time on the small stuff: spacing, animations, how a button responds. I keep tweaking until it feels right.
             </div>
         </div>
         <div class="philosophy-card reveal from-scale" style="transition-delay: 0.3s;">
-            <div class="philosophy-num">03</div>
             <div class="philosophy-title">Learn by Building, with AI</div>
             <div class="philosophy-desc">
                 AI lets me build quickly, and I use each project to learn what's happening underneath. Next, I want to build a stronger foundation with help from experienced engineers.
@@ -1876,7 +1788,6 @@
             <div class="projects-header-wrapper">
         <div class="projects-header">
             <div>
-                <div class="section-label reveal">Featured Work</div>
                 <h2 class="section-title reveal">Projects</h2>
             </div>
         </div>
@@ -2153,13 +2064,11 @@
 ==================================== -->
 <section id="services">
     <div style="max-width:680px; margin-bottom:2.2rem;">
-        <div class="section-label reveal">Strengths</div>
         <h2 class="section-title reveal">What I Bring<br>to a Team</h2>
         <p class="section-desc reveal" style="margin-top:0.8rem;">Where I can help today, and where I'm ready to grow:</p>
     </div>
     <div class="services-grid">
         <div class="service-card reveal from-scale" style="transition-delay:0.0s;">
-            <div class="service-num">01</div>
             <div class="service-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             </div>
@@ -2167,7 +2076,6 @@
             <div class="service-desc">Turning rough ideas into working prototypes quickly using AI tools, so a team can see and test an idea early.</div>
         </div>
         <div class="service-card reveal from-scale" style="transition-delay:0.1s;">
-            <div class="service-num">02</div>
             <div class="service-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
             </div>
@@ -2175,7 +2083,6 @@
             <div class="service-desc">I notice when a layout or animation feels off, and I like fixing it.</div>
         </div>
         <div class="service-card reveal from-scale" style="transition-delay:0.2s;">
-            <div class="service-num">03</div>
             <div class="service-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
             </div>
@@ -2183,7 +2090,6 @@
             <div class="service-desc">I use AI tools every day, and I'm good at getting useful answers out of them.</div>
         </div>
         <div class="service-card reveal from-scale" style="transition-delay:0.3s;">
-            <div class="service-num">04</div>
             <div class="service-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             </div>
@@ -2240,7 +2146,6 @@
 ==================================== -->
 <section id="contact">
     <div>
-        <div class="section-label reveal">Get In Touch</div>
         <h2 class="section-title reveal">Looking for an Internship<br><span style="color:var(--red)">to Learn &amp; Contribute</span></h2>
         <p class="section-desc reveal">If your team has an internship spot, or you just have advice for a student starting out, I'd love to hear from you.</p>
     </div>
@@ -2353,7 +2258,6 @@
         </div>
         <div class="footer-copy">&copy; 2026 Syed Nahian Siam. All rights reserved.</div>
     </div>
-    <div class="footer-watermark">NAHIAN</div>
 </footer>
 
 <!-- ===================================
@@ -2412,27 +2316,6 @@
 <script>
     // Respect the visitor's "reduce motion" system setting
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // ===== CUSTOM CURSOR (desktop only) =====
-    const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    const cursorDot = document.getElementById('cursor-dot');
-    const cursorRing = document.getElementById('cursor-ring');
-    if (!isTouchDevice) {
-        let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX; mouseY = e.clientY;
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
-        });
-        function animateCursor() {
-            ringX += (mouseX - ringX) * 0.12;
-            ringY += (mouseY - ringY) * 0.12;
-            cursorRing.style.left = ringX + 'px';
-            cursorRing.style.top = ringY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-    }
 
     // ===== SCROLL PROGRESS, NAVBAR & BACK-TO-TOP (merged, throttled) =====
     const scrollProgress = document.getElementById('scroll-progress');
@@ -2506,27 +2389,6 @@
         });
     }, { threshold: 0.3 });
     document.querySelectorAll('.skill-bars').forEach(el => skillObserver.observe(el));
-
-    // ===== COUNTER ANIMATION =====
-    function animateCounter(el) {
-        const target = parseInt(el.dataset.target);
-        let current = 0;
-        const increment = target / 60;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) { current = target; clearInterval(timer); }
-            el.textContent = Math.floor(current);
-        }, 25);
-    }
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.querySelectorAll('.counter').forEach(animateCounter);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.hero-stats').forEach(el => counterObserver.observe(el));
 
     // ===== TYPED TEXT (Optimized timeout, zero idle CPU load) =====
     const typedEl = document.getElementById('typed-text');
@@ -3230,51 +3092,6 @@
         document.documentElement.classList.remove('dark');
     } catch(e) {}
 
-    // ===== 3D CARD TILT =====
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            if (window.innerWidth < 768) return;
-            const rect = card.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
-            const dx = (e.clientX - cx) / (rect.width / 2);
-            const dy = (e.clientY - cy) / (rect.height / 2);
-            const rotX = (-dy * 7).toFixed(2);
-            const rotY = (dx * 7).toFixed(2);
-            card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-            card.style.transition = 'transform 0.5s var(--transition)';
-            setTimeout(() => { card.style.transition = ''; }, 500);
-        });
-    });
-
-    // ===== TEXT SCRAMBLE / GLITCH EFFECT =====
-    (function() {
-        const el = document.getElementById('glitch-title');
-        if (!el || reduceMotion) return;
-        const originalHTML = el.innerHTML;
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%&*';
-        const plainText = 'Student & Builder';
-        const subText = ' & '; // spacer
-        let frame = 0, totalFrames = 28;
-        function scramble() {
-            let out = '';
-            for (let i = 0; i < plainText.length; i++) {
-                if (frame / totalFrames > i / plainText.length) {
-                    out += plainText[i];
-                } else {
-                    out += chars[Math.floor(Math.random() * chars.length)];
-                }
-            }
-            el.childNodes[0].textContent = out;
-            frame++;
-            if (frame <= totalFrames) requestAnimationFrame(scramble);
-            else el.childNodes[0].textContent = plainText;
-        }
-        setTimeout(() => requestAnimationFrame(scramble), 600);
-    })();
 
 
 
